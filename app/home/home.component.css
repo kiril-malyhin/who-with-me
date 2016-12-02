@@ -1,0 +1,114 @@
+.bg-inverse {
+    background-color: #373a3c !important;
+}
+
+.text-color{
+    color: white !important;
+}
+
+.text-color:hover{
+    color: aqua;
+    background-color: transparent;
+}
+
+.start-text{
+    padding-top: 150px;
+    padding-bottom: 20px;
+    font-size: 70px;
+    text-align: center;
+}
+
+.why-us {
+    font-size: 60px;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.img-circle {
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+}
+
+.start-button{
+    background-color: transparent;
+    color: white; font-size: 25px;
+    border: 1px solid white;
+}
+
+.featurette-image{
+    width: 100%;
+    height: 40%;
+}
+
+.start-image{
+    background: url("../../images/start-page.jpg") no-repeat center;
+    width: 100%;
+    height: 100%;
+    color: white;
+    margin-bottom: 40px;
+    margin-top: -20px;
+    text-align: center;
+}
+
+.marketing .col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.marketing h2 {
+    font-weight: normal;
+}
+.marketing .col-lg-4 p {
+    margin-right: .75rem;
+    margin-left: .75rem;
+}
+
+.featurette-divider {
+    margin: 5rem 0;
+}
+
+.footer-divider {
+    margin-bottom: 30px;
+}
+
+.featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.05rem;
+}
+
+.footer {
+    padding-bottom: 20px;
+}
+
+@media (min-width: 40em) {
+
+    .featurette-heading {
+        font-size: 70px;
+    }
+
+    .a{
+        color: white;
+    }
+}
+.step-text {
+    font-size: 30px;
+}
+
+@media (min-width: 62em) {
+    .featurette-heading {
+        margin-top: 80px;
+    }
+}
+
+@media (min-width: 768px){
+    .navbar {
+        border-radius: 0;
+        padding-left: 20px;
+        padding-right: 50px;
+        margin-bottom: 0;
+    }
+    .a{
+        color: white;
+    }
+}
