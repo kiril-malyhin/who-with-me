@@ -10,20 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var login_component_1 = require('./login.component');
-var LoginRoutingModule = (function () {
-    function LoginRoutingModule() {
+var search_component_1 = require('./search.component');
+var SearchRoutingModule = (function () {
+    function SearchRoutingModule() {
     }
-    LoginRoutingModule = __decorate([
+    SearchRoutingModule = __decorate([
         core_1.NgModule({
             imports: [router_1.RouterModule.forChild([
-                    { path: 'login', component: login_component_1.LoginComponent }
+                    { path: 'home', component: search_component_1.SearchComponent }
                 ])],
             exports: [router_1.RouterModule]
         }), 
         __metadata('design:paramtypes', [])
-    ], LoginRoutingModule);
-    return LoginRoutingModule;
+    ], SearchRoutingModule);
+    return SearchRoutingModule;
 }());
-exports.LoginRoutingModule = LoginRoutingModule;
-//# sourceMappingURL=login-routing.module.js.map
+exports.SearchRoutingModule = SearchRoutingModule;
+//# sourceMappingURL=search-routing.module.js.map

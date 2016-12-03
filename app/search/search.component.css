@@ -1,0 +1,15 @@
+.find-trip {
+    font-size: 60px;
+    color: black;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.search-label-picker {
+    font-size: 25px;
+    float: left;
+    height: 45px;
+    display: block;
+    margin-right: 10px;
+}

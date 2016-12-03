@@ -9,19 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var LoginComponent = (function () {
-    function LoginComponent() {
+var router_1 = require("@angular/router");
+var NavBarComponent = (function () {
+    function NavBarComponent(router) {
+        this.router = router;
     }
-    LoginComponent = __decorate([
+    NavBarComponent.prototype.goToHome = function () {
+        this.router.navigate(['/home']);
+    };
+    NavBarComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'app-login',
-            templateUrl: 'login.component.html',
-            styleUrls: ['login.component.css']
+            selector: 'app-navbar',
+            templateUrl: 'navbar.component.html',
+            styleUrls: ['navbar.component.css']
         }), 
-        __metadata('design:paramtypes', [])
-    ], LoginComponent);
-    return LoginComponent;
+        __metadata('design:paramtypes', [router_1.Router])
+    ], NavBarComponent);
+    return NavBarComponent;
 }());
-exports.LoginComponent = LoginComponent;
-//# sourceMappingURL=login.component.js.map
+exports.NavBarComponent = NavBarComponent;
+//# sourceMappingURL=navbar.component.js.map

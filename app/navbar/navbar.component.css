@@ -1,0 +1,19 @@
+.bg-inverse {
+    background-color: #373a3c !important;
+}
+
+.text-color{
+    color: white !important;
+}
+
+@media (min-width: 768px){
+    .navbar {
+        border-radius: 0;
+        padding-left: 20px;
+        padding-right: 50px;
+        margin-bottom: 0;
+    }
+    .a{
+        color: white;
+    }
+}

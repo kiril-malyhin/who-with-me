@@ -1,0 +1,13 @@
+<div class="container">
+    <p class="find-trip">Search trip</p>
+    <div class="row">
+        <div style="float: left; margin-left: 20%">
+            <label class="search-label-picker"  style="">From:</label>
+            <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
+        </div>
+        <div style="float: right; margin-right: 20%">
+            <label class="search-label-picker">To:</label>
+            <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
+        </div>
+    </div>
+</div>
