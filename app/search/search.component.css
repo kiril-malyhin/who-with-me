@@ -1,3 +1,7 @@
+body {
+    min-height: 100%;
+}
+
 .find-trip {
     font-size: 60px;
     color: black;
