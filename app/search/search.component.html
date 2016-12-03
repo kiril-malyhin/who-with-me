@@ -1,13 +1,13 @@
-<div class="container">
-    <p class="find-trip">Search trip</p>
-    <div class="row">
-        <div style="float: left; margin-left: 20%">
-            <label class="search-label-picker"  style="">From:</label>
-            <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
+<div class="find-image">
+    <div class="container">
+        <p class="find-trip">Search trip</p>
+        <div class="row">
+            <input placeholder="From">
+            <input placeholder="To">
+            <!--<my-date-picker id="chooseDate" [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>-->
+            <button class="btn btn-find">Find</button>
         </div>
-        <div style="float: right; margin-right: 20%">
-            <label class="search-label-picker">To:</label>
-            <my-date-picker [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
-        </div>
+        <app-footer></app-footer>
     </div>
 </div>
+
