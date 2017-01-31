@@ -1,37 +1,37 @@
 <div class="container">
     <div class="row main-row">
-        <h2>Login</h2>
+        <h2>{{ 'loginTitle' | translate }}</h2>
         <hr>
         <div class="form-group row">
-            <label for="login" class="col-xs-4 col-form-label pointer">Username</label>
+            <label for="login" class="col-xs-4 col-form-label pointer">{{ 'username' | translate }}</label>
             <div class="col-sm-8">
                 <input [(ngModel)]="username" name="username" type="text" id="login" class="form-control"
-                       placeholder="Username" required>
+                       placeholder="{{ 'usernamePlaceholder' | translate }}" required>
                 <span *ngIf="!username && showErrorUsername" class="alert-invalid">
-                    Username is required
+                    {{ 'emptyUsername' | translate }}
                 </span>
             </div>
         </div>
 
         <div class="form-group row">
-            <label for="password" class="col-xs-4 col-form-label pointer">Password</label>
+            <label for="password" class="col-xs-4 col-form-label pointer">{{ 'password' | translate }}</label>
             <div class="col-sm-8">
                 <input [(ngModel)]="password" name="password" type="password" id="password" class="form-control"
-                       placeholder="Password" required>
+                       placeholder="{{ 'passwordPlaceholder' | translate }}" required>
                 <span *ngIf="!password && showErrorPassword" class="alert-invalid">
-                    Password is required
+                    {{ 'emptyPassword' | translate }}
                 </span>
             </div>
         </div>
 
         <div class="form-check">
             <label class="form-check-label">
-                <input type="checkbox" [(ngModel)]="isRememberMe" class="form-check-input login-rm pointer" value="{{isRememberMe}}">Remember me
+                <input type="checkbox" [(ngModel)]="isRememberMe" class="form-check-input login-rm pointer" value="{{ 'rm' | translate }}">{{ 'rm' | translate }}
             </label>
         </div>
 
-        <span *ngIf="showErrorCredentials" class="alert-invalid" style="text-align: center">Incorrect credentials</span>
+        <span *ngIf="showErrorCredentials" class="alert-invalid" style="text-align: center">{{ 'incorrectCredentials' | translate }}</span>
 
-        <button (click)="login()" type="button" class="btn-block btn-lg login-btn main-light-background-color">Login</button>
+        <button (click)="login()" type="button" class="btn-block btn-lg login-btn main-light-background-color">{{ 'login' | translate }}</button>
     </div>
 </div>

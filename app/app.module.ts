@@ -4,7 +4,7 @@ import {APP_BASE_HREF} from "@angular/common";
 import {Ng2BootstrapModule} from 'ng2-bootstrap/ng2-bootstrap';
 import { MyDatePickerModule } from 'mydatepicker/dist/my-date-picker.module';
 
-// import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
 
 import {AppRoutingModule} from "./app-routing.module";
 import {LoginComponent} from './components/login/login.component';
@@ -25,11 +25,11 @@ import {AuthenticationService} from "./services/utils/authentication.service";
         AppRoutingModule,
         MyDatePickerModule,
         HttpModule,
-        // TranslateModule.forRoot({
-        //     provide: TranslateLoader,
-        //     useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
-        //     deps: [Http]
-        // }),
+        TranslateModule.forRoot({
+            provide: TranslateLoader,
+            useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
+            deps: [Http]
+        }),
     ],
     declarations: [
         LoginComponent,

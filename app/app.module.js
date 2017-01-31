@@ -13,7 +13,7 @@ var platform_browser_1 = require('@angular/platform-browser');
 var common_1 = require("@angular/common");
 var ng2_bootstrap_1 = require('ng2-bootstrap/ng2-bootstrap');
 var my_date_picker_module_1 = require('mydatepicker/dist/my-date-picker.module');
-// import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
+var ng2_translate_1 = require('ng2-translate');
 var app_routing_module_1 = require("./app-routing.module");
 var login_component_1 = require('./components/login/login.component');
 var start_component_1 = require('./components/start/start.component');
@@ -36,6 +36,11 @@ var AppModule = (function () {
                 app_routing_module_1.AppRoutingModule,
                 my_date_picker_module_1.MyDatePickerModule,
                 http_1.HttpModule,
+                ng2_translate_1.TranslateModule.forRoot({
+                    provide: ng2_translate_1.TranslateLoader,
+                    useFactory: function (http) { return new ng2_translate_1.TranslateStaticLoader(http, '/assets/i18n', '.json'); },
+                    deps: [http_1.Http]
+                }),
             ],
             declarations: [
                 login_component_1.LoginComponent,

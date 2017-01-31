@@ -2,7 +2,8 @@
     System.config({
         paths: {
             // paths serve as alias
-            'npm:': 'node_modules/'
+            'npm:': 'node_modules/',
+            'ng2-translate': 'node_modules/ng2-translate/bundles/ng2-translate.umd.js'
         },
         // map tells the System loader where to look for things
         map: {
@@ -37,6 +38,9 @@
                 defaultExtension: 'js'
             },
             rxjs: {
+                defaultExtension: 'js'
+            },
+            'ng2-translate': {
                 defaultExtension: 'js'
             },
             'lodash' : {

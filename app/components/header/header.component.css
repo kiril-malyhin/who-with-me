@@ -17,3 +17,26 @@
         color: white;
     }
 }
+
+.lang-icon-padding {
+    margin-top: 13px;
+    font-size: 11px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.lang-icon:hover {
+    height: 18px;
+    width: 25px;
+}
+
+.active-lang {
+    height: 18px;
+    width: 25px;
+}
+
+label {
+    font-size: 12px;
+}

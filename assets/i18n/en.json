@@ -1,38 +1,41 @@
 {
-  "title": "doXima WebClient",
-  "repo": "Repository name",
+  "title": "Who with me?",
   "username": "Username",
   "password": "Password",
   "rm": "Remember me",
+  "loginTitle": "Sign in",
   "login": "Sign in",
+
   "usernamePlaceholder": "Username",
   "passwordPlaceholder": "Password",
 
-  "search": "Search",
+  "search": "Find",
   "logout": "Logout",
 
-  "thumbnail": "Thumbnail",
-  "documentName": "Document name",
-  "lastModification": "Last modification",
-  "folderPath": "Folder",
-  "emptySearchResult": "No document found",
-
-  "first": "First",
-  "previous": "Previous",
-  "next": "Next",
-  "last": "Last",
-
-  "connectionError": "An unexpected error occurred. Please try again, if the problem continues, contact support(doXimaSupport@cib.de)",
   "incorrectCredentials": "Incorrect credentials",
-  "documentNotFound": "Document not found",
-  "emptyRepository": "Repository name must not be empty",
   "emptyUsername": "Username must not be empty",
   "emptyPassword": "Password must not be empty",
-  "alertRedirect": "You will be redirected to the home page, because you were logged as remember me on other tab",
-  "alertLogout": "You were logged out this repository on other tab",
-  "confirmLogout": "Wrong repository! Do you want logout?",
-  "errorTitle": "Error",
-  "infoTitle": "Info",
-  "confirmTitle": "Confirm",
-  "confirmCancelBtn": "Cancel"
+
+  "startTitle": "Let's travel together!",
+  "startTitleLead": "Join the future",
+  "whyUs": "Why us?",
+  "driversLabel": "Drivers",
+  "driversGood": "Reduce travel costs",
+  "communicationLabel": "Communication",
+  "communicationGood": "Find new people",
+  "moneyLabel": "Travel cheaper",
+  "moneyGood": "Reliability and trust",
+
+  "howToStart": "How to start?",
+  "firstStep": "First step",
+  "firstStepDescription": "Just specify the cities of departure and arrival, and also date to see the list of drivers who offers trips along your route, and to choose suitable.",
+  "secondStep": "Second step",
+  "secondStepDescription": "Ask the driver the questions interesting you and find out trip details. If this option suits you, reserve the place.",
+  "lastStep": "Last step",
+  "lastStepDescription": "Arrive on time on the planned meeting place! Don't forget to take with yourself cash to pay the driver the coordinated sum during a trip.",
+
+  "searchResult": "Find",
+  "searchTitle": "Search trip",
+
+  "author": "Made by Kirill Malyhin"
 }

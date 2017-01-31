@@ -11,10 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var authentication_service_1 = require("../../services/utils/authentication.service");
+var language_service_1 = require("../../services/utils/language.service");
+var ng2_translate_1 = require("ng2-translate");
 var NavBarComponent = (function () {
-    function NavBarComponent(router) {
+    function NavBarComponent(router, translateService) {
         var _this = this;
         this.router = router;
+        this.translateService = translateService;
         authentication_service_1.AuthenticationService.logged.subscribe(function (value) {
             _this.isUserLogged = !!value;
             if (!value) {
@@ -24,6 +27,10 @@ var NavBarComponent = (function () {
     }
     NavBarComponent.prototype.goToHome = function () {
         this.router.navigate(['/start']);
+    };
+    NavBarComponent.prototype.setLanguage = function (language) {
+        this.translateService.use(language);
+        language_service_1.LanguageService.setLanguage(language);
     };
     NavBarComponent.prototype.logout = function () {
         authentication_service_1.AuthenticationService.logout();
@@ -35,7 +42,7 @@ var NavBarComponent = (function () {
             templateUrl: 'header.component.html',
             styleUrls: ['header.component.css']
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [router_1.Router, ng2_translate_1.TranslateService])
     ], NavBarComponent);
     return NavBarComponent;
 }());
