@@ -10,27 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var start_component_1 = require("./components/start/start.component");
-var search_component_1 = require("./components/search/search.component");
-var login_ban_guard_1 = require("./guards/login-ban-guard");
-var auth_guard_service_1 = require("./guards/auth-guard.service");
-exports.routes = [
-    { path: '', redirectTo: '/start', pathMatch: 'full' },
-    { path: 'start', component: start_component_1.HomeComponent, canActivate: [login_ban_guard_1.LoginBanGuard] },
-    { path: 'search', component: search_component_1.SearchComponent, canActivate: [auth_guard_service_1.AuthGuard] },
-    { path: '**', redirectTo: '/start', pathMatch: 'full' },
-];
-var AppRoutingModule = (function () {
-    function AppRoutingModule() {
+var start_component_1 = require('./start.component');
+var HomeRoutingModule = (function () {
+    function HomeRoutingModule() {
     }
-    AppRoutingModule = __decorate([
+    HomeRoutingModule = __decorate([
         core_1.NgModule({
-            imports: [router_1.RouterModule.forRoot(exports.routes)],
+            imports: [router_1.RouterModule.forChild([
+                    { path: 'start', component: start_component_1.HomeComponent }
+                ])],
             exports: [router_1.RouterModule]
         }), 
         __metadata('design:paramtypes', [])
-    ], AppRoutingModule);
-    return AppRoutingModule;
+    ], HomeRoutingModule);
+    return HomeRoutingModule;
 }());
-exports.AppRoutingModule = AppRoutingModule;
-//# sourceMappingURL=app-routing.module.js.map
+exports.HomeRoutingModule = HomeRoutingModule;
+//# sourceMappingURL=start-routing.module.js.map

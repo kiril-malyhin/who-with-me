@@ -1,0 +1,38 @@
+{
+  "title": "doXima WebClient",
+  "repo": "Repository name",
+  "username": "Username",
+  "password": "Password",
+  "rm": "Remember me",
+  "login": "Sign in",
+  "usernamePlaceholder": "Username",
+  "passwordPlaceholder": "Password",
+
+  "search": "Search",
+  "logout": "Logout",
+
+  "thumbnail": "Thumbnail",
+  "documentName": "Document name",
+  "lastModification": "Last modification",
+  "folderPath": "Folder",
+  "emptySearchResult": "No document found",
+
+  "first": "First",
+  "previous": "Previous",
+  "next": "Next",
+  "last": "Last",
+
+  "connectionError": "An unexpected error occurred. Please try again, if the problem continues, contact support(doXimaSupport@cib.de)",
+  "incorrectCredentials": "Incorrect credentials",
+  "documentNotFound": "Document not found",
+  "emptyRepository": "Repository name must not be empty",
+  "emptyUsername": "Username must not be empty",
+  "emptyPassword": "Password must not be empty",
+  "alertRedirect": "You will be redirected to the home page, because you were logged as remember me on other tab",
+  "alertLogout": "You were logged out this repository on other tab",
+  "confirmLogout": "Wrong repository! Do you want logout?",
+  "errorTitle": "Error",
+  "infoTitle": "Info",
+  "confirmTitle": "Confirm",
+  "confirmCancelBtn": "Cancel"
+}

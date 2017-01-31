@@ -9,21 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var authentication_service_1 = require("./services/utils/authentication.service");
-var auth_guard_service_1 = require("./guards/auth-guard.service");
-var AppComponent = (function () {
-    function AppComponent() {
+var router_1 = require('@angular/router');
+var authentication_service_1 = require('../services/utils/authentication.service');
+var AuthGuard = (function () {
+    function AuthGuard(router) {
+        this.router = router;
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'app-main',
-            providers: [auth_guard_service_1.AuthGuard, authentication_service_1.AuthenticationService],
-            template: "\n    <app-navbar></app-navbar> \n    <router-outlet></router-outlet>\n    <app-footer></app-footer>\n  "
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    AuthGuard.prototype.canActivate = function () {
+        if (!authentication_service_1.AuthenticationService.isLogged()) {
+            this.router.navigate(['/start']);
+            return true;
+        }
+        return true;
+    };
+    AuthGuard = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [router_1.Router])
+    ], AuthGuard);
+    return AuthGuard;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.AuthGuard = AuthGuard;
+//# sourceMappingURL=auth-guard.service.js.map

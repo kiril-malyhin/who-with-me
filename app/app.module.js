@@ -13,13 +13,18 @@ var platform_browser_1 = require('@angular/platform-browser');
 var common_1 = require("@angular/common");
 var ng2_bootstrap_1 = require('ng2-bootstrap/ng2-bootstrap');
 var my_date_picker_module_1 = require('mydatepicker/dist/my-date-picker.module');
+// import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 var app_routing_module_1 = require("./app-routing.module");
-var login_component_1 = require('./home/login/login.component');
-var home_component_1 = require('./home/home.component');
-var search_component_1 = require('./search/search.component');
+var login_component_1 = require('./components/login/login.component');
+var start_component_1 = require('./components/start/start.component');
+var search_component_1 = require('./components/search/search.component');
 var app_component_1 = require("./app.component");
-var navbar_component_1 = require("./navbar/navbar.component");
-var footer_component_1 = require("./footer/footer.component");
+var header_component_1 = require("./components/header/header.component");
+var footer_component_1 = require("./components/footer/footer.component");
+var http_1 = require("@angular/http");
+var auth_guard_service_1 = require('./guards/auth-guard.service');
+var login_ban_guard_1 = require('./guards/login-ban-guard');
+var authentication_service_1 = require("./services/utils/authentication.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -29,18 +34,19 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 ng2_bootstrap_1.Ng2BootstrapModule,
                 app_routing_module_1.AppRoutingModule,
-                my_date_picker_module_1.MyDatePickerModule
+                my_date_picker_module_1.MyDatePickerModule,
+                http_1.HttpModule,
             ],
             declarations: [
                 login_component_1.LoginComponent,
                 app_component_1.AppComponent,
-                home_component_1.HomeComponent,
+                start_component_1.HomeComponent,
                 search_component_1.SearchComponent,
-                navbar_component_1.NavBarComponent,
+                header_component_1.NavBarComponent,
                 footer_component_1.FooterComponent
             ],
             bootstrap: [app_component_1.AppComponent],
-            providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }]
+            providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, auth_guard_service_1.AuthGuard, login_ban_guard_1.LoginBanGuard, authentication_service_1.AuthenticationService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

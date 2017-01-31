@@ -1,12 +1,15 @@
 import {NgModule}             from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {HomeComponent} from "./home/home.component";
-import {SearchComponent} from "./search/search.component";
+import {HomeComponent} from "./components/start/start.component";
+import {SearchComponent} from "./components/search/search.component";
+import {LoginBanGuard} from "./guards/login-ban-guard";
+import {AuthGuard} from "./guards/auth-guard.service";
 
 export const routes: Routes = [
-    {path: '', redirectTo: '/home', pathMatch: 'full'},
-    {path: 'home',component: HomeComponent},
-    {path: 'search',component: SearchComponent},
+    {path: '', redirectTo: '/start', pathMatch: 'full'},
+    {path: 'start',component: HomeComponent, canActivate: [LoginBanGuard]},
+    {path: 'search',component: SearchComponent, canActivate: [AuthGuard]},
+    { path: '**', redirectTo: '/start', pathMatch: 'full' },
 ];
 
 @NgModule({

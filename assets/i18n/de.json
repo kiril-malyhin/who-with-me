@@ -1,0 +1,38 @@
+{
+  "title": "doXima WebClient",
+  "repo": "Repository",
+  "username": "Benutzername",
+  "password": "Passwort",
+  "rm": "Login speichern",
+  "login": "Anmelden",
+  "usernamePlaceholder": "Benutzername",
+  "passwordPlaceholder": "Passwort",
+
+  "search": "Suche",
+  "logout": "Abmelden",
+
+  "thumbnail": "Vorschau",
+  "documentName": "Dokumentennamen",
+  "lastModification": "Letzte Änderung",
+  "folderPath": "Mappe",
+  "emptySearchResult": "Es wurde kein Dokument gefunden",
+
+  "first": "Zuerst",
+  "previous": "Vorhergeschene",
+  "next": "Nächste",
+  "last": "Letzte",
+
+  "connectionError": "Ein unerwarteter Fehler ist aufgetreten.Versuchen Sie es bitte erneut, wenn das Problem weiterhin besteht,  kontaktieren Sie den Support (doXimaSupport@cib.de)",
+  "incorrectCredentials": "Falsche Anmeldedaten",
+  "documentNotFound": "Dokument nicht gefunden",
+  "emptyRepository": "Name des Repository soll nicht leer sein",
+  "emptyUsername": "Benutzername soll nicht leer sein",
+  "emptyPassword": "Passwort soll nicht leer sei",
+  "alertRedirect": "Sie werden auf die Startseite umgeleitet, da Sie sich als 'Login speichern' auf einer anderen Registerkarte angemeldet haben.",
+  "alertLogout": "Sie wurden außerhalb der Quelle zu einem anderen Register gemeldet",
+  "confirmLogout": "Falsches Repository! Möchten Sie sich abmelden?",
+  "errorTitle": "Fehler",
+  "infoTitle": "Info",
+  "confirmTitle": "Bestätigen",
+  "confirmCancelBtn": "Abbrechen"
+}

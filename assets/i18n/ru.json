@@ -1,0 +1,39 @@
+{
+  "title": "doXima WebClient",
+  "repo": "Имя репозитория",
+  "username": "Имя пользователя",
+  "password": "Пароль",
+  "rm": "Запомнить меня",
+  "login": "Войти",
+
+  "usernamePlaceholder": "Имя",
+  "passwordPlaceholder": "Пароль",
+
+  "search": "Поиск",
+  "logout": "Выйти",
+
+  "thumbnail": "Предварительный просмотр",
+  "documentName": "Имя документа",
+  "lastModification": "Последнее обновление",
+  "folderPath": "Папка",
+  "emptySearchResult": "Документы не найдены",
+
+  "first": "Первая",
+  "previous": "Предыдущая",
+  "next": "Следующая",
+  "last": "Последняя",
+
+  "connectionError": "Возникла непредвиденная ошибка. Пожалуйста, попробуйте позже. Свяжитесь с нами: doXimaSupport@cib.de",
+  "incorrectCredentials": "Неверный логин или пароль",
+  "documentNotFound": "Документ не найден",
+  "emptyRepository": "Имя репозитория не может быть пустым",
+  "emptyUsername": "Имя пользователя не может быть пустым",
+  "emptyPassword": "Пароль не может быть пустым",
+  "alertRedirect": "Вы будете перенаправлены на домашнюю страницу, поскольку вы залогинились как 'запомнить меня' на другой вкладке",
+  "alertLogout": "Вы были разлогинены из этого репозитория на другой вкладке",
+  "confirmLogout": "Неправильный репозиторий! Выйти из системы?",
+  "errorTitle": "Ошибка",
+  "infoTitle": "Сообщение",
+  "confirmTitle": "Подтверждение",
+  "confirmCancelBtn": "Отмена"
+}

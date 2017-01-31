@@ -1,0 +1,7 @@
+<nav class="navbar navbar-dark bg-inverse" style="cursor: pointer">
+    <div class="container">
+        <a class="navbar-brand text-color" (click)="goToHome()">Who with me?</a>
+        <a class="navbar-brand text-color" *ngIf="!isUserLogged" style="float: right">En | Ru</a>
+        <a class="navbar-brand text-color" *ngIf="isUserLogged" style="float: right" (click)="logout()">Logout</a>
+    </div>
+</nav>

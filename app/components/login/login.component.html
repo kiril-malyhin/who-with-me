@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row main-row">
+        <h2>Login</h2>
+        <hr>
+        <div class="form-group row">
+            <label for="login" class="col-xs-4 col-form-label pointer">Username</label>
+            <div class="col-sm-8">
+                <input [(ngModel)]="username" name="username" type="text" id="login" class="form-control"
+                       placeholder="Username" required>
+                <span *ngIf="!username && showErrorUsername" class="alert-invalid">
+                    Username is required
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="password" class="col-xs-4 col-form-label pointer">Password</label>
+            <div class="col-sm-8">
+                <input [(ngModel)]="password" name="password" type="password" id="password" class="form-control"
+                       placeholder="Password" required>
+                <span *ngIf="!password && showErrorPassword" class="alert-invalid">
+                    Password is required
+                </span>
+            </div>
+        </div>
+
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="checkbox" [(ngModel)]="isRememberMe" class="form-check-input login-rm pointer" value="{{isRememberMe}}">Remember me
+            </label>
+        </div>
+
+        <span *ngIf="showErrorCredentials" class="alert-invalid" style="text-align: center">Incorrect credentials</span>
+
+        <button (click)="login()" type="button" class="btn-block btn-lg login-btn main-light-background-color">Login</button>
+    </div>
+</div>
