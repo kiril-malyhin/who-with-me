@@ -2,8 +2,10 @@
     <div class="container">
         <p class="find-trip">{{ 'searchTitle' | translate }}</p>
         <div class="row">
-            <input placeholder="From">
-            <input placeholder="To">
+            <p-autoComplete [(ngModel)]="countryFrom" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
+                            placeholder="From" [minLength]="1"></p-autoComplete>
+            <p-autoComplete [(ngModel)]="countryTo" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
+                            placeholder="To" [minLength]="1"></p-autoComplete>
             <p-calendar [(ngModel)]="value"></p-calendar>
             <button class="btn btn-find">{{ 'searchResult' | translate }}</button>
         </div>

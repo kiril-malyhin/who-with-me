@@ -18,7 +18,8 @@ import { AuthGuard } from './guards/auth-guard.service';
 import { LoginBanGuard } from './guards/login-ban-guard';
 import {AuthenticationService} from "./services/utils/authentication.service";
 
-import {CalendarModule} from 'primeng/primeng';
+import {CalendarModule} from 'primeng/components/calendar/calendar';
+import {AutoCompleteModule} from 'primeng/components/autocomplete/autocomplete';
 
 @NgModule({
     imports: [
@@ -32,7 +33,8 @@ import {CalendarModule} from 'primeng/primeng';
             useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
             deps: [Http]
         }),
-        CalendarModule
+        CalendarModule,
+        AutoCompleteModule
     ],
     declarations: [
         LoginComponent,

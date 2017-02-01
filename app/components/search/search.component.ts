@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {Router} from "@angular/router";
+import dataCountries from "./dataCountries";
 
 @Component({
     moduleId: module.id,
@@ -9,23 +9,34 @@ import {Router} from "@angular/router";
 })
 
 export class SearchComponent {
-    myDatePickerOptions = {
-        todayBtnTxt: 'Today',
-        dateFormat: 'yyyy-mm-dd',
-        firstDayOfWeek: 'mo',
-        sunHighlight: true,
-        inline: false,
-        disableUntil: {
-            year: 2016,
-            month: 8,
-            day: 10
-        },
-        selectionTxtFontSize: '14px'
-    };
-
     value: Date;
 
-    onDateChanged(event:any) {
-        console.log('onDateChanged(): ', event.date, ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
+    countryTo: string;
+    countryFrom: string;
+    filteredCountriesSingle: string[];
+    filteredCountriesMultiple: string[];
+
+    filterCountrySingle(event: any) {
+        let query = event.query;
+        this.filteredCountriesSingle = this.filterCountry(query, dataCountries);
     }
+
+    filterCountryMultiple(event: any) {
+        let query = event.query;
+        this.filteredCountriesMultiple = this.filterCountry(query, dataCountries);
+
+    }
+
+    filterCountry(query: string, countries: any[]):any[] {
+        let filtered : any[] = [];
+        for(let i = 0; i < countries.length; i++) {
+            let country = countries[i];
+            if(country.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+                filtered.push(country);
+            }
+        }
+        return filtered;
+    }
+
 }
+

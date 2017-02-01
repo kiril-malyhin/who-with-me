@@ -25,7 +25,8 @@ var http_1 = require("@angular/http");
 var auth_guard_service_1 = require('./guards/auth-guard.service');
 var login_ban_guard_1 = require('./guards/login-ban-guard');
 var authentication_service_1 = require("./services/utils/authentication.service");
-var primeng_1 = require('primeng/primeng');
+var calendar_1 = require('primeng/components/calendar/calendar');
+var autocomplete_1 = require('primeng/components/autocomplete/autocomplete');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -42,7 +43,8 @@ var AppModule = (function () {
                     useFactory: function (http) { return new ng2_translate_1.TranslateStaticLoader(http, '/assets/i18n', '.json'); },
                     deps: [http_1.Http]
                 }),
-                primeng_1.CalendarModule
+                calendar_1.CalendarModule,
+                autocomplete_1.AutoCompleteModule
             ],
             declarations: [
                 login_component_1.LoginComponent,

@@ -9,24 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var dataCountries_1 = require("./dataCountries");
 var SearchComponent = (function () {
     function SearchComponent() {
-        this.myDatePickerOptions = {
-            todayBtnTxt: 'Today',
-            dateFormat: 'yyyy-mm-dd',
-            firstDayOfWeek: 'mo',
-            sunHighlight: true,
-            inline: false,
-            disableUntil: {
-                year: 2016,
-                month: 8,
-                day: 10
-            },
-            selectionTxtFontSize: '14px'
-        };
     }
-    SearchComponent.prototype.onDateChanged = function (event) {
-        console.log('onDateChanged(): ', event.date, ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
+    SearchComponent.prototype.filterCountrySingle = function (event) {
+        var query = event.query;
+        this.filteredCountriesSingle = this.filterCountry(query, dataCountries_1.default);
+    };
+    SearchComponent.prototype.filterCountryMultiple = function (event) {
+        var query = event.query;
+        this.filteredCountriesMultiple = this.filterCountry(query, dataCountries_1.default);
+    };
+    SearchComponent.prototype.filterCountry = function (query, countries) {
+        var filtered = [];
+        for (var i = 0; i < countries.length; i++) {
+            var country = countries[i];
+            if (country.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+                filtered.push(country);
+            }
+        }
+        return filtered;
     };
     SearchComponent = __decorate([
         core_1.Component({
