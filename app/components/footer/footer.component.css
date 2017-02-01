@@ -5,6 +5,8 @@ a {
 footer {
     text-align: center;
     height: 30px;
+    background-color: #222020;
+    color: white;
     width: 100%;
     float: right;
 }

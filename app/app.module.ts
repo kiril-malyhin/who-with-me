@@ -18,6 +18,8 @@ import { AuthGuard } from './guards/auth-guard.service';
 import { LoginBanGuard } from './guards/login-ban-guard';
 import {AuthenticationService} from "./services/utils/authentication.service";
 
+import {CalendarModule} from 'primeng/primeng';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -30,6 +32,7 @@ import {AuthenticationService} from "./services/utils/authentication.service";
             useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
             deps: [Http]
         }),
+        CalendarModule
     ],
     declarations: [
         LoginComponent,

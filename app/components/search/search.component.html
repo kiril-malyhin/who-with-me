@@ -4,7 +4,7 @@
         <div class="row">
             <input placeholder="From">
             <input placeholder="To">
-            <my-date-picker class="date-picker" id="chooseDate" [options]="myDatePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
+            <p-calendar [(ngModel)]="value"></p-calendar>
             <button class="btn btn-find">{{ 'searchResult' | translate }}</button>
         </div>
     </div>

@@ -23,6 +23,8 @@ export class SearchComponent {
         selectionTxtFontSize: '14px'
     };
 
+    value: Date;
+
     onDateChanged(event:any) {
         console.log('onDateChanged(): ', event.date, ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
     }

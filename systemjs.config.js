@@ -29,7 +29,8 @@
             'moment'                     :'node_modules/moment/moment.js',
             'lodash'                     :'node_modules/lodash',
             'ng2-bootstrap/ng2-bootstrap':'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
-            'mydatepicker'               :'npm:mydatepicker'
+            'mydatepicker'               :'npm:mydatepicker',
+            'primeng':                   'npm:primeng'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -48,6 +49,9 @@
                 defaultExtension: 'js'
             },
             mydatepicker: {
+                defaultExtension: 'js'
+            },
+            primeng: {
                 defaultExtension: 'js'
             }
         }
