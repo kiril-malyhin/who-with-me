@@ -58,5 +58,7 @@
 
   "profile": "Profile",
   "registrationTitle": "Don't have account yet?",
-  "registration": "Sign up"
+  "registration": "Sign up",
+
+  "addTrip": "Add trip"
 }

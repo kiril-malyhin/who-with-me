@@ -8,14 +8,5 @@ import {Router} from "@angular/router";
     styleUrls: [ 'start.component.css']
 })
 
-export class HomeComponent {
-    title: string;
-    registration: string;
-    enter: string;
-
-    constructor(private router: Router) {
-        this.title = 'Who with me?';
-        this.registration = "Registration";
-        this.enter = "Login";
-    }
+export class StartComponent {
 }

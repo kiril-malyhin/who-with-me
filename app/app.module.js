@@ -16,7 +16,6 @@ var my_date_picker_module_1 = require('mydatepicker/dist/my-date-picker.module')
 var ng2_translate_1 = require('ng2-translate');
 var app_routing_module_1 = require("./app-routing.module");
 var login_component_1 = require('./components/login/login.component');
-var start_component_1 = require('./components/start/start.component');
 var search_component_1 = require('./components/search/search.component');
 var app_component_1 = require("./app.component");
 var header_component_1 = require("./components/header/header.component");
@@ -31,6 +30,8 @@ var calendar_1 = require('primeng/components/calendar/calendar');
 var autocomplete_1 = require('primeng/components/autocomplete/autocomplete');
 var tabview_1 = require('primeng/components/tabview/tabview');
 var accordion_1 = require('primeng/components/accordion/accordion');
+var start_component_1 = require("./components/start/start.component");
+var home_component_1 = require("./components/home/home.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -55,12 +56,13 @@ var AppModule = (function () {
             declarations: [
                 login_component_1.LoginComponent,
                 app_component_1.AppComponent,
-                start_component_1.HomeComponent,
+                home_component_1.HomeComponent,
                 search_component_1.SearchComponent,
                 header_component_1.NavBarComponent,
                 footer_component_1.FooterComponent,
                 profile_component_1.ProfileComponent,
-                registration_component_1.RegistrationComponent
+                registration_component_1.RegistrationComponent,
+                start_component_1.StartComponent
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, auth_guard_service_1.AuthGuard, login_ban_guard_1.LoginBanGuard, authentication_service_1.AuthenticationService]

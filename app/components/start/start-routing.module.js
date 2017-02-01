@@ -11,19 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var start_component_1 = require('./start.component');
-var HomeRoutingModule = (function () {
-    function HomeRoutingModule() {
+var StartRoutingModule = (function () {
+    function StartRoutingModule() {
     }
-    HomeRoutingModule = __decorate([
+    StartRoutingModule = __decorate([
         core_1.NgModule({
             imports: [router_1.RouterModule.forChild([
-                    { path: 'start', component: start_component_1.HomeComponent }
+                    { path: 'start', component: start_component_1.StartComponent }
                 ])],
             exports: [router_1.RouterModule]
         }), 
         __metadata('design:paramtypes', [])
-    ], HomeRoutingModule);
-    return HomeRoutingModule;
+    ], StartRoutingModule);
+    return StartRoutingModule;
 }());
-exports.HomeRoutingModule = HomeRoutingModule;
+exports.StartRoutingModule = StartRoutingModule;
 //# sourceMappingURL=start-routing.module.js.map

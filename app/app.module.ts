@@ -8,7 +8,6 @@ import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-tra
 
 import {AppRoutingModule} from "./app-routing.module";
 import {LoginComponent} from './components/login/login.component';
-import {HomeComponent} from './components/start/start.component';
 import {SearchComponent} from './components/search/search.component';
 import {AppComponent} from "./app.component";
 import {NavBarComponent} from "./components/header/header.component";
@@ -25,6 +24,8 @@ import {CalendarModule} from 'primeng/components/calendar/calendar';
 import {AutoCompleteModule} from 'primeng/components/autocomplete/autocomplete';
 import {TabViewModule} from 'primeng/components/tabview/tabview';
 import {AccordionModule} from 'primeng/components/accordion/accordion';
+import {StartComponent} from "./components/start/start.component";
+import {HomeComponent} from "./components/home/home.component";
 
 @NgModule({
     imports: [
@@ -51,7 +52,8 @@ import {AccordionModule} from 'primeng/components/accordion/accordion';
         NavBarComponent,
         FooterComponent,
         ProfileComponent,
-        RegistrationComponent
+        RegistrationComponent,
+        StartComponent
     ],
     bootstrap: [AppComponent],
     providers: [{provide: APP_BASE_HREF, useValue: '/'}, AuthGuard, LoginBanGuard, AuthenticationService]

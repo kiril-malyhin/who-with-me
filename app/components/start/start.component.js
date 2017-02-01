@@ -9,24 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var HomeComponent = (function () {
-    function HomeComponent(router) {
-        this.router = router;
-        this.title = 'Who with me?';
-        this.registration = "Registration";
-        this.enter = "Login";
+var StartComponent = (function () {
+    function StartComponent() {
     }
-    HomeComponent = __decorate([
+    StartComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'app-start',
             templateUrl: 'start.component.html',
             styleUrls: ['start.component.css']
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
-    ], HomeComponent);
-    return HomeComponent;
+        __metadata('design:paramtypes', [])
+    ], StartComponent);
+    return StartComponent;
 }());
-exports.HomeComponent = HomeComponent;
+exports.StartComponent = StartComponent;
 //# sourceMappingURL=start.component.js.map

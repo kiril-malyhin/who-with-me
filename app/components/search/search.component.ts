@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import dataCountries from "./dataCountries";
+import {Router} from "@angular/router";
 
 @Component({
     moduleId: module.id,
@@ -9,6 +10,10 @@ import dataCountries from "./dataCountries";
 })
 
 export class SearchComponent implements OnInit{
+
+    constructor(private router: Router) {
+
+    }
 
     minDate: Date;
     maxDate: Date;
@@ -51,6 +56,10 @@ export class SearchComponent implements OnInit{
             }
         }
         return filtered;
+    }
+
+    findTrip() {
+        this.router.navigate(['/home']);
     }
 
 }

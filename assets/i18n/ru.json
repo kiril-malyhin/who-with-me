@@ -59,5 +59,8 @@
 
   "profile": "Профиль",
   "registrationTitle": "Нет аккаунта?",
-  "registration": "Регистрация"
+  "registration": "Регистрация",
+
+  "addTrip": "Добавить поездку"
+
 }

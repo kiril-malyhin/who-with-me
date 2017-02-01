@@ -10,8 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var dataCountries_1 = require("./dataCountries");
+var router_1 = require("@angular/router");
 var SearchComponent = (function () {
-    function SearchComponent() {
+    function SearchComponent(router) {
+        this.router = router;
     }
     SearchComponent.prototype.ngOnInit = function () {
         var today = new Date();
@@ -41,6 +43,9 @@ var SearchComponent = (function () {
         }
         return filtered;
     };
+    SearchComponent.prototype.findTrip = function () {
+        this.router.navigate(['/home']);
+    };
     SearchComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -48,7 +53,7 @@ var SearchComponent = (function () {
             templateUrl: 'search.component.html',
             styleUrls: ['search.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.Router])
     ], SearchComponent);
     return SearchComponent;
 }());

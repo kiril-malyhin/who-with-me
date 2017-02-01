@@ -1,0 +1,14 @@
+.background-image{
+    background: url("../../../images/start-page.jpg") no-repeat center;
+    width: 100%;
+    min-height: 100%;
+    color: white;
+    margin-bottom: -30px;
+    text-align: center;
+}
+
+.profile-title {
+    font-size: 60px;
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
