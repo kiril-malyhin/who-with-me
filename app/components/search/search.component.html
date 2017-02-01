@@ -7,7 +7,7 @@
             <p-autoComplete [(ngModel)]="countryTo" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
                             placeholder="To" [minLength]="1"></p-autoComplete>
             <p-calendar [(ngModel)]="value"></p-calendar>
-            <button class="btn btn-find">{{ 'searchResult' | translate }}</button>
+            <button class="btn-find">{{ 'searchResult' | translate }}</button>
         </div>
     </div>
 </div>

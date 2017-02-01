@@ -5,11 +5,17 @@
 }
 
 .find-image{
-    padding-top: 60px;
-    background: url("../../../images/search-page.jpg") no-repeat center;
-    height: 100%;
+    background: url("../../../images/start-page.jpg") no-repeat center;
+    width: 100%;
+    min-height: 100%;
     color: white;
+    margin-top: -53px;
+    margin-bottom: -30px;
     text-align: center;
+}
+
+.container {
+    padding-top: 130px;
 }
 
 .btn-find {
@@ -17,6 +23,10 @@
     color: white;
     width: 200px;
     height: 35px;
+    margin: 0;
+    outline: medium;
+    border-radius: 5px;
+    font-weight: normal;
     border: 1px solid rgba(248, 249, 248, 0.55);
 }
 

@@ -14,10 +14,14 @@ var start_component_1 = require("./components/start/start.component");
 var search_component_1 = require("./components/search/search.component");
 var login_ban_guard_1 = require("./guards/login-ban-guard");
 var auth_guard_service_1 = require("./guards/auth-guard.service");
+var profile_component_1 = require("./components/profile/profile.component");
+var registration_component_1 = require("./components/registration/registration.component");
 exports.routes = [
     { path: '', redirectTo: '/start', pathMatch: 'full' },
     { path: 'start', component: start_component_1.HomeComponent, canActivate: [login_ban_guard_1.LoginBanGuard] },
     { path: 'search', component: search_component_1.SearchComponent, canActivate: [auth_guard_service_1.AuthGuard] },
+    { path: 'profile', component: profile_component_1.ProfileComponent, canActivate: [auth_guard_service_1.AuthGuard] },
+    { path: 'registration', component: registration_component_1.RegistrationComponent },
     { path: '**', redirectTo: '/start', pathMatch: 'full' },
 ];
 var AppRoutingModule = (function () {

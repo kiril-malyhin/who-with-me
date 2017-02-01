@@ -47,6 +47,9 @@ var LoginComponent = (function () {
         }
         authentication_service_1.AuthenticationService.login(this.username, this.password);
     };
+    LoginComponent.prototype.register = function () {
+        this.router.navigate(['/registration']);
+    };
     LoginComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

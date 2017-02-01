@@ -27,6 +27,8 @@ var login_ban_guard_1 = require('./guards/login-ban-guard');
 var authentication_service_1 = require("./services/utils/authentication.service");
 var calendar_1 = require('primeng/components/calendar/calendar');
 var autocomplete_1 = require('primeng/components/autocomplete/autocomplete');
+var profile_component_1 = require("./components/profile/profile.component");
+var registration_component_1 = require("./components/registration/registration.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -52,7 +54,9 @@ var AppModule = (function () {
                 start_component_1.HomeComponent,
                 search_component_1.SearchComponent,
                 header_component_1.NavBarComponent,
-                footer_component_1.FooterComponent
+                footer_component_1.FooterComponent,
+                profile_component_1.ProfileComponent,
+                registration_component_1.RegistrationComponent
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, auth_guard_service_1.AuthGuard, login_ban_guard_1.LoginBanGuard, authentication_service_1.AuthenticationService]

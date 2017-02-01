@@ -23,13 +23,9 @@
                 </span>
             </div>
         </div>
-
-        <div class="form-check">
-            <label class="form-check-label">
-                <input type="checkbox" [(ngModel)]="isRememberMe" class="form-check-input login-rm pointer" value="{{ 'rm' | translate }}">{{ 'rm' | translate }}
-            </label>
-        </div>
-
+        <label>{{ 'registrationTitle' | translate }}
+            <a class="text-color pointer" (click)="register()" style="text-decoration: underline">{{ 'registration' | translate }}</a>
+        </label>
         <span *ngIf="showErrorCredentials" class="alert-invalid" style="text-align: center">{{ 'incorrectCredentials' | translate }}</span>
 
         <button (click)="login()" type="button" class="btn-block btn-lg login-btn main-light-background-color">{{ 'login' | translate }}</button>

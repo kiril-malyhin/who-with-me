@@ -37,5 +37,9 @@
   "searchResult": "Find",
   "searchTitle": "Search trip",
 
-  "author": "Made by Kirill Malyhin"
+  "author": "Made by Kirill Malyhin",
+
+  "profile": "Profile",
+  "registrationTitle": "Don't have account yet?",
+  "registration": "Sign up"
 }

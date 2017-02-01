@@ -13,6 +13,7 @@ import {SearchComponent} from './components/search/search.component';
 import {AppComponent} from "./app.component";
 import {NavBarComponent} from "./components/header/header.component";
 import {FooterComponent} from "./components/footer/footer.component";
+
 import {HttpModule, Http} from "@angular/http";
 import { AuthGuard } from './guards/auth-guard.service';
 import { LoginBanGuard } from './guards/login-ban-guard';
@@ -20,6 +21,8 @@ import {AuthenticationService} from "./services/utils/authentication.service";
 
 import {CalendarModule} from 'primeng/components/calendar/calendar';
 import {AutoCompleteModule} from 'primeng/components/autocomplete/autocomplete';
+import {ProfileComponent} from "./components/profile/profile.component";
+import {RegistrationComponent} from "./components/registration/registration.component";
 
 @NgModule({
     imports: [
@@ -42,7 +45,9 @@ import {AutoCompleteModule} from 'primeng/components/autocomplete/autocomplete';
         HomeComponent,
         SearchComponent,
         NavBarComponent,
-        FooterComponent
+        FooterComponent,
+        ProfileComponent,
+        RegistrationComponent
     ],
     bootstrap: [AppComponent],
     providers: [{provide: APP_BASE_HREF, useValue: '/'}, AuthGuard, LoginBanGuard, AuthenticationService]

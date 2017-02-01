@@ -53,4 +53,8 @@ export class LoginComponent {
 
         AuthenticationService.login(this.username, this.password);
     }
+
+    register() {
+        this.router.navigate(['/registration'])
+    }
 }

@@ -6,6 +6,10 @@
     color: white !important;
 }
 
+.text-color:hover {
+    color: #aeaa9f !important;
+}
+
 @media (min-width: 768px){
     .navbar {
         border-radius: 0;
@@ -19,7 +23,7 @@
 }
 
 .lang-icon-padding {
-    margin-top: 13px;
+    margin-top: 8px;
     font-size: 11px;
 }
 

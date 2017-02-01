@@ -37,5 +37,9 @@
   "searchResult": "Поиск",
   "searchTitle": "Поиск маршрута",
 
-  "author": "Автор Кирилл Малыхин"
+  "author": "Автор Кирилл Малыхин",
+
+  "profile": "Профиль",
+  "registrationTitle": "Нет аккаунта?",
+  "registration": "Регистрация"
 }

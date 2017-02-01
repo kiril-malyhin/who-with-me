@@ -1,16 +1,18 @@
 <nav class="navbar navbar-dark bg-inverse" style="cursor: pointer">
     <div class="">
         <a class="navbar-brand text-color" (click)="goToHome()">{{ 'title' | translate }}</a>
-        <a class="navbar-brand text-color lang-icon-padding" *ngIf="!isUserLogged" style="float: right">
+        <a class="navbar-brand lang-icon-padding" *ngIf="!isUserLogged" style="float: right">
             <span (click)="setLanguage('en')" class="pointer">
                 <img src="../../../images/lang-icons/english.png">
-                <label class="pointer">English |</label>
+                <label class="pointer text-color">English |</label>
             </span>
             <span (click)="setLanguage('ru')" class="pointer">
                 <img src="../../../images/lang-icons/russian.png">
-                <label class="pointer">Русский</label>
+                <label class="pointer text-color">Русский</label>
             </span>
         </a>
+
         <a class="navbar-brand text-color" *ngIf="isUserLogged" style="float: right" (click)="logout()">{{ 'logout' | translate }}</a>
+        <a class="navbar-brand text-color" *ngIf="isUserLogged" style="float: right" (click)="openProfile()">{{ 'profile' | translate }}</a>
     </div>
 </nav>

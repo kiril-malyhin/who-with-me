@@ -35,4 +35,8 @@ export class NavBarComponent {
     logout() {
         AuthenticationService.logout();
     }
+
+    openProfile() {
+        this.router.navigate(['/profile']);
+    }
 }

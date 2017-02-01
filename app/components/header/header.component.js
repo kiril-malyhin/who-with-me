@@ -35,6 +35,9 @@ var NavBarComponent = (function () {
     NavBarComponent.prototype.logout = function () {
         authentication_service_1.AuthenticationService.logout();
     };
+    NavBarComponent.prototype.openProfile = function () {
+        this.router.navigate(['/profile']);
+    };
     NavBarComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
