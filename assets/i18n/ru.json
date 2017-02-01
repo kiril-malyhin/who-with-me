@@ -2,12 +2,26 @@
   "title": "Кто со мной?",
   "username": "Имя пользователя",
   "password": "Пароль",
+  "repeatPassword": "Повторите пароль",
+  "age": "Возраст",
+  "mail": "Почта",
+  "phone": "Телефон",
+  "carType": "Тип машины",
+  "experience": "Опыт",
   "rm": "Запомнить меня",
   "login": "Войти",
   "loginTitle": "Вход",
 
-  "usernamePlaceholder": "Имя",
+  "usernamePlaceholder": "Имя пользователя",
   "passwordPlaceholder": "Пароль",
+  "repeatPasswordPlaceholder": "Повторите пароль",
+  "agePlaceholder": "Возраст",
+  "mailPlaceholder": "Почта",
+  "phonePlaceholder": "Телефон",
+  "experiencePlaceholder": "Стаж",
+
+  "isDriver": "Вы водитель?",
+
 
   "search": "Найти",
   "logout": "Выйти",
@@ -15,6 +29,10 @@
   "incorrectCredentials": "Неверный логин или пароль",
   "emptyUsername": "Имя пользователя не может быть пустым",
   "emptyPassword": "Пароль не может быть пустым",
+  "emptyRepeatPassword": "Пароли не совпадают",
+  "emptyAge": "Возраст не может быть пустым",
+  "emptyMail": "Почта не может быть пустой",
+  "emptyPhone": "Телефон не может быть пустым",
 
   "startTitle": "Путешествуйте вместе!",
   "startTitleLead": "Будьте ближе",

@@ -2,9 +2,9 @@
     width: 100%;
     min-height: 100%;
     color: black;
-    margin-top: 33px;
     margin-bottom: -30px;
     text-align: center;
+    background: url("../../../images/start-page.jpg") no-repeat center;
 }
 
 .main-row {
@@ -15,6 +15,7 @@
 .container {
     max-width: 500px;
     height: 100%;
+    padding-top: 50px;
     text-align: center;
 }
 
@@ -28,18 +29,18 @@
 }
 
 .login-heading {
-    /*margin: 20px 0;*/
+    margin: 20px 0;
 }
 
 .login-btn {
-    background-color: #1161ee;
+    background-color: #3c2a2a;
     margin-top: 20px;
     border: none;
     color: white;
 }
 
 .login-btn:hover {
-    background-color: #0e45ab;
+    background-color: #745959;
 }
 
 .login-rm {
@@ -63,5 +64,6 @@
 }
 
 a:hover {
+    color: #e1ddd1 !important;
     cursor: pointer !important;
 }

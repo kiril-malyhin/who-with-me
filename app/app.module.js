@@ -25,10 +25,12 @@ var http_1 = require("@angular/http");
 var auth_guard_service_1 = require('./guards/auth-guard.service');
 var login_ban_guard_1 = require('./guards/login-ban-guard');
 var authentication_service_1 = require("./services/utils/authentication.service");
-var calendar_1 = require('primeng/components/calendar/calendar');
-var autocomplete_1 = require('primeng/components/autocomplete/autocomplete');
 var profile_component_1 = require("./components/profile/profile.component");
 var registration_component_1 = require("./components/registration/registration.component");
+var calendar_1 = require('primeng/components/calendar/calendar');
+var autocomplete_1 = require('primeng/components/autocomplete/autocomplete');
+var tabview_1 = require('primeng/components/tabview/tabview');
+var accordion_1 = require('primeng/components/accordion/accordion');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -46,7 +48,9 @@ var AppModule = (function () {
                     deps: [http_1.Http]
                 }),
                 calendar_1.CalendarModule,
-                autocomplete_1.AutoCompleteModule
+                autocomplete_1.AutoCompleteModule,
+                tabview_1.TabViewModule,
+                accordion_1.AccordionModule
             ],
             declarations: [
                 login_component_1.LoginComponent,

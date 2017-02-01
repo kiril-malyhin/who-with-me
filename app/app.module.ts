@@ -18,11 +18,13 @@ import {HttpModule, Http} from "@angular/http";
 import { AuthGuard } from './guards/auth-guard.service';
 import { LoginBanGuard } from './guards/login-ban-guard';
 import {AuthenticationService} from "./services/utils/authentication.service";
+import {ProfileComponent} from "./components/profile/profile.component";
+import {RegistrationComponent} from "./components/registration/registration.component";
 
 import {CalendarModule} from 'primeng/components/calendar/calendar';
 import {AutoCompleteModule} from 'primeng/components/autocomplete/autocomplete';
-import {ProfileComponent} from "./components/profile/profile.component";
-import {RegistrationComponent} from "./components/registration/registration.component";
+import {TabViewModule} from 'primeng/components/tabview/tabview';
+import {AccordionModule} from 'primeng/components/accordion/accordion';
 
 @NgModule({
     imports: [
@@ -37,7 +39,9 @@ import {RegistrationComponent} from "./components/registration/registration.comp
             deps: [Http]
         }),
         CalendarModule,
-        AutoCompleteModule
+        AutoCompleteModule,
+        TabViewModule,
+        AccordionModule
     ],
     declarations: [
         LoginComponent,

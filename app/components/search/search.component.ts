@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import dataCountries from "./dataCountries";
 
 @Component({
@@ -8,8 +8,23 @@ import dataCountries from "./dataCountries";
     styleUrls: [ 'search.component.css' ]
 })
 
-export class SearchComponent {
-    value: Date;
+export class SearchComponent implements OnInit{
+
+    minDate: Date;
+    maxDate: Date;
+    dateTo: Date;
+
+    ngOnInit(): void {
+
+        let today = new Date();
+        let month = today.getMonth();
+        let prevMonth = (month === 0) ? 11 : month -1;
+        let nextMonth = (month === 11) ? 0 : month + 1;
+        this.minDate = new Date();
+        this.minDate.setMonth(prevMonth);
+        this.maxDate = new Date();
+        this.maxDate.setMonth(nextMonth);
+    }
 
     countryTo: string;
     countryFrom: string;

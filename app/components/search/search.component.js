@@ -13,6 +13,16 @@ var dataCountries_1 = require("./dataCountries");
 var SearchComponent = (function () {
     function SearchComponent() {
     }
+    SearchComponent.prototype.ngOnInit = function () {
+        var today = new Date();
+        var month = today.getMonth();
+        var prevMonth = (month === 0) ? 11 : month - 1;
+        var nextMonth = (month === 11) ? 0 : month + 1;
+        this.minDate = new Date();
+        this.minDate.setMonth(prevMonth);
+        this.maxDate = new Date();
+        this.maxDate.setMonth(nextMonth);
+    };
     SearchComponent.prototype.filterCountrySingle = function (event) {
         var query = event.query;
         this.filteredCountriesSingle = this.filterCountry(query, dataCountries_1.default);
