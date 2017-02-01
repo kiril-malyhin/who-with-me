@@ -26,12 +26,12 @@ var login_ban_guard_1 = require('./guards/login-ban-guard');
 var authentication_service_1 = require("./services/utils/authentication.service");
 var profile_component_1 = require("./components/profile/profile.component");
 var registration_component_1 = require("./components/registration/registration.component");
+var start_component_1 = require("./components/start/start.component");
+var home_component_1 = require("./components/home/home.component");
 var calendar_1 = require('primeng/components/calendar/calendar');
 var autocomplete_1 = require('primeng/components/autocomplete/autocomplete');
 var tabview_1 = require('primeng/components/tabview/tabview');
 var accordion_1 = require('primeng/components/accordion/accordion');
-var start_component_1 = require("./components/start/start.component");
-var home_component_1 = require("./components/home/home.component");
 var AppModule = (function () {
     function AppModule() {
     }

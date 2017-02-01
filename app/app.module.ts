@@ -19,13 +19,13 @@ import { LoginBanGuard } from './guards/login-ban-guard';
 import {AuthenticationService} from "./services/utils/authentication.service";
 import {ProfileComponent} from "./components/profile/profile.component";
 import {RegistrationComponent} from "./components/registration/registration.component";
+import {StartComponent} from "./components/start/start.component";
+import {HomeComponent} from "./components/home/home.component";
 
 import {CalendarModule} from 'primeng/components/calendar/calendar';
 import {AutoCompleteModule} from 'primeng/components/autocomplete/autocomplete';
 import {TabViewModule} from 'primeng/components/tabview/tabview';
 import {AccordionModule} from 'primeng/components/accordion/accordion';
-import {StartComponent} from "./components/start/start.component";
-import {HomeComponent} from "./components/home/home.component";
 
 @NgModule({
     imports: [
