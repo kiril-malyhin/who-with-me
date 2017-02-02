@@ -11,6 +11,8 @@
   "rm": "Remember me",
   "loginTitle": "Sign in",
   "login": "Sign in",
+  "price": "Price",
+  "seatNumber": "Number of seats",
 
   "usernamePlaceholder": "Username",
   "passwordPlaceholder": "Password",
@@ -32,6 +34,8 @@
   "emptyAge": "Age must not be empty",
   "emptyMail": "Mail must not be empty",
   "emptyPhone": "Phone must not be empty",
+  "emptyPrice": "Price must not be empty",
+  "emptySeatNumber": "Seat number must not be empty",
 
   "startTitle": "Let's travel together!",
   "startTitleLead": "Join the future",
@@ -60,5 +64,12 @@
   "registrationTitle": "Don't have account yet?",
   "registration": "Sign up",
 
-  "addTrip": "Add trip"
+  "addTrip": "Add trip",
+  "destinationFrom": "From",
+  "destinationTo": "To",
+  "destinationDate": "Date",
+  "destinationTime": "Time",
+  "destinationPrice": "Price",
+  "destinationSeatNumber": "Number of seats"
+
 }

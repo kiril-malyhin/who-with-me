@@ -11,6 +11,8 @@
   "rm": "Запомнить меня",
   "login": "Войти",
   "loginTitle": "Вход",
+  "price": "Цена",
+  "seatNumber": "Количество мест",
 
   "usernamePlaceholder": "Имя пользователя",
   "passwordPlaceholder": "Пароль",
@@ -33,6 +35,8 @@
   "emptyAge": "Возраст не может быть пустым",
   "emptyMail": "Почта не может быть пустой",
   "emptyPhone": "Телефон не может быть пустым",
+  "emptyPrice": "Цена не может быть пустой",
+  "emptySeatNumber": "Количество мест не может быть пустым",
 
   "startTitle": "Путешествуйте вместе!",
   "startTitleLead": "Будьте ближе",
@@ -61,6 +65,12 @@
   "registrationTitle": "Нет аккаунта?",
   "registration": "Регистрация",
 
-  "addTrip": "Добавить поездку"
+  "addTrip": "Добавить поездку",
+  "destinationFrom": "Откуда",
+  "destinationTo": "Куда",
+  "destinationDate": "Дата",
+  "destinationTime": "Время",
+  "destinationPrice": "Цена",
+  "destinationSeatNumber": "Количество мест"
 
 }

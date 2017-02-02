@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import dataCountries from "./dataCountries";
+import dataCountries from "../../services/utils/dataCountries";
 import {Router} from "@angular/router";
 
 @Component({
