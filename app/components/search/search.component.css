@@ -5,7 +5,7 @@
 }
 
 .find-image{
-    background: url("../../../images/start-page.jpg") no-repeat center;
+    background: url("../../../images/start/start-page.jpg") no-repeat center;
     width: 100%;
     min-height: 100%;
     color: white;
@@ -14,7 +14,7 @@
 }
 
 .container {
-    padding-top: 130px;
+    padding-top: 100px;
 }
 
 .btn-find {

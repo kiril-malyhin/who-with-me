@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import dataCountries from "../../services/json/dataCountries";
+import dataUsers from "../../services/json/dataUsers";
 
 @Component({
     moduleId: module.id,
@@ -14,20 +15,15 @@ export class ProfileComponent implements OnInit{
     price: number;
     seatNumber: number;
 
-    addTrip() {
-
-        this.showErrorPrice = !this.price;
-        this.showErrorSeatNumber = !this.seatNumber;
-
-
-        if (!this.price || !this.seatNumber) {
-            return;
-        }
-    }
-
     minDate: Date;
     maxDate: Date;
     date: Date;
+
+    countryTo: string;
+    countryFrom: string;
+    filteredCountriesSingle: string[];
+
+    userData = dataUsers[0];
 
     ngOnInit(): void {
 
@@ -41,20 +37,20 @@ export class ProfileComponent implements OnInit{
         this.maxDate.setMonth(nextMonth);
     }
 
-    countryTo: string;
-    countryFrom: string;
-    filteredCountriesSingle: string[];
-    filteredCountriesMultiple: string[];
+    addTrip() {
+
+        this.showErrorPrice = !this.price;
+        this.showErrorSeatNumber = !this.seatNumber;
+
+
+        if (!this.price || !this.seatNumber) {
+            return;
+        }
+    }
 
     filterCountrySingle(event: any) {
         let query = event.query;
         this.filteredCountriesSingle = this.filterCountry(query, dataCountries);
-    }
-
-    filterCountryMultiple(event: any) {
-        let query = event.query;
-        this.filteredCountriesMultiple = this.filterCountry(query, dataCountries);
-
     }
 
     filterCountry(query: string, countries: any[]):any[] {

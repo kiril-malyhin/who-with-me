@@ -7,11 +7,11 @@
   "mail": "Почта",
   "phone": "Телефон",
   "carType": "Тип машины",
-  "experience": "Стаж",
+  "experience": "Стаж(в годах)",
   "rm": "Запомнить меня",
   "login": "Войти",
   "loginTitle": "Вход",
-  "price": "Цена",
+  "price": "Цена($)",
   "seatNumber": "Количество мест",
 
   "usernamePlaceholder": "Имя пользователя",

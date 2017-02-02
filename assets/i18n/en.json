@@ -7,11 +7,11 @@
   "mail": "Mail",
   "phone": "Phone",
   "carType": "Car type",
-  "experience": "Experience",
+  "experience": "Experience(years)",
   "rm": "Remember me",
   "loginTitle": "Sign in",
   "login": "Sign in",
-  "price": "Price",
+  "price": "Price($)",
   "seatNumber": "Number of seats",
 
   "usernamePlaceholder": "Username",

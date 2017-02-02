@@ -1,5 +1,5 @@
 .background-image{
-    background: url("../../../images/start-page.jpg") no-repeat center;
+    background: url("../../../images/start/start-page.jpg") no-repeat center;
     width: 100%;
     min-height: 100%;
     color: white;
@@ -11,6 +11,13 @@
     font-size: 60px;
     padding-top: 50px;
     padding-bottom: 30px;
+}
+
+.profile-photo {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: table-cell;
+    width: 10%;
 }
 
 .add-trip {
@@ -38,4 +45,30 @@
 
 [disabled] {
     cursor: pointer;
+}
+
+.profile {
+    margin-bottom: 20px;
+    padding-bottom: 50px;
+    background-color: rgba(12, 6, 6, 0.6);
+    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+
+.profile-info {
+    font-size: 20px;
+    display:table;
+}
+
+.profile-info-title {
+    padding-left: 50px;
+    font-weight: bold;
+}
+
+.form-group {
+    display: -webkit-box;
+}
+
+.col-form-label {
+    display: flex;
+    padding-left: 25px;
 }

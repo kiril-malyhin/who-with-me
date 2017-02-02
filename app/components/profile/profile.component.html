@@ -1,63 +1,67 @@
 <div class="background-image">
     <div class="container">
         <p class="profile-title">{{ 'profile' | translate }}</p>
-            <div class="col-md-3"></div>
-            <div class="col-md-6" style="padding-bottom: 50px; float: left !important;">
-                <p-accordion>
-                    <p-accordionTab header="{{ 'addTrip' | translate }}" [selected]="false">
-                        <div class="form-group row">
-                            <label class="col-xs-4 col-form-label pointer">{{ 'destinationFrom' | translate }}</label>
-                            <p-autoComplete [(ngModel)]="countryFrom" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
-                                            placeholder="From" [minLength]="1">
-                            </p-autoComplete>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-xs-4 col-form-label pointer">{{ 'destinationTo' | translate }}</label>
-                            <p-autoComplete [(ngModel)]="countryTo" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
-                                            placeholder="To" [minLength]="1">
-                            </p-autoComplete>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-xs-4 col-form-label pointer">{{ 'destinationDate' | translate }}</label>
-                            <p-calendar [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-xs-4 col-form-label pointer">{{ 'destinationTime' | translate }}</label>
-                            <p-calendar [(ngModel)]="time" [minDate]="minDate" [maxDate]="maxDate" [timeOnly]="true"></p-calendar>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="price" class="col-xs-4 col-form-label pointer">{{ 'destinationPrice' | translate }}</label>
-                            <div class="col-sm-8">
-                                <input [(ngModel)]="price" name="price" type="number" id="price"
-                                       class="form-control"
-                                       placeholder="{{ 'price' | translate }}" required>
-                                <span *ngIf="!price && showErrorPrice"
-                                      class="alert-invalid">{{ 'emptyPrice' | translate }}</span>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="seatNumber" class="col-xs-4 col-form-label pointer">{{ 'destinationSeatNumber' | translate }}</label>
-                            <div class="col-sm-8">
-                                <input [(ngModel)]="seatNumber" name="seatNumber" type="number" id="seatNumber"
-                                       class="form-control"
-                                       placeholder="{{ 'seatNumber' | translate }}" required>
-                                <span *ngIf="!seatNumber && showErrorSeatNumber"
-                                      class="alert-invalid">{{ 'emptySeatNumber' | translate }}</span>
-                            </div>
-                        </div>
-
-                        <button (click)="addTrip()" type="button"
-                                class="btn-block btn-lg add-trip main-light-background-color">{{ 'addTrip' | translate }}
-                        </button>
-                    </p-accordionTab>
-                </p-accordion>
+        <div class="col-md-6">
+            <div class="profile">
+                <div class="profile-photo">
+                    <img src="../../../images/user-profile.png" alt="Generic placeholder image">
+                </div>
+                <label class="profile-info"><span class="profile-info-title">{{ 'username' | translate }}:</span><span> {{userData.username}}</span></label>
+                <label class="profile-info"><span class="profile-info-title">{{ 'mail' | translate }}:</span><span> {{userData.mail}}</span></label>
+                <label class="profile-info"><span class="profile-info-title">{{ 'phone' | translate }}:</span><span> {{userData.phone}}</span></label>
+                <label class="profile-info"><span class="profile-info-title">{{ 'carType' | translate }}:</span><span> {{userData.carType}}</span></label>
+                <label class="profile-info"><span class="profile-info-title">{{ 'experience' | translate }}:</span><span> {{userData.experience}}</span></label>
             </div>
-            <div class="col-md-3"></div>
+        </div>
+        <div class="col-md-6">
+            <p-accordion>
+                <p-accordionTab header="{{ 'addTrip' | translate }}" [selected]="false">
+                    <div class="form-group row">
+                        <label class="col-xs-4 col-form-label pointer">{{ 'destinationFrom' | translate }}</label>
+                        <p-autoComplete [(ngModel)]="countryFrom" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
+                                        placeholder="From" [minLength]="1">
+                        </p-autoComplete>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-xs-4 col-form-label pointer">{{ 'destinationTo' | translate }}</label>
+                        <p-autoComplete [(ngModel)]="countryTo" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
+                                        placeholder="To" [minLength]="1">
+                        </p-autoComplete>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-xs-4 col-form-label pointer">{{ 'destinationDate' | translate }}</label>
+                        <p-calendar [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-xs-4 col-form-label pointer">{{ 'destinationTime' | translate }}</label>
+                        <p-calendar [(ngModel)]="time" [minDate]="minDate" [maxDate]="maxDate" [timeOnly]="true"></p-calendar>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="price" class="col-xs-4 col-form-label pointer">{{ 'destinationPrice' | translate }}</label>
+                        <div>
+                            <input [(ngModel)]="price" name="price" type="number" id="price" class="form-control" placeholder="{{ 'price' | translate }}" required>
+                            <span *ngIf="!price && showErrorPrice" class="alert-invalid">{{ 'emptyPrice' | translate }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="seatNumber" class="col-xs-4 col-form-label pointer">{{ 'destinationSeatNumber' | translate }}</label>
+                        <div>
+                            <input [(ngModel)]="seatNumber" name="seatNumber" type="number" id="seatNumber" class="form-control" placeholder="{{ 'seatNumber' | translate }}" required>
+                            <span *ngIf="!seatNumber && showErrorSeatNumber" class="alert-invalid">{{ 'emptySeatNumber' | translate }}</span>
+                        </div>
+                    </div>
+
+                    <button (click)="addTrip()" type="button"
+                            class="btn-block btn-lg add-trip main-light-background-color">{{ 'addTrip' | translate }}
+                    </button>
+                </p-accordionTab>
+            </p-accordion>
+        </div>
     </div>
 </div>
 
