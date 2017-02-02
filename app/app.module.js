@@ -32,6 +32,8 @@ var calendar_1 = require('primeng/components/calendar/calendar');
 var autocomplete_1 = require('primeng/components/autocomplete/autocomplete');
 var tabview_1 = require('primeng/components/tabview/tabview');
 var accordion_1 = require('primeng/components/accordion/accordion');
+var datalist_1 = require('primeng/components/datalist/datalist');
+var dialog_1 = require('primeng/components/dialog/dialog');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -51,7 +53,9 @@ var AppModule = (function () {
                 calendar_1.CalendarModule,
                 autocomplete_1.AutoCompleteModule,
                 tabview_1.TabViewModule,
-                accordion_1.AccordionModule
+                accordion_1.AccordionModule,
+                datalist_1.DataListModule,
+                dialog_1.DialogModule
             ],
             declarations: [
                 login_component_1.LoginComponent,

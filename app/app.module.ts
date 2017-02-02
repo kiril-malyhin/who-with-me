@@ -26,6 +26,8 @@ import {CalendarModule} from 'primeng/components/calendar/calendar';
 import {AutoCompleteModule} from 'primeng/components/autocomplete/autocomplete';
 import {TabViewModule} from 'primeng/components/tabview/tabview';
 import {AccordionModule} from 'primeng/components/accordion/accordion';
+import {DataListModule} from 'primeng/components/datalist/datalist';
+import {DialogModule} from 'primeng/components/dialog/dialog';
 
 @NgModule({
     imports: [
@@ -42,7 +44,9 @@ import {AccordionModule} from 'primeng/components/accordion/accordion';
         CalendarModule,
         AutoCompleteModule,
         TabViewModule,
-        AccordionModule
+        AccordionModule,
+        DataListModule,
+        DialogModule
     ],
     declarations: [
         LoginComponent,

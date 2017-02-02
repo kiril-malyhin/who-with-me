@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import dataCountries from "../../services/utils/dataCountries";
+import dataCountries from "../../services/json/dataCountries";
 
 @Component({
     moduleId: module.id,
