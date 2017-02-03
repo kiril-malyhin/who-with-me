@@ -1,0 +1,60 @@
+const dataUsers = [
+    {
+        "photo": "../../../images/users/user1.png",
+        "username": "Kirill",
+        "mail": "kiril.malyhin@yandex.ru",
+        "phone": "+375 29 162 99 25",
+        "carType": "Premium",
+        "experience": "3",
+    },
+    {
+        "photo": "../../../images/users/user2.png",
+        "username": "Pavel",
+        "mail": "pavel@yandex.ru",
+        "phone": "+375 29 658 85 44",
+        "carType": "Standard",
+        "experience": "7",
+    },
+    {
+        "photo": "../../../images/users/user3.png",
+        "username": "Sasha",
+        "mail": "sasha@yandex.ru",
+        "phone": "+375 29 235 75 85",
+        "carType": "Premium",
+        "experience": "2",
+    },
+    {
+        "photo": "../../../images/users/user4.png",
+        "username": "Polina",
+        "mail": "polina@yandex.ru",
+        "phone": "+375 29 968 42 35",
+        "carType": "Standard",
+        "experience": "15",
+    },
+    {
+        "photo": "../../../images/users/user5.png",
+        "username": "Sergey",
+        "mail": "sergey@yandex.ru",
+        "phone": "+375 29 752 39 42",
+        "carType": "Premium",
+        "experience": "6",
+    },
+    {
+        "photo": "../../../images/users/user6.png",
+        "username": "Victor",
+        "mail": "victor@yandex.ru",
+        "phone": "+375 29 805 30 30",
+        "carType": "Standard",
+        "experience": "8",
+    },
+    {
+        "photo": "../../../images/users/user7.png",
+        "username": "Konstantin",
+        "mail": "konstantin@yandex.ru",
+        "phone": "+375 29 643 90 60",
+        "carType": "Luxury",
+        "experience": "30",
+    },
+];
+
+export default dataUsers;

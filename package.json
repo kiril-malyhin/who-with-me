@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Prototype of web client implemented in angular 2",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" tslint ./app/**/*.ts -t verbose",
     "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server",
     "tsc": "tsc",

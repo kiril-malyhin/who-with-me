@@ -71,6 +71,9 @@
   "destinationDate": "Дата",
   "destinationTime": "Время",
   "destinationPrice": "Цена",
-  "destinationSeatNumber": "Количество мест"
+  "destinationSeatNumber": "Количество мест",
+
+  "driverDetails": "Детали о водителе",
+  "listOfTrips": "Список поездок"
 
 }

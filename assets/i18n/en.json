@@ -70,6 +70,9 @@
   "destinationDate": "Date",
   "destinationTime": "Time",
   "destinationPrice": "Price",
-  "destinationSeatNumber": "Number of seats"
+  "destinationSeatNumber": "Number of seats",
+
+  "driverDetails": "Driver details",
+  "listOfTrips": "List of trips"
 
 }

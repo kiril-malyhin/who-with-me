@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import dataCountries from "../../services/json/dataCountries";
-import dataUsers from "../../services/json/dataUsers";
+import dataCountries from "../../services/data/dataCountries";
+import dataUsers from "../../services/data/dataUsers";
 
 @Component({
     moduleId: module.id,

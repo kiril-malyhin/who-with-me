@@ -6,3 +6,7 @@ html, body {
 textarea:focus, input:focus, button:focus{
     outline: none;
 }
+
+.driver-info-left {
+    text-align: left;
+}

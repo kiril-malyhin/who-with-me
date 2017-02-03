@@ -1,11 +1,14 @@
 import {Component, OnInit} from "@angular/core";
-import dataCars from "../../services/json/dataCars";
+import dataUsers from "../../services/data/dataUsers";
+import dataTrips from "../../services/data/dataTrips";
 
-export interface Car {
-    vin: any;
-    year: any;
-    brand: any;
-    color: any;
+export interface User {
+    username: any;
+    photo: any;
+    mail: any;
+    phone: any;
+    carType: any;
+    experience: any;
 }
 
 @Component({
@@ -16,21 +19,25 @@ export interface Car {
 })
 
 export class HomeComponent implements OnInit{
-    cars: Car[];
-    selectedCar: Car;
+    trip: Object;
+    users: User[];
+    selectedUser: User;
 
     displayDialog: boolean;
+    numberOfResultTrips: number;
 
     ngOnInit(): void {
-        this.cars = dataCars;
+        this.trip = dataTrips[0];
+        this.numberOfResultTrips = dataUsers.length;
+        this.users = dataUsers;
     }
 
-    selectCar(car: Car) {
-        this.selectedCar = car;
+    selectUser(user: User) {
+        this.selectedUser = user;
         this.displayDialog = true;
     }
 
     onDialogHide() {
-        this.selectedCar = null;
+        this.selectedUser = null;
     }
 }
