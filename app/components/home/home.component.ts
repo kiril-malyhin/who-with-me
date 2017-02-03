@@ -26,10 +26,33 @@ export class HomeComponent implements OnInit{
     displayDialog: boolean;
     numberOfResultTrips: number;
 
+    minDate: Date;
+    maxDate: Date;
+    date: Date;
+
+    range: number[] = [0,100];
+
+    Junior: string = 'Junior';
+    Senior: string = 'Senior';
+    God: string = 'God';
+
+    Standard: string = 'Standard';
+    Premium: string = 'Premium';
+    Luxury: string = 'Luxury';
+
     ngOnInit(): void {
         this.trip = dataTrips[0];
         this.numberOfResultTrips = dataUsers.length;
         this.users = dataUsers;
+
+        let today = new Date();
+        let month = today.getMonth();
+        let prevMonth = (month === 0) ? 11 : month -1;
+        let nextMonth = (month === 11) ? 0 : month + 1;
+        this.minDate = new Date();
+        this.minDate.setMonth(prevMonth);
+        this.maxDate = new Date();
+        this.maxDate.setMonth(nextMonth);
     }
 
     selectUser(user: User) {

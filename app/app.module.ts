@@ -29,6 +29,8 @@ import {AccordionModule} from 'primeng/components/accordion/accordion';
 import {DataListModule} from 'primeng/components/datalist/datalist';
 import {DialogModule} from 'primeng/components/dialog/dialog';
 import {InputTextModule} from 'primeng/components/inputtext/inputtext';
+import {SliderModule} from 'primeng/components/slider/slider';
+import {RadioButtonModule} from 'primeng/components/radiobutton/radiobutton';
 
 @NgModule({
     imports: [
@@ -48,7 +50,9 @@ import {InputTextModule} from 'primeng/components/inputtext/inputtext';
         AccordionModule,
         DataListModule,
         DialogModule,
-        InputTextModule
+        InputTextModule,
+        SliderModule,
+        RadioButtonModule
     ],
     declarations: [
         LoginComponent,

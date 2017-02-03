@@ -35,6 +35,8 @@ var accordion_1 = require('primeng/components/accordion/accordion');
 var datalist_1 = require('primeng/components/datalist/datalist');
 var dialog_1 = require('primeng/components/dialog/dialog');
 var inputtext_1 = require('primeng/components/inputtext/inputtext');
+var slider_1 = require('primeng/components/slider/slider');
+var radiobutton_1 = require('primeng/components/radiobutton/radiobutton');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -57,7 +59,9 @@ var AppModule = (function () {
                 accordion_1.AccordionModule,
                 datalist_1.DataListModule,
                 dialog_1.DialogModule,
-                inputtext_1.InputTextModule
+                inputtext_1.InputTextModule,
+                slider_1.SliderModule,
+                radiobutton_1.RadioButtonModule
             ],
             declarations: [
                 login_component_1.LoginComponent,

@@ -73,6 +73,8 @@
   "destinationSeatNumber": "Number of seats",
 
   "driverDetails": "Driver details",
-  "listOfTrips": "List of trips"
+  "listOfTrips": "List of trips",
+
+  "sortingTitle": "Sorting"
 
 }

@@ -74,6 +74,8 @@
   "destinationSeatNumber": "Количество мест",
 
   "driverDetails": "Детали о водителе",
-  "listOfTrips": "Список поездок"
+  "listOfTrips": "Список поездок",
+
+  "sortingTitle": "Фильтр"
 
 }

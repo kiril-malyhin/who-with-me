@@ -7,3 +7,8 @@
     margin-top: -53px;
     padding-top: 53px;
 }
+
+.form-group {
+    display: inline-flex;
+    float: left;
+}
