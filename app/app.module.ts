@@ -31,6 +31,7 @@ import {DialogModule} from 'primeng/components/dialog/dialog';
 import {InputTextModule} from 'primeng/components/inputtext/inputtext';
 import {SliderModule} from 'primeng/components/slider/slider';
 import {RadioButtonModule} from 'primeng/components/radiobutton/radiobutton';
+import {ProgressBarModule} from 'primeng/components/progressbar/progressbar';
 
 @NgModule({
     imports: [
@@ -52,7 +53,8 @@ import {RadioButtonModule} from 'primeng/components/radiobutton/radiobutton';
         DialogModule,
         InputTextModule,
         SliderModule,
-        RadioButtonModule
+        RadioButtonModule,
+        ProgressBarModule
     ],
     declarations: [
         LoginComponent,

@@ -76,9 +76,21 @@
   "tableTitleFrom": "из",
   "tableTitleTo": "в",
 
-  "driverDetails": "Детали о водителе",
+  "driverDetails": "Данные о водителе",
   "listOfTrips": "Список поездок",
 
-  "sortingTitle": "Фильтр"
+  "sortingTitle": "Фильтр",
+
+  "junior": "Начальный",
+  "senior": "Опытный",
+  "expert": "Эксперт",
+
+  "standard": "Стандарт",
+  "premium": "Премиум",
+  "luxury": "Роскошный",
+
+  "allChoose": "Любой",
+
+  "searchWaitMessage": "Пожалуйста, подождите, мы ищем..."
 
 }

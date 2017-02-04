@@ -37,6 +37,7 @@ var dialog_1 = require('primeng/components/dialog/dialog');
 var inputtext_1 = require('primeng/components/inputtext/inputtext');
 var slider_1 = require('primeng/components/slider/slider');
 var radiobutton_1 = require('primeng/components/radiobutton/radiobutton');
+var progressbar_1 = require('primeng/components/progressbar/progressbar');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -61,7 +62,8 @@ var AppModule = (function () {
                 dialog_1.DialogModule,
                 inputtext_1.InputTextModule,
                 slider_1.SliderModule,
-                radiobutton_1.RadioButtonModule
+                radiobutton_1.RadioButtonModule,
+                progressbar_1.ProgressBarModule
             ],
             declarations: [
                 login_component_1.LoginComponent,

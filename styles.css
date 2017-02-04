@@ -9,4 +9,5 @@ textarea:focus, input:focus, button:focus{
 
 .driver-info-left {
     text-align: left;
+    padding-right: 5px;
 }

@@ -38,7 +38,7 @@
 }
 
 .btn-find {
-    background-color: #db5a00;
+    background-color: #3c2a2a;
     color: white;
     max-width: 200px;
     width: 100%;
@@ -50,9 +50,16 @@
 }
 
 .btn-find:hover {
-    background-color: #d03b00;
+    background-color: #745959;
 }
 
 .btn-find:focus {
     outline: none;
+}
+
+.progress-bar-align {
+    text-align: center;
+    margin-top: 17%;
+    margin-left: 30%;
+    margin-right: 30%;
 }

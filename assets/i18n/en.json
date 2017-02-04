@@ -78,6 +78,18 @@
   "driverDetails": "Driver details",
   "listOfTrips": "List of trips",
 
-  "sortingTitle": "Sorting"
+  "sortingTitle": "Sorting",
+
+  "junior": "Junior",
+  "senior": "Middle",
+  "expert": "Expert",
+
+  "standard": "Standard",
+  "premium": "Premium",
+  "luxury": "Luxury",
+
+  "allChoose": "No matter",
+
+  "searchWaitMessage": "Please wait, we are searching trips..."
 
 }

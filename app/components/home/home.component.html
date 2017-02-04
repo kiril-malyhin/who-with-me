@@ -1,7 +1,12 @@
 <div class="home">
-    <div class="col-md-2" style="text-align: center;">
+    <div class="progress-bar-align" *ngIf="value !== 100">
+        <label>{{'searchWaitMessage' | translate}}</label>
+        <p-progressBar [value]="value"></p-progressBar>
+    </div>
+
+    <div class="col-md-2" style="text-align: center;" *ngIf="value === 100">
         <div class="form-group" style="margin-bottom: -10px">
-            <label class="col-form-label filter-label">{{'sortingTitle' | translate}}</label>
+            <label class="col-form-label filter-label" style="font-size: 20px;">{{'sortingTitle' | translate}}</label>
         </div>
         <div class="form-group">
             <label class="col-form-label pointer filter-label" style="display: block;">{{ 'destinationDate' | translate }}</label>
@@ -9,35 +14,37 @@
         </div>
         <div class="form-group">
             <label class="col-form-label pointer filter-label">{{ 'destinationTime' | translate }}</label>
-            <p-slider [(ngModel)]="rangeTime" [style]="" [range]="true" style="padding-top:15px;"></p-slider>
+            <p-slider [(ngModel)]="rangeTime" [style]="" [range]="true" [min]=minTime [max]="maxTime" style="padding-top:15px;"></p-slider>
             {{rangeTime}}
         </div>
         <div class="form-group">
             <label class="col-form-label pointer filter-label">{{ 'destinationPrice' | translate }}</label>
-            <p-slider [(ngModel)]="rangePrice" [style]="" [range]="true" style="padding-top:15px;"></p-slider>
+            <p-slider [(ngModel)]="rangePrice" [style]="" [range]="true" [min]=minPrice [max]="maxPrice"  style="padding-top:15px;"></p-slider>
             {{rangePrice}}
         </div>
         <div class="form-group">
             <label class="col-form-label pointer filter-label">{{ 'carType' | translate }}</label>
             <div class="ui-g" style="margin-bottom:10px; text-align: left">
-                <div class="ui-g-12"><p-radioButton name="groupCarType" value="Junior" label="Junior" [(ngModel)]="Junior"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupCarType" value="Senior" label="Senior" [(ngModel)]="Senior"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupCarType" value="God" label="God" [(ngModel)]="God"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupExperience" value="standard" label="{{ 'standard' | translate }}" [(ngModel)]="standard"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupExperience" value="premium" label="{{ 'premium' | translate }}" [(ngModel)]="premium"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupExperience" value="luxury" label="{{ 'luxury' | translate }}" [(ngModel)]="luxury"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupExperience" value="noMatterCarType" label="{{ 'allChoose' | translate }}" [(ngModel)]="noMatterCarType"></p-radioButton></div>
             </div>
         </div>
         <div class="form-group">
             <label class="col-form-label pointer filter-label">{{ 'experience' | translate }}</label>
             <div class="ui-g" style="margin-bottom:10px; text-align: left">
-                <div class="ui-g-12"><p-radioButton name="groupExperience" value="Standard" label="Standard" [(ngModel)]="Standard"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupExperience" value="Premium" label="Premium" [(ngModel)]="Premium"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupExperience" value="Luxury" label="Luxury" [(ngModel)]="Luxury"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupCarType" value="junior" label="{{ 'junior' | translate }}" [(ngModel)]="junior"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupCarType" value="senior" label="{{ 'senior' | translate }}" [(ngModel)]="senior"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupCarType" value="expert" label="{{ 'expert' | translate }}" [(ngModel)]="expert"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupCarType" value="noMatterExperience" label="{{ 'allChoose' | translate }}" [(ngModel)]="noMatterExperience"></p-radioButton></div>
             </div>
         </div>
         <div class="form-group">
             <button class="btn-find" (click)="sort()">{{ 'searchResult' | translate }}</button>
         </div>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-10" *ngIf="value === 100">
         <p-dataList [value]="users" [paginator]="true" [rows]="5" [style]="{'height': '100%'}">
             <p-header>
                 {{'listOfTrips' | translate}} ({{numberOfResultTrips}}) {{'tableTitleFrom' | translate}} {{trip.from}} {{'tableTitleTo' | translate}} {{trip.to}}
@@ -91,31 +98,31 @@
         </p-dataList>
 
         <p-dialog header="{{'driverDetails' | translate}}" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="400" (onAfterHide)="onDialogHide()">
-            <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedUser" style="font-size:16px;text-align:right;padding:20px">
+            <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedUser" style="font-size:16px;text-align:right;padding-left:20px; padding-right: 20px">
                 <div class="ui-grid-row">
-                    <div class="ui-grid-col-12" style="text-align:center">
+                    <div class="ui-grid-col-12" style="text-align:center; padding-bottom: 10px">
                         <img src="{{selectedUser.photo}}">
                     </div>
                 </div>
                 <div class="ui-grid-row">
-                    <div class="ui-grid-col-2 driver-info-left">{{'username' | translate}}: </div>
-                    <div class="ui-grid-col-10">{{selectedUser.username}}</div>
+                    <div class="driver-info-left">{{'username' | translate}}: </div>
+                    <div>{{selectedUser.username}}</div>
                 </div>
                 <div class="ui-grid-row">
-                    <div class="ui-grid-col-2 driver-info-left">{{'mail' | translate}}: </div>
-                    <div class="ui-grid-col-10">{{selectedUser.mail}}</div>
+                    <div class="driver-info-left">{{'mail' | translate}}: </div>
+                    <div>{{selectedUser.mail}}</div>
                 </div>
                 <div class="ui-grid-row">
-                    <div class="ui-grid-col-2 driver-info-left">{{'phone' | translate}}: </div>
-                    <div class="ui-grid-col-10">{{selectedUser.phone}}</div>
+                    <div class="driver-info-left">{{'phone' | translate}}: </div>
+                    <div>{{selectedUser.phone}}</div>
                 </div>
                 <div class="ui-grid-row">
-                    <div class="ui-grid-col-2 driver-info-left">{{'carType' | translate}}: </div>
-                    <div class="ui-grid-col-10">{{selectedUser.carType}}</div>
+                    <div class="driver-info-left">{{'carType' | translate}}: </div>
+                    <div>{{selectedUser.carType}}</div>
                 </div>
                 <div class="ui-grid-row">
-                    <div class="ui-grid-col-2 driver-info-left">{{'experience' | translate}}: </div>
-                    <div class="ui-grid-col-10">{{selectedUser.experience}}</div>
+                    <div class="driver-info-left">{{'experience' | translate}}: </div>
+                    <div>{{selectedUser.experience}}</div>
                 </div>
             </div>
         </p-dialog>

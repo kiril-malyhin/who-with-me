@@ -42,15 +42,27 @@ export class HomeComponent implements OnInit{
     rangeTime: number[] = [this.minTime, this.maxTime];
     rangePrice: number[] = [this.minPrice, this.maxPrice];
 
-    Junior: string;
-    Senior: string;
-    God: string;
+    junior: string;
+    senior: string;
+    expert: string;
+    noMatterExperience: string = 'noMatterExperience';
 
-    Standard: string;
-    Premium: string;
-    Luxury: string;
+    standard: string;
+    premium: string;
+    luxury: string;
+    noMatterCarType: string = 'noMatterCarType';
+
+    value: number = 0;
 
     ngOnInit(): void {
+        let interval = setInterval(() => {
+            this.value += 49;
+            if(this.value >= 100) {
+                this.value = 100;
+                clearInterval(interval);
+            }
+        }, 1000);
+
         this.trip = dataTrips[0];
         this.tripFrom = this.trip.from;
         this.tripTo = this.trip.to;
