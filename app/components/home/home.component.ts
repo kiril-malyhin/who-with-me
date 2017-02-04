@@ -33,7 +33,14 @@ export class HomeComponent implements OnInit{
     tripFrom: string;
     tripTo: string;
 
-    range: number[] = [0,100];
+    minPrice: number = 1;
+    maxPrice: number = 50;
+
+    minTime: number = 1;
+    maxTime: number = 24;
+
+    rangeTime: number[] = [this.minTime, this.maxTime];
+    rangePrice: number[] = [this.minPrice, this.maxPrice];
 
     Junior: string;
     Senior: string;

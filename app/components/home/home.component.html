@@ -9,11 +9,13 @@
         </div>
         <div class="form-group">
             <label class="col-form-label pointer filter-label">{{ 'destinationTime' | translate }}</label>
-            <p-slider [(ngModel)]="range" [style]="" [range]="true" style="padding-top:15px;"></p-slider>
+            <p-slider [(ngModel)]="rangeTime" [style]="" [range]="true" style="padding-top:15px;"></p-slider>
+            {{rangeTime}}
         </div>
         <div class="form-group">
             <label class="col-form-label pointer filter-label">{{ 'destinationPrice' | translate }}</label>
-            <p-slider [(ngModel)]="range" [style]="" [range]="true" style="padding-top:15px;"></p-slider>
+            <p-slider [(ngModel)]="rangePrice" [style]="" [range]="true" style="padding-top:15px;"></p-slider>
+            {{rangePrice}}
         </div>
         <div class="form-group">
             <label class="col-form-label pointer filter-label">{{ 'carType' | translate }}</label>
