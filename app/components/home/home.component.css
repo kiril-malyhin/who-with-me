@@ -1,7 +1,7 @@
 .home{
     width: 100%;
     min-height: 100%;
-    color: white;
+    color: black;
     margin-bottom: -30px;
     text-align: center;
     margin-top: -53px;
@@ -9,6 +9,27 @@
 }
 
 .form-group {
-    display: inline-flex;
+    display: block;
     float: left;
+    text-align: left;
+}
+
+.filter-label {
+    text-decoration: underline;
+    padding-bottom: 20px;
+}
+
+.col-md-2 {
+    width: 18%;
+    box-shadow: inset 0 1px 0 rgba(84, 84, 84, 0.51),0 1px 5px rgba(0,0,0,.075);
+}
+
+.col-md-10 {
+    padding-right: 0;
+    padding-left: 0;
+    width: 81.9%;
+}
+
+.destinationReverseInput {
+    border-radius: 4px;
 }

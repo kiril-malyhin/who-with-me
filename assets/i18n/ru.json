@@ -73,6 +73,9 @@
   "destinationPrice": "Цена",
   "destinationSeatNumber": "Количество мест",
 
+  "tableTitleFrom": "из",
+  "tableTitleTo": "в",
+
   "driverDetails": "Детали о водителе",
   "listOfTrips": "Список поездок",
 

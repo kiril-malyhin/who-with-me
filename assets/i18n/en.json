@@ -72,6 +72,9 @@
   "destinationPrice": "Price",
   "destinationSeatNumber": "Number of seats",
 
+  "tableTitleFrom": "from",
+  "tableTitleTo": "to",
+
   "driverDetails": "Driver details",
   "listOfTrips": "List of trips",
 

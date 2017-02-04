@@ -19,7 +19,7 @@ export interface User {
 })
 
 export class HomeComponent implements OnInit{
-    trip: Object;
+    trip: any;
     users: User[];
     selectedUser: User;
 
@@ -30,18 +30,23 @@ export class HomeComponent implements OnInit{
     maxDate: Date;
     date: Date;
 
+    tripFrom: string;
+    tripTo: string;
+
     range: number[] = [0,100];
 
-    Junior: string = 'Junior';
-    Senior: string = 'Senior';
-    God: string = 'God';
+    Junior: string;
+    Senior: string;
+    God: string;
 
-    Standard: string = 'Standard';
-    Premium: string = 'Premium';
-    Luxury: string = 'Luxury';
+    Standard: string;
+    Premium: string;
+    Luxury: string;
 
     ngOnInit(): void {
         this.trip = dataTrips[0];
+        this.tripFrom = this.trip.from;
+        this.tripTo = this.trip.to;
         this.numberOfResultTrips = dataUsers.length;
         this.users = dataUsers;
 
@@ -62,5 +67,11 @@ export class HomeComponent implements OnInit{
 
     onDialogHide() {
         this.selectedUser = null;
+    }
+
+    reverseDestination() {
+        let key = this.tripFrom;
+        this.tripFrom = this.tripTo;
+        this.tripTo = key;
     }
 }
