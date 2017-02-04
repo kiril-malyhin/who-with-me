@@ -10,17 +10,20 @@
 
 .form-group {
     display: block;
-    float: left;
-    text-align: left;
+    float: none;
+    text-align: center;
 }
 
 .filter-label {
     text-decoration: underline;
+    text-align: center;
+    float: none !important;
     padding-bottom: 20px;
 }
 
 .col-md-2 {
     width: 18%;
+    background-color: rgba(148, 148, 148, 0.07);
     box-shadow: inset 0 1px 0 rgba(84, 84, 84, 0.51),0 1px 5px rgba(0,0,0,.075);
 }
 
@@ -32,4 +35,24 @@
 
 .destinationReverseInput {
     border-radius: 4px;
+}
+
+.btn-find {
+    background-color: #db5a00;
+    color: white;
+    max-width: 200px;
+    width: 100%;
+    height: 35px;
+    outline: medium;
+    border-radius: 5px;
+    font-weight: normal;
+    border: 1px solid rgba(248, 249, 248, 0.55);
+}
+
+.btn-find:hover {
+    background-color: #d03b00;
+}
+
+.btn-find:focus {
+    outline: none;
 }

@@ -74,4 +74,8 @@ export class HomeComponent implements OnInit{
         this.tripFrom = this.tripTo;
         this.tripTo = key;
     }
+
+    sort() {
+
+    }
 }
