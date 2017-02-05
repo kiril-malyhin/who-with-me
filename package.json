@@ -1,7 +1,7 @@
 {
-  "name": "web-client-angular-prototype",
+  "name": "who-wth-me",
   "version": "1.0.0",
-  "description": "Prototype of web client implemented in angular 2",
+  "description": "Connect drivers and passengers",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" tslint ./app/**/*.ts -t verbose",
     "lint": "tslint ./app/**/*.ts -t verbose",
@@ -32,6 +32,7 @@
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.1",
     "systemjs": "0.19.40",
+    "traceur": "0.0.111",
     "zone.js": "^0.7.4"
   },
   "devDependencies": {

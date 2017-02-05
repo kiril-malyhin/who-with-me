@@ -76,6 +76,9 @@
   "tableTitleFrom": "из",
   "tableTitleTo": "в",
 
+  "sliderFrom": "от",
+  "sliderTo": "до",
+
   "driverDetails": "Данные о водителе",
   "listOfTrips": "Список поездок",
 

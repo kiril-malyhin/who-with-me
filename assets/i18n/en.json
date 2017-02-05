@@ -75,6 +75,9 @@
   "tableTitleFrom": "from",
   "tableTitleTo": "to",
 
+  "sliderFrom": "from",
+  "sliderTo": "to",
+
   "driverDetails": "Driver details",
   "listOfTrips": "List of trips",
 

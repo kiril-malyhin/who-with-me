@@ -48,14 +48,3 @@ input {
     background:transparent;
     margin-right: 30px;
 }
-
-.date-picker {
-    width:200px;
-    color:#fff;
-    display:inline-block;
-    /*border: 1px solid rgba(248, 249, 248, 0.55);*/
-    padding:15px 20px;
-    border-radius:25px;
-    background:transparent;
-    margin-right: 30px;
-}
