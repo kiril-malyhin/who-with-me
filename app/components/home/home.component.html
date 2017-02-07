@@ -10,13 +10,13 @@
         </div>
         <div class="form-group">
             <label class="col-form-label pointer filter-label" style="display: block;">{{ 'destinationDate' | translate }}</label>
-            <p-calendar [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" dateFormat="dd.mm.yy"></p-calendar>
+            <p-calendar [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" dateFormat="dd.mm.yy" placeholder="{{searchDate}}"></p-calendar>
         </div>
-        <div class="form-group">
-            <label class="col-form-label pointer filter-label">{{ 'destinationTime' | translate }}</label>
-            <p-slider [(ngModel)]="rangeTime" [style]="" [range]="true" [min]=minTime [max]="maxTime" style="padding-top:15px;"></p-slider>
-            {{'sliderFrom' | translate}} {{rangeTime[0]}} {{'sliderTo' | translate}} {{rangeTime[1]}}
-        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="col-form-label pointer filter-label">{{ 'destinationTime' | translate }}</label>-->
+            <!--<p-slider [(ngModel)]="rangeTime" [style]="" [range]="true" [min]=minTime [max]="maxTime" style="padding-top:15px;"></p-slider>-->
+            <!--{{'sliderFrom' | translate}} {{rangeTime[0]}} {{'sliderTo' | translate}} {{rangeTime[1]}}-->
+        <!--</div>-->
         <div class="form-group">
             <label class="col-form-label pointer filter-label">{{ 'destinationPrice' | translate }}</label>
             <p-slider [(ngModel)]="rangePrice" [style]="" [range]="true" [min]=minPrice [max]="maxPrice"  style="padding-top:15px;"></p-slider>
@@ -24,20 +24,20 @@
         </div>
         <div class="form-group">
             <label class="col-form-label pointer filter-label">{{ 'carType' | translate }}</label>
-            <div class="ui-g" style="margin-bottom:10px; text-align: left">
-                <div class="ui-g-12"><p-radioButton name="groupExperience" value="standard" label="{{ 'standard' | translate }}" [(ngModel)]="standard"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupExperience" value="premium" label="{{ 'premium' | translate }}" [(ngModel)]="premium"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupExperience" value="luxury" label="{{ 'luxury' | translate }}" [(ngModel)]="luxury"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupExperience" value="noMatterCarType" label="{{ 'allChoose' | translate }}" [(ngModel)]="noMatterCarType"></p-radioButton></div>
+            <div class="ui-g" style=" text-align: left">
+                <div class="ui-g-12"><p-radioButton name="groupCarType" value="Standard" label="{{ 'standard' | translate }}" [(ngModel)]="carType"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupCarType" value="Premium" label="{{ 'premium' | translate }}" [(ngModel)]="carType"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupCarType" value="Luxury" label="{{ 'luxury' | translate }}" [(ngModel)]="carType"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupCarType" value="NoMatterCarType" label="{{ 'allChoose' | translate }}" [(ngModel)]="carType"></p-radioButton></div>
             </div>
         </div>
         <div class="form-group">
             <label class="col-form-label pointer filter-label">{{ 'experience' | translate }}</label>
-            <div class="ui-g" style="margin-bottom:10px; text-align: left">
-                <div class="ui-g-12"><p-radioButton name="groupCarType" value="junior" label="{{ 'junior' | translate }}" [(ngModel)]="junior"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupCarType" value="senior" label="{{ 'senior' | translate }}" [(ngModel)]="senior"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupCarType" value="expert" label="{{ 'expert' | translate }}" [(ngModel)]="expert"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupCarType" value="noMatterExperience" label="{{ 'allChoose' | translate }}" [(ngModel)]="noMatterExperience"></p-radioButton></div>
+            <div class="ui-g" style=" text-align: left">
+                <div class="ui-g-12"><p-radioButton name="groupExperience" value="Junior" label="{{ 'junior' | translate }}" [(ngModel)]="experience"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupExperience" value="Middle" label="{{ 'senior' | translate }}" [(ngModel)]="experience"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupExperience" value="Expert" label="{{ 'expert' | translate }}" [(ngModel)]="experience"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupExperience" value="NoMatterExperience" label="{{ 'allChoose' | translate }}" [(ngModel)]="experience"></p-radioButton></div>
             </div>
         </div>
         <div class="form-group">
@@ -45,9 +45,9 @@
         </div>
     </div>
     <div class="col-md-10" *ngIf="value === 100">
-        <p-dataList [value]="users" [paginator]="true" [rows]="5" [style]="{'height': '100%'}">
+        <p-dataList *ngIf="sortedTrips.length !== 0" [value]="users" [paginator]="true" [rows]="5" [style]="{'height': '100%'}">
             <p-header>
-                {{'listOfTrips' | translate}} ({{numberOfResultTrips}}) {{'tableTitleFrom' | translate}} {{trip.from}} {{'tableTitleTo' | translate}} {{trip.to}}
+                {{'listOfTrips' | translate}} ({{numberOfResultTrips}}) {{'tableTitleFrom' | translate}} {{tripFrom}} {{'tableTitleTo' | translate}} {{tripTo}}
                 <span style="float: right">
                     <input class="form-control" placeholder="{{'destinationFrom' | translate}}" value="{{tripFrom}}">
                     <button class="btn btn-sm btn-info" (click)="reverseDestination()"><i class="fa fa-exchange" aria-hidden="true"></i></button>
@@ -64,19 +64,15 @@
                             <div class="ui-grid ui-grid-responsive ui-fluid">
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2">{{'destinationFrom' | translate}}: </div>
-                                    <div class="ui-grid-col-2">{{trip.from}}</div>
+                                    <div class="ui-grid-col-2">{{sortedTrips[0].from}}</div>
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2">{{'destinationTo' | translate}}: </div>
-                                    <div class="ui-grid-col-2">{{trip.to}}</div>
+                                    <div class="ui-grid-col-2">{{sortedTrips[0].to}}</div>
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2">{{'destinationDate' | translate}}: </div>
-                                    <div class="ui-grid-col-2">{{trip.date}}</div>
-                                </div>
-                                <div class="ui-grid-row">
-                                    <div class="ui-grid-col-2">{{'destinationTime' | translate}}: </div>
-                                    <div class="ui-grid-col-2">{{trip.time}}</div>
+                                    <div class="ui-grid-col-2">{{sortedTrips[0].date.toLocaleString()}}</div>
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2">{{'carType' | translate}}: </div>
@@ -84,11 +80,11 @@
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2">{{'destinationPrice' | translate}}: </div>
-                                    <div class="ui-grid-col-2">{{trip.price}}</div>
+                                    <div class="ui-grid-col-2">{{sortedTrips[0].price}}</div>
                                 </div>
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-2">{{'destinationSeatNumber' | translate}}: </div>
-                                    <div class="ui-grid-col-2">{{trip.seatsNumber}}</div>
+                                    <div class="ui-grid-col-2">{{sortedTrips[0].seatsNumber}}</div>
                                 </div>
                             </div>
                         </div>
@@ -96,6 +92,10 @@
                 </div>
             </template>
         </p-dataList>
+        <div *ngIf="sortedTrips.length === 0 || numberOfResultTrips === 0" style="margin-top: 300px; font-size: 40px; font-weight: bold">
+            <i class="fa fa-meh-o" aria-hidden="true"></i> {{'emptySearchResult' | translate}}
+            <div class="lead">{{'emptySearchResultLead' | translate}}</div>
+        </div>
 
         <p-dialog header="{{'driverDetails' | translate}}" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="400" (onAfterHide)="onDialogHide()">
             <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedUser" style="font-size:16px;text-align:right;padding-left:20px; padding-right: 20px">

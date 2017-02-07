@@ -14,6 +14,12 @@ export class RegistrationComponent implements OnInit{
             {type: "Standard"},
             {type: "Premium"},
             {type: "Luxury"}
+        ];
+
+        this.levels = [
+            {type: "Junior"},
+            {type: "Middle"},
+            {type: "Expert"}
         ]
     }
 
@@ -34,6 +40,7 @@ export class RegistrationComponent implements OnInit{
     experience: number;
 
     cars: Array<Object>;
+    levels: Array<Object>;
 
     signUp() {
         this.showErrorUsername = !this.username;

@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import dataCountries from "../../services/data/dataCountries";
 import {Router} from "@angular/router";
+import {SearchService} from "../../services/utils/search.service";
 
 @Component({
     moduleId: module.id,
@@ -19,22 +20,22 @@ export class SearchComponent implements OnInit{
     maxDate: Date;
     dateTo: Date;
 
+    countryTo: string = '';
+    countryFrom: string = '';
+    filteredCountriesSingle: string[];
+    filteredCountriesMultiple: string[];
+
     ngOnInit(): void {
 
         let today = new Date();
         let month = today.getMonth();
-        let prevMonth = (month === 0) ? 11 : month -1;
+        let prevMonth = (month === 0) ? 11 : month - 1;
         let nextMonth = (month === 11) ? 0 : month + 1;
         this.minDate = new Date();
         this.minDate.setMonth(prevMonth);
         this.maxDate = new Date();
         this.maxDate.setMonth(nextMonth);
     }
-
-    countryTo: string;
-    countryFrom: string;
-    filteredCountriesSingle: string[];
-    filteredCountriesMultiple: string[];
 
     filterCountrySingle(event: any) {
         let query = event.query;
@@ -44,7 +45,6 @@ export class SearchComponent implements OnInit{
     filterCountryMultiple(event: any) {
         let query = event.query;
         this.filteredCountriesMultiple = this.filterCountry(query, dataCountries);
-
     }
 
     filterCountry(query: string, countries: any[]):any[] {
@@ -59,7 +59,13 @@ export class SearchComponent implements OnInit{
     }
 
     findTrip() {
-        this.router.navigate(['/home']);
+        if (!this.countryFrom['name'] || !this.countryTo['name'] || !this.dateTo) {
+            alert('Error! Check input!');
+            return;
+        } else {
+            SearchService.setParameters(this.countryFrom['name'], this.countryTo['name'], this.dateTo);
+            this.router.navigate(['/home']);
+        }
     }
 
 }

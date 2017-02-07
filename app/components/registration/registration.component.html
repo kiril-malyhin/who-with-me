@@ -80,9 +80,9 @@
                             <div class="form-group row">
                                 <label for="experience" class="col-xs-4 col-form-label pointer">{{ 'experience' | translate }}</label>
                                 <div class="col-sm-8">
-                                    <input [(ngModel)]="experience" name="experience" type="number" id="experience"
-                                           class="form-control"
-                                           placeholder="{{ 'experiencePlaceholder' | translate }}" required>
+                                    <select [(ngModel)]="experience" class="form-control" id="experience" name="experience" required autofocus>
+                                        <option *ngFor="let level of levels">{{level.type}}</option>
+                                    </select>
                                 </div>
                             </div>
 

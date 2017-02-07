@@ -5,7 +5,7 @@ const dataUsers = [
         "mail": "kiril.malyhin@yandex.ru",
         "phone": "+375 29 162 99 25",
         "carType": "Premium",
-        "experience": "3",
+        "experience": "Expert",
     },
     {
         "photo": "../../../images/users/user2.png",
@@ -13,7 +13,7 @@ const dataUsers = [
         "mail": "pavel@yandex.ru",
         "phone": "+375 29 658 85 44",
         "carType": "Standard",
-        "experience": "7",
+        "experience": "Junior",
     },
     {
         "photo": "../../../images/users/user3.png",
@@ -21,7 +21,7 @@ const dataUsers = [
         "mail": "sasha@yandex.ru",
         "phone": "+375 29 235 75 85",
         "carType": "Premium",
-        "experience": "2",
+        "experience": "Expert",
     },
     {
         "photo": "../../../images/users/user4.png",
@@ -29,7 +29,7 @@ const dataUsers = [
         "mail": "polina@yandex.ru",
         "phone": "+375 29 968 42 35",
         "carType": "Standard",
-        "experience": "15",
+        "experience": "Junior",
     },
     {
         "photo": "../../../images/users/user5.png",
@@ -37,7 +37,7 @@ const dataUsers = [
         "mail": "sergey@yandex.ru",
         "phone": "+375 29 752 39 42",
         "carType": "Premium",
-        "experience": "6",
+        "experience": "Middle",
     },
     {
         "photo": "../../../images/users/user6.png",
@@ -45,7 +45,7 @@ const dataUsers = [
         "mail": "victor@yandex.ru",
         "phone": "+375 29 805 30 30",
         "carType": "Standard",
-        "experience": "8",
+        "experience": "Junior",
     },
     {
         "photo": "../../../images/users/user7.png",
@@ -53,7 +53,7 @@ const dataUsers = [
         "mail": "konstantin@yandex.ru",
         "phone": "+375 29 643 90 60",
         "carType": "Luxury",
-        "experience": "30",
+        "experience": "Expert",
     },
 ];
 

@@ -18,7 +18,6 @@
     text-decoration: underline;
     text-align: center;
     float: none !important;
-    padding-bottom: 20px;
 }
 
 .col-md-2 {
@@ -37,12 +36,17 @@
     background-color: #3c2a2a;
     color: white;
     max-width: 200px;
+    padding-bottom: 20px;
     width: 100%;
     height: 35px;
     outline: medium;
     border-radius: 5px;
     font-weight: normal;
     border: 1px solid rgba(248, 249, 248, 0.55);
+}
+
+.ui-g-12 {
+    padding: .2em;
 }
 
 .btn-find:hover {

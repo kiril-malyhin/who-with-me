@@ -7,7 +7,7 @@
   "mail": "Почта",
   "phone": "Телефон",
   "carType": "Тип машины",
-  "experience": "Стаж(в годах)",
+  "experience": "Уровень вождения",
   "rm": "Запомнить меня",
   "login": "Войти",
   "loginTitle": "Вход",
@@ -20,7 +20,7 @@
   "agePlaceholder": "Возраст",
   "mailPlaceholder": "Почта",
   "phonePlaceholder": "Телефон",
-  "experiencePlaceholder": "Стаж",
+  "experiencePlaceholder": "Уровень вождения",
 
   "isDriver": "Вы водитель?",
 
@@ -90,10 +90,12 @@
 
   "standard": "Стандарт",
   "premium": "Премиум",
-  "luxury": "Роскошный",
+  "luxury": "Бизнес-класс",
 
   "allChoose": "Любой",
 
-  "searchWaitMessage": "Пожалуйста, подождите, мы ищем..."
+  "searchWaitMessage": "Пожалуйста, подождите, мы ищем...",
+  "emptySearchResult": "Результат не найден.",
+  "emptySearchResultLead": "Попробуйте изменить запросы поиска"
 
 }

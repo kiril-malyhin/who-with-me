@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import dataUsers from "../../services/data/dataUsers";
 import dataTrips from "../../services/data/dataTrips";
+import {SearchService} from "../../services/utils/search.service";
+import {isUndefined} from "util";
 
 export interface User {
     username: any;
@@ -20,15 +22,17 @@ export interface User {
 
 export class HomeComponent implements OnInit{
     trip: any;
+    sortedTrips: Array<any> = [];
     users: User[];
     selectedUser: User;
 
     displayDialog: boolean;
-    numberOfResultTrips: number;
+    numberOfResultTrips: number = 0;
 
     minDate: Date;
     maxDate: Date;
     date: Date;
+    searchDate: Date = new Date();
 
     tripFrom: string;
     tripTo: string;
@@ -42,15 +46,8 @@ export class HomeComponent implements OnInit{
     rangeTime: number[] = [this.minTime, this.maxTime];
     rangePrice: number[] = [this.minPrice, this.maxPrice];
 
-    junior: string;
-    senior: string;
-    expert: string;
-    noMatterExperience: string = 'noMatterExperience';
-
-    standard: string;
-    premium: string;
-    luxury: string;
-    noMatterCarType: string = 'noMatterCarType';
+    experience: string = 'NoMatterExperience';
+    carType: string = 'NoMatterCarType';
 
     value: number = 0;
 
@@ -63,11 +60,16 @@ export class HomeComponent implements OnInit{
             }
         }, 1000);
 
-        this.trip = dataTrips[0];
-        this.tripFrom = this.trip.from;
-        this.tripTo = this.trip.to;
-        this.numberOfResultTrips = dataUsers.length;
+        this.tripFrom = SearchService.getParameters().destinationFrom;
+        this.tripTo = SearchService.getParameters().destinationTo;
+        this.searchDate = SearchService.getParameters().destinationDate;
+
+        this.trip = dataTrips;
+        this.find();
+
         this.users = dataUsers;
+
+        this.numberOfResultTrips = this.users.length;
 
         let today = new Date();
         let month = today.getMonth();
@@ -94,7 +96,87 @@ export class HomeComponent implements OnInit{
         this.tripTo = key;
     }
 
-    sort() {
+    find() {
+        let self = this;
+        this.trip.forEach(function(item: any) {
+            if (self.tripFrom === item.from && self.tripTo === item.to && self.searchDate === item.date) {
+                self.sortedTrips.push(item);
+            }
+        });
+        console.log(this.sortedTrips);
+        return this.sortedTrips;
+    }
 
+    sort() {
+        let self = this;
+        let result: Array<any> = [];
+
+        if (this.carType === 'NoMatterCarType' && this.experience === 'NoMatterExperience') {
+            this.users = dataUsers;
+            this.numberOfResultTrips = this.users.length;
+        }
+
+        if (this.carType !== 'NoMatterCarType' && this.experience === 'NoMatterExperience') {
+            this.sortByCarType(result, self);
+        }
+
+        if (this.carType === 'NoMatterCarType' && this.experience !== 'NoMatterExperience') {
+            this.sortByExperience(result, self);
+        }
+
+        if (this.carType !== 'NoMatterCarType' && this.experience !== 'NoMatterExperience') {
+            this.sortByTypeAndExperience(result, self);
+        }
+    }
+
+    sortByTypeAndExperience(result: Array<any>, self: any) {
+        this.users = dataUsers;
+        this.users.forEach(function (item: any) {
+            if (self.carType === item.carType && self.experience === item.experience) {
+                result.push(item);
+            }
+        });
+
+        if (result === undefined) {
+            self.numberOfResultTrips = 0;
+        } else {
+            self.numberOfResultTrips = result.length;
+        }
+
+        return this.users = result;
+    }
+
+    sortByCarType(result: Array<any>, self: any) {
+        this.users = dataUsers;
+        this.users.forEach(function (item: any) {
+            if (self.carType === item.carType) {
+                result.push(item);
+            }
+        });
+
+        if (result === undefined) {
+            self.numberOfResultTrips = 0;
+        } else {
+            self.numberOfResultTrips = result.length;
+        }
+
+        return this.users = result;
+    }
+
+    sortByExperience(result: Array<any>, self: any) {
+        this.users = dataUsers;
+        this.users.forEach(function (item: any) {
+            if (self.experience === item.experience) {
+                result.push(item);
+            }
+        });
+
+        if (result === undefined) {
+            self.numberOfResultTrips = 0;
+        } else {
+            self.numberOfResultTrips = result.length;
+        }
+
+        return this.users = result;
     }
 }

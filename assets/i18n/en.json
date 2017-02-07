@@ -7,7 +7,7 @@
   "mail": "Mail",
   "phone": "Phone",
   "carType": "Car type",
-  "experience": "Experience(years)",
+  "experience": "Driving level",
   "rm": "Remember me",
   "loginTitle": "Sign in",
   "login": "Sign in",
@@ -20,7 +20,7 @@
   "agePlaceholder": "Age",
   "mailPlaceholder": "Mail",
   "phonePlaceholder": "Phone",
-  "experiencePlaceholder": "Experience",
+  "experiencePlaceholder": "Driving level",
 
   "isDriver": "Are you a driver?",
 
@@ -93,6 +93,8 @@
 
   "allChoose": "No matter",
 
-  "searchWaitMessage": "Please wait, we are searching trips..."
+  "searchWaitMessage": "Please wait, we are searching trips...",
+  "emptySearchResult": "No result found.",
+  "emptySearchResultLead": "Try to change the search parameters"
 
 }

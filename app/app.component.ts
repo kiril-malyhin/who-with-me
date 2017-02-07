@@ -3,6 +3,7 @@ import {AuthenticationService} from "./services/utils/authentication.service";
 import {AuthGuard} from "./guards/auth-guard.service";
 import {LanguageService} from "./services/utils/language.service";
 import {TranslateService} from "ng2-translate";
+import {SearchService} from "./services/utils/search.service";
 
 @Component({
     moduleId: module.id,

@@ -6,7 +6,7 @@
                             placeholder="From" [minLength]="1"></p-autoComplete>
             <p-autoComplete [(ngModel)]="countryTo" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
                             placeholder="To" [minLength]="1"></p-autoComplete>
-            <p-calendar [(ngModel)]="dateTo" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" [showTime]="true" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
+            <p-calendar [(ngModel)]="dateTo" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
             <button class="btn-find" (click)="findTrip()">{{ 'searchResult' | translate }}</button>
         </div>
     </div>
