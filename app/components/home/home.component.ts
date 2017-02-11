@@ -32,7 +32,6 @@ export class HomeComponent implements OnInit{
     minDate: Date;
     maxDate: Date;
     date: Date;
-    searchDate: Date = new Date();
 
     tripFrom: string;
     tripTo: string;
@@ -62,7 +61,7 @@ export class HomeComponent implements OnInit{
 
         this.tripFrom = SearchService.getParameters().destinationFrom;
         this.tripTo = SearchService.getParameters().destinationTo;
-        this.searchDate = SearchService.getParameters().destinationDate;
+        this.date = SearchService.getParameters().destinationDate;
 
         this.trip = dataTrips;
         this.find();
@@ -99,84 +98,27 @@ export class HomeComponent implements OnInit{
     find() {
         let self = this;
         this.trip.forEach(function(item: any) {
-            if (self.tripFrom === item.from && self.tripTo === item.to && self.searchDate === item.date) {
+            if (self.tripFrom === item.from && self.tripTo === item.to && self.date === item.date) {
                 self.sortedTrips.push(item);
             }
         });
-        console.log(this.sortedTrips);
         return this.sortedTrips;
     }
 
     sort() {
-        let self = this;
-        let result: Array<any> = [];
-
-        if (this.carType === 'NoMatterCarType' && this.experience === 'NoMatterExperience') {
-            this.users = dataUsers;
-            this.numberOfResultTrips = this.users.length;
-        }
-
-        if (this.carType !== 'NoMatterCarType' && this.experience === 'NoMatterExperience') {
-            this.sortByCarType(result, self);
-        }
-
-        if (this.carType === 'NoMatterCarType' && this.experience !== 'NoMatterExperience') {
-            this.sortByExperience(result, self);
-        }
-
-        if (this.carType !== 'NoMatterCarType' && this.experience !== 'NoMatterExperience') {
-            this.sortByTypeAndExperience(result, self);
-        }
-    }
-
-    sortByTypeAndExperience(result: Array<any>, self: any) {
-        this.users = dataUsers;
-        this.users.forEach(function (item: any) {
-            if (self.carType === item.carType && self.experience === item.experience) {
-                result.push(item);
+        let filters = {};
+        if(this.carType !== 'NoMatterCarType')
+            filters['carType'] = this.carType;
+        if(this.experience !== 'NoMatterExperience')
+            filters['experience'] = this.experience;
+        let result = dataUsers.filter(user => {
+            for (let key in filters) {
+                if (!(filters[key] === user[key])) return false;
             }
+            return true;
         });
 
-        if (result === undefined) {
-            self.numberOfResultTrips = 0;
-        } else {
-            self.numberOfResultTrips = result.length;
-        }
-
-        return this.users = result;
-    }
-
-    sortByCarType(result: Array<any>, self: any) {
-        this.users = dataUsers;
-        this.users.forEach(function (item: any) {
-            if (self.carType === item.carType) {
-                result.push(item);
-            }
-        });
-
-        if (result === undefined) {
-            self.numberOfResultTrips = 0;
-        } else {
-            self.numberOfResultTrips = result.length;
-        }
-
-        return this.users = result;
-    }
-
-    sortByExperience(result: Array<any>, self: any) {
-        this.users = dataUsers;
-        this.users.forEach(function (item: any) {
-            if (self.experience === item.experience) {
-                result.push(item);
-            }
-        });
-
-        if (result === undefined) {
-            self.numberOfResultTrips = 0;
-        } else {
-            self.numberOfResultTrips = result.length;
-        }
-
-        return this.users = result;
+        this.users = result;
+        this.numberOfResultTrips = result.length;
     }
 }
