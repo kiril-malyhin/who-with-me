@@ -2,7 +2,6 @@ import {Component, OnInit} from "@angular/core";
 import dataUsers from "../../services/data/dataUsers";
 import dataTrips from "../../services/data/dataTrips";
 import {SearchService} from "../../services/utils/search.service";
-import {isUndefined} from "util";
 
 export interface User {
     name: any;

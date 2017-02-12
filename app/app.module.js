@@ -38,6 +38,7 @@ var inputtext_1 = require('primeng/components/inputtext/inputtext');
 var slider_1 = require('primeng/components/slider/slider');
 var radiobutton_1 = require('primeng/components/radiobutton/radiobutton');
 var progressbar_1 = require('primeng/components/progressbar/progressbar');
+var request_service_1 = require("./services/utils/request.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -77,7 +78,7 @@ var AppModule = (function () {
                 start_component_1.StartComponent
             ],
             bootstrap: [app_component_1.AppComponent],
-            providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, auth_guard_service_1.AuthGuard, login_ban_guard_1.LoginBanGuard, authentication_service_1.AuthenticationService]
+            providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, auth_guard_service_1.AuthGuard, login_ban_guard_1.LoginBanGuard, authentication_service_1.AuthenticationService, request_service_1.RequestService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

@@ -8,7 +8,7 @@ import {SearchService} from "./services/utils/search.service";
 @Component({
     moduleId: module.id,
     selector: 'app-main',
-    providers: [AuthGuard, AuthenticationService],
+    providers: [AuthGuard],
     template: `
     <app-navbar></app-navbar> 
     <router-outlet></router-outlet>

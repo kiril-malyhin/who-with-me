@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var authentication_service_1 = require("./services/utils/authentication.service");
 var auth_guard_service_1 = require("./guards/auth-guard.service");
 var language_service_1 = require("./services/utils/language.service");
 var ng2_translate_1 = require("ng2-translate");
@@ -33,7 +32,7 @@ var AppComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'app-main',
-            providers: [auth_guard_service_1.AuthGuard, authentication_service_1.AuthenticationService],
+            providers: [auth_guard_service_1.AuthGuard],
             template: "\n    <app-navbar></app-navbar> \n    <router-outlet></router-outlet>\n    <app-footer></app-footer>\n  "
         }), 
         __metadata('design:paramtypes', [ng2_translate_1.TranslateService])

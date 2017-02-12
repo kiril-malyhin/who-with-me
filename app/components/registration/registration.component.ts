@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {Response, Http} from "@angular/http";
+import {Http} from "@angular/http";
+import {AuthenticationService} from "../../services/utils/authentication.service";
 
 @Component({
     moduleId: module.id,
@@ -11,7 +12,8 @@ import {Response, Http} from "@angular/http";
 
 export class RegistrationComponent implements OnInit{
 
-    constructor(public http: Http) {}
+    constructor(public http: Http,
+                private router: Router) {}
 
     ngOnInit(): void {
         this.cars = [
@@ -27,13 +29,6 @@ export class RegistrationComponent implements OnInit{
         ]
     }
 
-    showErrorName: boolean = false;
-    showErrorPassword: boolean = false;
-    showErrorRepeatPassword: boolean = false;
-    showErrorAge: boolean = false;
-    showErrorMail: boolean = false;
-    showErrorPhone: boolean = false;
-
     name: string;
     gender: string = 'man';
     password: string;
@@ -44,17 +39,29 @@ export class RegistrationComponent implements OnInit{
     carType: string;
     experience: number;
 
+    showErrorName: boolean = false;
+    showErrorPassword: boolean = false;
+    showErrorRepeatPassword: boolean = false;
+    showErrorAge: boolean = false;
+    showErrorMail: boolean = false;
+    showErrorPhone: boolean = false;
+    showErrorRegistration: string;
+
     cars: Array<Object>;
     levels: Array<Object>;
 
     signUp() {
+        this.showErrorRegistration = null;
         this.showErrorName = !this.name;
         this.showErrorPassword = !this.password;
         this.showErrorAge = !this.age;
         this.showErrorMail = !this.mail;
         this.showErrorPhone = !this.phone;
 
-        if (this.password != this.repeatPassword)  this.showErrorRepeatPassword = true;
+        if (this.password != this.repeatPassword)  {
+            this.showErrorRepeatPassword = true;
+            return;
+        }
 
         if (!this.name || !this.password || !this.age || !this.mail || !this.phone || !this.repeatPassword) {
             return;
@@ -64,14 +71,24 @@ export class RegistrationComponent implements OnInit{
             user: {
                 'name': this.name,
                 'password': this.password,
-                'gender': this.gender
+                'gender': this.gender,
+                'email': this.mail,
+                'phone': this.phone,
+                'car_type': this.carType,
+                'drive_level': this.experience
             }
         };
-        this.http.post("http://localhost:4000/users/", data)
-            .subscribe((res: Response) => {
-                console.log(res.json());
-            });
 
-        // AuthenticationService.login(this.username, this.password);
+        this.http.post("http://localhost:4000/users/", data)
+            .toPromise()
+            .then(() => {
+                AuthenticationService.login(this.name, this.password);
+                this.router.navigate(['/search']);
+            })
+            .catch(res => {
+                if (res.status === 422) {
+                    this.showErrorRegistration = res.json().name[0];
+                }
+            });
     }
 }

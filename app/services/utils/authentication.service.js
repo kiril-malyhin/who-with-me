@@ -24,7 +24,7 @@ var AuthenticationService = (function () {
         this.logged.next(true);
     };
     AuthenticationService.logout = function () {
-        localStorage.removeItem('username');
+        localStorage.removeItem('name');
         localStorage.removeItem('password');
         this.logged.next(false);
     };

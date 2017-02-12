@@ -20,7 +20,7 @@ export class AuthenticationService {
     }
 
     static logout(): void {
-        localStorage.removeItem('username');
+        localStorage.removeItem('name');
         localStorage.removeItem('password');
         this.logged.next(false);
     }

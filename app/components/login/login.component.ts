@@ -8,7 +8,7 @@ import {Response, Headers, Http} from "@angular/http";
     moduleId: module.id,
     selector: 'app-login',
     templateUrl: 'login.component.html',
-    styleUrls: [ 'login.component.css' ]
+    styleUrls: ['login.component.css']
 })
 
 export class LoginComponent {
@@ -24,25 +24,11 @@ export class LoginComponent {
     constructor(private router: Router,
                 private ref: ElementRef,
                 public http: Http) {
-        AuthenticationService.logged.subscribe(value => {
-            if (value) {
-                this.goToSearch();
-            }
-        });
-
-        AuthenticationService.incorrectCredentials.subscribe(value => {
-            this.showErrorCredentials = value;
-        });
-
         Observable.fromEvent(this.ref.nativeElement, 'keyup').subscribe((e: KeyboardEvent) => {
             if (e.keyCode === 13) {
                 this.login();
             }
         });
-    }
-
-    goToSearch() {
-        this.router.navigate(['/search']);
     }
 
     login(): void {
@@ -54,18 +40,26 @@ export class LoginComponent {
             return;
         }
 
-        // let data = {
-        //     user: {
-        //         'name': this.name,
-        //         'password': this.password
-        //     }
-        // };
-        // this.http.post("http://localhost:4000/users/", data)
-        //     .subscribe((res: Response) => {
-        //         console.log(res.json());
-        //     });
+        let data = {
+            user: {
+                'name': this.name,
+                'password': this.password,
+            }
+        };
 
-        // AuthenticationService.login(this.name, this.password);
+        this.http.get("http://localhost:4000/users/" + this.name, data)
+            .toPromise()
+            .then(res => {
+                if (res.status === 200) {
+                    AuthenticationService.login(this.name, this.password);
+                    this.router.navigate(['/search']);
+                }
+            })
+            .catch(res => {
+                if (res.status === 422) {
+                    this.showErrorCredentials = true;
+                }
+            });
     }
 
     register() {

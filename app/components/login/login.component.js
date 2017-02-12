@@ -23,41 +23,39 @@ var LoginComponent = (function () {
         this.showErrorPassword = false;
         this.isRememberMe = false;
         this.showErrorCredentials = false;
-        authentication_service_1.AuthenticationService.logged.subscribe(function (value) {
-            if (value) {
-                _this.goToSearch();
-            }
-        });
-        authentication_service_1.AuthenticationService.incorrectCredentials.subscribe(function (value) {
-            _this.showErrorCredentials = value;
-        });
         Rx_1.Observable.fromEvent(this.ref.nativeElement, 'keyup').subscribe(function (e) {
             if (e.keyCode === 13) {
                 _this.login();
             }
         });
     }
-    LoginComponent.prototype.goToSearch = function () {
-        this.router.navigate(['/search']);
-    };
     LoginComponent.prototype.login = function () {
+        var _this = this;
         this.showErrorCredentials = false;
         this.showErrorName = !this.name;
         this.showErrorPassword = !this.password;
         if (!this.name || !this.password) {
             return;
         }
-        // let data = {
-        //     user: {
-        //         'name': this.name,
-        //         'password': this.password
-        //     }
-        // };
-        // this.http.post("http://localhost:4000/users/", data)
-        //     .subscribe((res: Response) => {
-        //         console.log(res.json());
-        //     });
-        // AuthenticationService.login(this.name, this.password);
+        var data = {
+            user: {
+                'name': this.name,
+                'password': this.password,
+            }
+        };
+        this.http.get("http://localhost:4000/users/" + this.name, data)
+            .toPromise()
+            .then(function (res) {
+            if (res.status === 200) {
+                authentication_service_1.AuthenticationService.login(_this.name, _this.password);
+                _this.router.navigate(['/search']);
+            }
+        })
+            .catch(function (res) {
+            if (res.status === 422) {
+                _this.showErrorCredentials = true;
+            }
+        });
     };
     LoginComponent.prototype.register = function () {
         this.router.navigate(['/registration']);

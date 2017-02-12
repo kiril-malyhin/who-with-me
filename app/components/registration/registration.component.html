@@ -98,6 +98,8 @@
                         </p-accordionTab>
                     </p-accordion>
 
+                    <span *ngIf="showErrorRegistration" class="alert-invalid" style="text-align: center">{{showErrorRegistration}}</span>
+
                     <button (click)="signUp()" type="button"
                             class="btn-block btn-lg login-btn main-light-background-color">{{ 'registration' | translate }}
                     </button>

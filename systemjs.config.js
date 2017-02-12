@@ -30,7 +30,8 @@
             'lodash'                     :'node_modules/lodash',
             'ng2-bootstrap/ng2-bootstrap':'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
             'mydatepicker'               :'npm:mydatepicker',
-            'primeng':                   'npm:primeng'
+            'primeng'                    :'npm:primeng',
+            'alertify'                   :'node_modules/alertify.js/src/ts/alertfy2'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {

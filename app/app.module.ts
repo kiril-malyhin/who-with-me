@@ -32,6 +32,7 @@ import {InputTextModule} from 'primeng/components/inputtext/inputtext';
 import {SliderModule} from 'primeng/components/slider/slider';
 import {RadioButtonModule} from 'primeng/components/radiobutton/radiobutton';
 import {ProgressBarModule} from 'primeng/components/progressbar/progressbar';
+import {RequestService} from "./services/utils/request.service";
 
 @NgModule({
     imports: [
@@ -68,7 +69,7 @@ import {ProgressBarModule} from 'primeng/components/progressbar/progressbar';
         StartComponent
     ],
     bootstrap: [AppComponent],
-    providers: [{provide: APP_BASE_HREF, useValue: '/'}, AuthGuard, LoginBanGuard, AuthenticationService]
+    providers: [{provide: APP_BASE_HREF, useValue: '/'}, AuthGuard, LoginBanGuard, AuthenticationService, RequestService]
 })
 
 export class AppModule {
