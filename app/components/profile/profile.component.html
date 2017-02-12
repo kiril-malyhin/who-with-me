@@ -3,9 +3,12 @@
         <p class="profile-title">{{ 'profile' | translate }}</p>
         <div class="col-md-6">
             <div class="profile">
+                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="float: right;padding-right: 15px;padding-top: 15px;" (click)="editProfile()"></i>
+
                 <div class="profile-photo">
                     <img src="../../../images/users/{{photo}}.png" alt="Generic placeholder image">
                 </div>
+
                 <label class="profile-info"><span class="profile-info-title">{{ 'username' | translate }}:</span><span> {{userData.name}}</span></label>
                 <label class="profile-info"><span class="profile-info-title">{{ 'mail' | translate }}:</span><span> {{userData.email}}</span></label>
                 <label class="profile-info"><span class="profile-info-title">{{ 'phone' | translate }}:</span><span> {{userData.phone}}</span></label>
