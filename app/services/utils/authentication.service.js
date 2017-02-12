@@ -18,22 +18,17 @@ var AuthenticationService = (function () {
     AuthenticationService.isLogged = function () {
         return this.logged.getValue();
     };
-    AuthenticationService.login = function (username, password) {
-        if (username === 'test' && password === 'test') {
-            localStorage.setItem('username', username);
-            localStorage.setItem('password', password);
-            this.logged.next(true);
-        }
-        else {
-            this.incorrectCredentials.next(true);
-        }
+    AuthenticationService.login = function (name, password) {
+        localStorage.setItem('name', name);
+        localStorage.setItem('password', password);
+        this.logged.next(true);
     };
     AuthenticationService.logout = function () {
         localStorage.removeItem('username');
         localStorage.removeItem('password');
         this.logged.next(false);
     };
-    AuthenticationService.logged = new BehaviorSubject_1.BehaviorSubject(!!localStorage.getItem('username'));
+    AuthenticationService.logged = new BehaviorSubject_1.BehaviorSubject(!!localStorage.getItem('name'));
     AuthenticationService.incorrectCredentials = new Subject_1.Subject();
     AuthenticationService = __decorate([
         core_1.Injectable(), 

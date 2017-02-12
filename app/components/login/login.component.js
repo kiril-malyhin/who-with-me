@@ -12,12 +12,14 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var authentication_service_1 = require("../../services/utils/authentication.service");
 var Rx_1 = require("rxjs/Rx");
+var http_1 = require("@angular/http");
 var LoginComponent = (function () {
-    function LoginComponent(router, ref) {
+    function LoginComponent(router, ref, http) {
         var _this = this;
         this.router = router;
         this.ref = ref;
-        this.showErrorUsername = false;
+        this.http = http;
+        this.showErrorName = false;
         this.showErrorPassword = false;
         this.isRememberMe = false;
         this.showErrorCredentials = false;
@@ -40,12 +42,22 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.login = function () {
         this.showErrorCredentials = false;
-        this.showErrorUsername = !this.username;
+        this.showErrorName = !this.name;
         this.showErrorPassword = !this.password;
-        if (!this.username || !this.password) {
+        if (!this.name || !this.password) {
             return;
         }
-        authentication_service_1.AuthenticationService.login(this.username, this.password);
+        // let data = {
+        //     user: {
+        //         'name': this.name,
+        //         'password': this.password
+        //     }
+        // };
+        // this.http.post("http://localhost:4000/users/", data)
+        //     .subscribe((res: Response) => {
+        //         console.log(res.json());
+        //     });
+        // AuthenticationService.login(this.name, this.password);
     };
     LoginComponent.prototype.register = function () {
         this.router.navigate(['/registration']);
@@ -57,7 +69,7 @@ var LoginComponent = (function () {
             templateUrl: 'login.component.html',
             styleUrls: ['login.component.css']
         }), 
-        __metadata('design:paramtypes', [router_1.Router, core_1.ElementRef])
+        __metadata('design:paramtypes', [router_1.Router, core_1.ElementRef, http_1.Http])
     ], LoginComponent);
     return LoginComponent;
 }());

@@ -6,22 +6,17 @@ import {Subject} from "rxjs/Subject";
 @Injectable()
 export class AuthenticationService {
 
-    static logged: BehaviorSubject<boolean> = new BehaviorSubject(!!localStorage.getItem('username'));
+    static logged: BehaviorSubject<boolean> = new BehaviorSubject(!!localStorage.getItem('name'));
     static incorrectCredentials: Subject<boolean> = new Subject();
 
     static isLogged(): boolean {
         return this.logged.getValue();
     }
 
-    static login(username: string, password: string): void {
-
-        if (username === 'test' && password === 'test') {
-            localStorage.setItem('username', username);
-            localStorage.setItem('password', password);
-            this.logged.next(true);
-        } else {
-            this.incorrectCredentials.next(true);
-        }
+    static login(name: string, password: string): void {
+        localStorage.setItem('name', name);
+        localStorage.setItem('password', password);
+        this.logged.next(true);
     }
 
     static logout(): void {

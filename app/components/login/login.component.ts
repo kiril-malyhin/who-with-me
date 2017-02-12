@@ -2,6 +2,7 @@ import {Component, ElementRef} from "@angular/core";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../services/utils/authentication.service";
 import {Observable} from "rxjs/Rx";
+import {Response, Headers, Http} from "@angular/http";
 
 @Component({
     moduleId: module.id,
@@ -12,15 +13,17 @@ import {Observable} from "rxjs/Rx";
 
 export class LoginComponent {
 
-    showErrorUsername: boolean = false;
+    showErrorName: boolean = false;
     showErrorPassword: boolean = false;
     isRememberMe: boolean = false;
     showErrorCredentials: boolean = false;
 
-    username: string;
+    name: string;
     password: string;
 
-    constructor(private router: Router,private ref: ElementRef) {
+    constructor(private router: Router,
+                private ref: ElementRef,
+                public http: Http) {
         AuthenticationService.logged.subscribe(value => {
             if (value) {
                 this.goToSearch();
@@ -44,14 +47,25 @@ export class LoginComponent {
 
     login(): void {
         this.showErrorCredentials = false;
-        this.showErrorUsername = !this.username;
+        this.showErrorName = !this.name;
         this.showErrorPassword = !this.password;
 
-        if (!this.username || !this.password) {
+        if (!this.name || !this.password) {
             return;
         }
 
-        AuthenticationService.login(this.username, this.password);
+        // let data = {
+        //     user: {
+        //         'name': this.name,
+        //         'password': this.password
+        //     }
+        // };
+        // this.http.post("http://localhost:4000/users/", data)
+        //     .subscribe((res: Response) => {
+        //         console.log(res.json());
+        //     });
+
+        // AuthenticationService.login(this.name, this.password);
     }
 
     register() {

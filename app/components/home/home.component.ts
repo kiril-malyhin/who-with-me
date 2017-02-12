@@ -5,7 +5,7 @@ import {SearchService} from "../../services/utils/search.service";
 import {isUndefined} from "util";
 
 export interface User {
-    username: any;
+    name: any;
     photo: any;
     mail: any;
     phone: any;
