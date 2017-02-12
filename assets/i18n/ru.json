@@ -40,6 +40,9 @@
   "emptyPhone": "Телефон не может быть пустым",
   "emptyPrice": "Цена не может быть пустой",
   "emptySeatNumber": "Количество мест не может быть пустым",
+  "emptyDestinationFrom": "Место отбытия не может быть пустым",
+  "emptyDestinationTo": "Место прибытия не может быть пустым",
+  "emptyDestinationDate": "Дата не может быть пустой",
 
   "startTitle": "Путешествуйте вместе!",
   "startTitleLead": "Будьте ближе",

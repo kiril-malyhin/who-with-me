@@ -39,6 +39,9 @@
   "emptyPhone": "Phone must not be empty",
   "emptyPrice": "Price must not be empty",
   "emptySeatNumber": "Seat number must not be empty",
+  "emptyDestinationFrom": "Start point must not be empty",
+  "emptyDestinationTo": "End point must not be empty",
+  "emptyDestinationDate": "Date must not be empty",
 
   "startTitle": "Let's travel together!",
   "startTitleLead": "Join the future",

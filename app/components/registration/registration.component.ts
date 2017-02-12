@@ -29,6 +29,7 @@ export class RegistrationComponent implements OnInit{
         ]
     }
 
+    id: number;
     name: string;
     gender: string = 'man';
     password: string;
@@ -81,8 +82,8 @@ export class RegistrationComponent implements OnInit{
 
         this.http.post("http://localhost:4000/users/", data)
             .toPromise()
-            .then(() => {
-                AuthenticationService.login(this.name, this.password);
+            .then(res => {
+                AuthenticationService.login(res.json().name, res.json().id);
                 this.router.navigate(['/search']);
             })
             .catch(res => {

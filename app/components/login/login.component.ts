@@ -20,6 +20,7 @@ export class LoginComponent {
 
     name: string;
     password: string;
+    id: string;
 
     constructor(private router: Router,
                 private ref: ElementRef,
@@ -42,24 +43,34 @@ export class LoginComponent {
 
         let data = {
             user: {
+                'id': this.id,
                 'name': this.name,
                 'password': this.password,
             }
         };
 
-        this.http.get("http://localhost:4000/users/" + this.name, data)
+        this.http.get("http://localhost:4000/users")
             .toPromise()
             .then(res => {
-                if (res.status === 200) {
-                    AuthenticationService.login(this.name, this.password);
-                    this.router.navigate(['/search']);
-                }
+                let self = this;
+                res.json().forEach(function (user: any) {
+                    if (user.name === self.name) {
+                        self.id = user.id;
+                    }
+                })
             })
-            .catch(res => {
-                if (res.status === 422) {
+            .then(() => {
+                this.http.get("http://localhost:4000/users/" + this.id, data)
+                .toPromise()
+                .then(res => {
+                    console.log(res);
+                    AuthenticationService.login(res.json().name, res.json().id);
+                    this.router.navigate(['/search']);
+                })
+                .catch(() => {
                     this.showErrorCredentials = true;
-                }
-            });
+                })}
+            );
     }
 
     register() {

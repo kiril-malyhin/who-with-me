@@ -4,13 +4,13 @@
         <div class="col-md-6">
             <div class="profile">
                 <div class="profile-photo">
-                    <img src="../../../images/users/user1.png" alt="Generic placeholder image">
+                    <img src="../../../images/users/{{photo}}.png" alt="Generic placeholder image">
                 </div>
                 <label class="profile-info"><span class="profile-info-title">{{ 'username' | translate }}:</span><span> {{userData.name}}</span></label>
-                <label class="profile-info"><span class="profile-info-title">{{ 'mail' | translate }}:</span><span> {{userData.mail}}</span></label>
+                <label class="profile-info"><span class="profile-info-title">{{ 'mail' | translate }}:</span><span> {{userData.email}}</span></label>
                 <label class="profile-info"><span class="profile-info-title">{{ 'phone' | translate }}:</span><span> {{userData.phone}}</span></label>
-                <label class="profile-info"><span class="profile-info-title">{{ 'carType' | translate }}:</span><span> {{userData.carType}}</span></label>
-                <label class="profile-info"><span class="profile-info-title">{{ 'experience' | translate }}:</span><span> {{userData.experience}}</span></label>
+                <label class="profile-info" *ngIf="userData.car_type"><span class="profile-info-title">{{ 'carType' | translate }}:</span><span> {{userData.car_type}}</span></label>
+                <label class="profile-info" *ngIf="userData.drive_level"><span class="profile-info-title">{{ 'experience' | translate }}:</span><span> {{userData.drive_level}}</span></label>
             </div>
         </div>
         <div class="col-md-6">
@@ -18,27 +18,31 @@
                 <p-accordionTab header="{{ 'addTrip' | translate }}" [selected]="false">
                     <div class="form-group row">
                         <label class="col-xs-4 col-form-label pointer">{{ 'destinationFrom' | translate }}</label>
-                        <p-autoComplete [(ngModel)]="countryFrom" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
-                                        placeholder="From" [minLength]="1">
-                        </p-autoComplete>
+                        <div>
+                            <p-autoComplete [(ngModel)]="countryFrom" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
+                                            placeholder="From" [minLength]="1">
+                            </p-autoComplete>
+                            <span *ngIf="!countryFrom && showErrorCountryFrom" class="alert-invalid">{{ 'emptyDestinationFrom' | translate }}</span>
+                        </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-xs-4 col-form-label pointer">{{ 'destinationTo' | translate }}</label>
-                        <p-autoComplete [(ngModel)]="countryTo" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
-                                        placeholder="To" [minLength]="1">
-                        </p-autoComplete>
+                        <div>
+                            <p-autoComplete [(ngModel)]="countryTo" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
+                                            placeholder="To" [minLength]="1">
+                            </p-autoComplete>
+                            <span *ngIf="!countryTo && showErrorCountryTo" class="alert-invalid">{{ 'emptyDestinationTo' | translate }}</span>
+                        </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-xs-4 col-form-label pointer">{{ 'destinationDate' | translate }}</label>
-                        <p-calendar [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
+                        <div>
+                            <p-calendar [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
+                            <span *ngIf="!date && showErrorDate" class="alert-invalid">{{ 'emptyDestinationDate' | translate }}</span>
+                        </div>
                     </div>
-
-                    <!--<div class="form-group row">-->
-                        <!--<label class="col-xs-4 col-form-label pointer">{{ 'destinationTime' | translate }}</label>-->
-                        <!--<p-calendar [(ngModel)]="time" [minDate]="minDate" [maxDate]="maxDate" [timeOnly]="true"></p-calendar>-->
-                    <!--</div>-->
 
                     <div class="form-group row">
                         <label for="price" class="col-xs-4 col-form-label pointer">{{ 'destinationPrice' | translate }}</label>

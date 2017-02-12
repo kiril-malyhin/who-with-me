@@ -1,4 +1,4 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import 'node_modules/rxjs/add/operator/map';
 import { BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subject} from "rxjs/Subject";
@@ -13,15 +13,21 @@ export class AuthenticationService {
         return this.logged.getValue();
     }
 
-    static login(name: string, password: string): void {
+    static login(name: string, id: string): void {
         localStorage.setItem('name', name);
-        localStorage.setItem('password', password);
+        localStorage.setItem('id', id);
         this.logged.next(true);
+    }
+
+    static getUserCredentials(): {name: string, id: string} {
+        let name = localStorage.getItem('name');
+        let id = localStorage.getItem('id');
+        return {name, id};
     }
 
     static logout(): void {
         localStorage.removeItem('name');
-        localStorage.removeItem('password');
+        localStorage.removeItem('id');
         this.logged.next(false);
     }
 

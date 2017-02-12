@@ -18,14 +18,19 @@ var AuthenticationService = (function () {
     AuthenticationService.isLogged = function () {
         return this.logged.getValue();
     };
-    AuthenticationService.login = function (name, password) {
+    AuthenticationService.login = function (name, id) {
         localStorage.setItem('name', name);
-        localStorage.setItem('password', password);
+        localStorage.setItem('id', id);
         this.logged.next(true);
+    };
+    AuthenticationService.getUserCredentials = function () {
+        var name = localStorage.getItem('name');
+        var id = localStorage.getItem('id');
+        return { name: name, id: id };
     };
     AuthenticationService.logout = function () {
         localStorage.removeItem('name');
-        localStorage.removeItem('password');
+        localStorage.removeItem('id');
         this.logged.next(false);
     };
     AuthenticationService.logged = new BehaviorSubject_1.BehaviorSubject(!!localStorage.getItem('name'));

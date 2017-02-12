@@ -39,22 +39,32 @@ var LoginComponent = (function () {
         }
         var data = {
             user: {
+                'id': this.id,
                 'name': this.name,
                 'password': this.password,
             }
         };
-        this.http.get("http://localhost:4000/users/" + this.name, data)
+        this.http.get("http://localhost:4000/users")
             .toPromise()
             .then(function (res) {
-            if (res.status === 200) {
-                authentication_service_1.AuthenticationService.login(_this.name, _this.password);
-                _this.router.navigate(['/search']);
-            }
+            var self = _this;
+            res.json().forEach(function (user) {
+                if (user.name === self.name) {
+                    self.id = user.id;
+                }
+            });
         })
-            .catch(function (res) {
-            if (res.status === 422) {
+            .then(function () {
+            _this.http.get("http://localhost:4000/users/" + _this.id, data)
+                .toPromise()
+                .then(function (res) {
+                console.log(res);
+                authentication_service_1.AuthenticationService.login(res.json().name, res.json().id);
+                _this.router.navigate(['/search']);
+            })
+                .catch(function () {
                 _this.showErrorCredentials = true;
-            }
+            });
         });
     };
     LoginComponent.prototype.register = function () {
