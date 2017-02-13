@@ -41,14 +41,6 @@ export class LoginComponent {
             return;
         }
 
-        let data = {
-            user: {
-                'id': this.id,
-                'name': this.name,
-                'password': this.password,
-            }
-        };
-
         this.http.get("http://localhost:4000/users")
             .toPromise()
             .then(res => {
@@ -60,7 +52,14 @@ export class LoginComponent {
                 })
             })
             .then(() => {
-                this.http.get("http://localhost:4000/users/" + this.id, data)
+                let data = {
+                    user: {
+                        'id': this.id,
+                        'name': this.name,
+                        'password': this.password,
+                    }
+                };
+                this.http.post("http://localhost:4000/user_auth", data)
                 .toPromise()
                 .then(res => {
                     console.log(res);

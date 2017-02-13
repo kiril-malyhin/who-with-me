@@ -4,7 +4,6 @@
         <div class="col-md-6">
             <div class="profile">
                 <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="float: right;padding-right: 15px;padding-top: 15px;" (click)="editProfile()"></i>
-
                 <div class="profile-photo">
                     <img src="../../../images/users/{{photo}}.png" alt="Generic placeholder image">
                 </div>
@@ -12,13 +11,11 @@
                 <label class="profile-info"><span class="profile-info-title">{{ 'username' | translate }}:</span><span> {{userData.name}}</span></label>
                 <label class="profile-info"><span class="profile-info-title">{{ 'mail' | translate }}:</span><span> {{userData.email}}</span></label>
                 <label class="profile-info"><span class="profile-info-title">{{ 'phone' | translate }}:</span><span> {{userData.phone}}</span></label>
-                <label class="profile-info" *ngIf="userData.car_type"><span class="profile-info-title">{{ 'carType' | translate }}:</span><span> {{userData.car_type}}</span></label>
-                <label class="profile-info" *ngIf="userData.drive_level"><span class="profile-info-title">{{ 'experience' | translate }}:</span><span> {{userData.drive_level}}</span></label>
-            </div>
+                </div>
         </div>
         <div class="col-md-6">
             <p-accordion>
-                <p-accordionTab header="{{ 'addTrip' | translate }}" [selected]="false">
+                <p-accordionTab header="{{ 'addTrip' | translate }}" [selected]="true">
                     <div class="form-group row">
                         <label class="col-xs-4 col-form-label pointer">{{ 'destinationFrom' | translate }}</label>
                         <div>
@@ -63,6 +60,24 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label for="carType" class="col-xs-4 col-form-label pointer">{{'carType' | translate}}</label>
+                        <div class="col-sm-8">
+                            <select [(ngModel)]="carType" class="form-control" id="carType" name="carType" required autofocus>
+                                <option *ngFor="let car of cars">{{car.type}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="experience" class="col-xs-4 col-form-label pointer">{{ 'experience' | translate }}</label>
+                        <div class="col-sm-8">
+                            <select [(ngModel)]="experience" class="form-control" id="experience" name="experience" required autofocus>
+                                <option *ngFor="let level of levels">{{level.type}}</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <button (click)="addTrip()" type="button"
                             class="btn-block btn-lg add-trip main-light-background-color">{{ 'addTrip' | translate }}
                     </button>
@@ -71,4 +86,80 @@
         </div>
     </div>
 </div>
+
+<p-dialog header="Edit profile" modal="modal" width="auto" responsive="true" [(visible)]="display">
+    <div class="form-group row">
+        <label class="col-xs-4 col-form-label pointer">{{ 'gender' | translate }}</label>
+        <div class="col-sm-8">
+            <div class="ui-g" style="width:250px;margin-bottom:10px">
+                <div style="padding-right: 20px"><p-radioButton name="gender" value="man" label="{{'genderMan' | translate}}" [(ngModel)]="gender"></p-radioButton></div>
+                <div ><p-radioButton name="gender" value="women" label="{{'genderWomen' | translate}}"[(ngModel)]="gender"></p-radioButton></div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="login" class="col-xs-4 col-form-label pointer">{{ 'username' | translate }}</label>
+        <div class="col-sm-8">
+            <input [(ngModel)]="name" name="name" type="text" id="login" class="form-control"
+                   placeholder="{{ 'usernamePlaceholder' | translate }}" required>
+            <span *ngIf="!name && showErrorName" class="alert-invalid">{{ 'emptyUsername' | translate }}</span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="password" class="col-xs-4 col-form-label pointer">{{ 'password' | translate }}</label>
+        <div class="col-sm-8">
+            <input [(ngModel)]="password" name="password" type="password" id="password"
+                   class="form-control"
+                   placeholder="{{ 'passwordPlaceholder' | translate }}" required>
+            <span *ngIf="!password && showErrorPassword" class="alert-invalid">{{ 'emptyPassword' | translate }}</span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="repeatPassword" class="col-xs-4 col-form-label pointer">{{ 'repeatPassword' | translate }}</label>
+        <div class="col-sm-8">
+            <input [(ngModel)]="repeatPassword" name="repeatPassword" type="password" id="repeatPassword"
+                   class="form-control"
+                   placeholder="{{ 'repeatPasswordPlaceholder' | translate }}" required>
+            <span *ngIf="showErrorRepeatPassword " class="alert-invalid">{{ 'emptyRepeatPassword' | translate }}</span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="age" class="col-xs-4 col-form-label pointer">{{ 'age' | translate }}</label>
+        <div class="col-sm-8">
+            <input [(ngModel)]="age" name="age" type="number" id="age"
+                   class="form-control"
+                   placeholder="{{ 'agePlaceholder' | translate }}" required>
+            <span *ngIf="!age && showErrorAge" class="alert-invalid">{{ 'emptyAge' | translate }}</span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="mail" class="col-xs-4 col-form-label pointer">{{ 'mail' | translate }}</label>
+        <div class="col-sm-8">
+            <input [(ngModel)]="mail" name="mail" type="email" id="mail"
+                   class="form-control"
+                   placeholder="{{ 'mailPlaceholder' | translate }}" required>
+            <span *ngIf="!mail && showErrorMail" class="alert-invalid">{{ 'emptyMail' | translate }}</span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="phone" class="col-xs-4 col-form-label pointer">{{ 'phone' | translate }}</label>
+        <div class="col-sm-8">
+            <input [(ngModel)]="phone" name="phone" type="number" id="phone"
+                   class="form-control"
+                   placeholder="{{ 'phonePlaceholder' | translate }}" required>
+            <span *ngIf="!phone && showErrorPhone" class="alert-invalid">{{ 'emptyPhone' | translate }}</span>
+        </div>
+    </div>
+
+    <span *ngIf="showErrorRegistration" class="alert-invalid" style="text-align: center">{{showErrorRegistration}}</span>
+
+    <button (click)="signUp()" type="button"
+            class="btn-block btn-lg login-btn main-light-background-color">{{ 'registration' | translate }}
+    </button>
+</p-dialog>
 

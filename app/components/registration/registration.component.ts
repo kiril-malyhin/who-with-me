@@ -10,24 +10,9 @@ import {AuthenticationService} from "../../services/utils/authentication.service
     styleUrls: [ 'registration.component.css']
 })
 
-export class RegistrationComponent implements OnInit{
+export class RegistrationComponent{
 
-    constructor(public http: Http,
-                private router: Router) {}
-
-    ngOnInit(): void {
-        this.cars = [
-            {type: "Standard"},
-            {type: "Premium"},
-            {type: "Luxury"}
-        ];
-
-        this.levels = [
-            {type: "Junior"},
-            {type: "Middle"},
-            {type: "Expert"}
-        ]
-    }
+    constructor(public http: Http, private router: Router) {}
 
     id: number;
     name: string;
@@ -37,8 +22,6 @@ export class RegistrationComponent implements OnInit{
     age: number;
     mail: string;
     phone: number;
-    carType: string;
-    experience: number;
 
     showErrorName: boolean = false;
     showErrorPassword: boolean = false;
@@ -47,9 +30,6 @@ export class RegistrationComponent implements OnInit{
     showErrorMail: boolean = false;
     showErrorPhone: boolean = false;
     showErrorRegistration: string;
-
-    cars: Array<Object>;
-    levels: Array<Object>;
 
     signUp() {
         this.showErrorRegistration = null;
@@ -74,9 +54,7 @@ export class RegistrationComponent implements OnInit{
                 'password': this.password,
                 'gender': this.gender,
                 'email': this.mail,
-                'phone': this.phone,
-                'car_type': this.carType,
-                'drive_level': this.experience
+                'phone': this.phone
             }
         };
 

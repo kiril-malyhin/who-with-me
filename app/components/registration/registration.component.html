@@ -74,29 +74,29 @@
                         </div>
                     </div>
 
-                    <p-accordion>
-                        <p-accordionTab header="{{ 'isDriver' | translate }}" [selected]="false">
+                    <!--<p-accordion>-->
+                        <!--<p-accordionTab header="{{ 'isDriver' | translate }}" [selected]="false">-->
 
-                            <div class="form-group row">
-                                <label for="carType" class="col-xs-4 col-form-label pointer">{{'carType' | translate}}</label>
-                                <div class="col-sm-8">
-                                    <select [(ngModel)]="carType" class="form-control" id="carType" name="carType" required autofocus>
-                                        <option *ngFor="let car of cars">{{car.type}}</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <!--<div class="form-group row">-->
+                                <!--<label for="carType" class="col-xs-4 col-form-label pointer">{{'carType' | translate}}</label>-->
+                                <!--<div class="col-sm-8">-->
+                                    <!--<select [(ngModel)]="carType" class="form-control" id="carType" name="carType" required autofocus>-->
+                                        <!--<option *ngFor="let car of cars">{{car.type}}</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            <!--</div>-->
 
-                            <div class="form-group row">
-                                <label for="experience" class="col-xs-4 col-form-label pointer">{{ 'experience' | translate }}</label>
-                                <div class="col-sm-8">
-                                    <select [(ngModel)]="experience" class="form-control" id="experience" name="experience" required autofocus>
-                                        <option *ngFor="let level of levels">{{level.type}}</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <!--<div class="form-group row">-->
+                                <!--<label for="experience" class="col-xs-4 col-form-label pointer">{{ 'experience' | translate }}</label>-->
+                                <!--<div class="col-sm-8">-->
+                                    <!--<select [(ngModel)]="experience" class="form-control" id="experience" name="experience" required autofocus>-->
+                                        <!--<option *ngFor="let level of levels">{{level.type}}</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            <!--</div>-->
 
-                        </p-accordionTab>
-                    </p-accordion>
+                        <!--</p-accordionTab>-->
+                    <!--</p-accordion>-->
 
                     <span *ngIf="showErrorRegistration" class="alert-invalid" style="text-align: center">{{showErrorRegistration}}</span>
 

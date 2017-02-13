@@ -37,13 +37,6 @@ var LoginComponent = (function () {
         if (!this.name || !this.password) {
             return;
         }
-        var data = {
-            user: {
-                'id': this.id,
-                'name': this.name,
-                'password': this.password,
-            }
-        };
         this.http.get("http://localhost:4000/users")
             .toPromise()
             .then(function (res) {
@@ -55,7 +48,14 @@ var LoginComponent = (function () {
             });
         })
             .then(function () {
-            _this.http.get("http://localhost:4000/users/" + _this.id, data)
+            var data = {
+                user: {
+                    'id': _this.id,
+                    'name': _this.name,
+                    'password': _this.password,
+                }
+            };
+            _this.http.post("http://localhost:4000/user_auth", data)
                 .toPromise()
                 .then(function (res) {
                 console.log(res);
