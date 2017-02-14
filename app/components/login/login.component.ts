@@ -62,7 +62,6 @@ export class LoginComponent {
                 this.http.post("http://localhost:4000/user_auth", data)
                 .toPromise()
                 .then(res => {
-                    console.log(res);
                     AuthenticationService.login(res.json().name, res.json().id);
                     this.router.navigate(['/search']);
                 })

@@ -1,5 +1,5 @@
 .background-image{
-    background: url("../../../images/start/start-page.jpg") no-repeat center;
+    background-color: cadetblue;
     width: 100%;
     min-height: 100%;
     color: white;
@@ -22,7 +22,7 @@
     width: 10%;
 }
 
-.add-trip {
+.add-trip, .update-btn {
     background-color: #3c2a2a;
     margin-top: 20px;
     border: none;
@@ -30,6 +30,10 @@
 }
 
 .add-trip:hover {
+    background-color: #745959;
+}
+
+.update-btn:hover {
     background-color: #745959;
 }
 
@@ -73,4 +77,35 @@
 .col-form-label {
     display: flex;
     padding-left: 25px;
+}
+
+.icon-edit {
+    float: right;
+    padding-right: 15px;
+    padding-top: 15px;
+    cursor: pointer;
+}
+
+.icon-edit:hover {
+    color: darkblue;
+}
+
+.icon-delete {
+    float: right;
+    padding-right: 15px;
+    padding-top: 15px;
+    cursor: pointer;
+}
+
+.icon-delete:hover {
+    color: rgb(150, 30, 40);
+}
+
+.icon-delete-trip {
+    float: right;
+    cursor: pointer;
+}
+
+.icon-delete-trip:hover {
+    color: rgb(150, 30, 40);
 }

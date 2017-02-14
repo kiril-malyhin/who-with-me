@@ -58,7 +58,6 @@ var LoginComponent = (function () {
             _this.http.post("http://localhost:4000/user_auth", data)
                 .toPromise()
                 .then(function (res) {
-                console.log(res);
                 authentication_service_1.AuthenticationService.login(res.json().name, res.json().id);
                 _this.router.navigate(['/search']);
             })

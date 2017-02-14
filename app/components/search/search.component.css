@@ -5,7 +5,7 @@
 }
 
 .find-image{
-    background: url("../../../images/start/start-page.jpg") no-repeat center;
+    background-color: rgb(150, 30, 40);
     width: 100%;
     min-height: 100%;
     color: white;

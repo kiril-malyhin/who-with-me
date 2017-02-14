@@ -52,6 +52,7 @@ export class RegistrationComponent{
             user: {
                 'name': this.name,
                 'password': this.password,
+                'age': this.age,
                 'gender': this.gender,
                 'email': this.mail,
                 'phone': this.phone

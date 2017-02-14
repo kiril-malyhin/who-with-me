@@ -1,6 +1,6 @@
 {
   "title": "Кто со мной?",
-  "username": "Имя пользователя",
+  "username": "Имя",
   "password": "Пароль",
   "gender": "Пол",
   "genderMan": "Мужской",
@@ -87,6 +87,8 @@
 
   "driverDetails": "Данные о водителе",
   "listOfTrips": "Список поездок",
+  "listOfAddedTrips": "Созданные поездки",
+  "listOfBookedTrips": "Заказанные поездки",
 
   "sortingTitle": "Фильтр",
 
@@ -102,6 +104,14 @@
 
   "searchWaitMessage": "Пожалуйста, подождите, мы ищем...",
   "emptySearchResult": "Результат не найден.",
-  "emptySearchResultLead": "Попробуйте изменить запросы поиска"
+  "emptySearchResultLead": "Попробуйте изменить запросы поиска",
+
+  "editProfileTitle": "Редактирование профиля",
+  "editProfileButton": "Обновить профиль",
+
+  "deleteProfileConfirmation": "Удаление профиля",
+  "deleteProfileMessage": "Вы действительно хотите удалить этот профиль? Это действие будет необратимо!",
+  "deleteTripConfirmation": "Удаление поездки",
+  "deleteTripMessage": "Вы действительно хотите удалить эту поездку?"
 
 }

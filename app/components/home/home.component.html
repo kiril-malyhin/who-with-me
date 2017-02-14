@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="col-md-10" *ngIf="value === 100">
-        <p-dataList *ngIf="sortedTrips.length !== 0" [value]="users" [paginator]="true" [rows]="5" [style]="{'height': '100%'}">
+        <p-dataList *ngIf="sortedTrips !== null" [value]="users" [paginator]="true" [rows]="5" [style]="{'height': '100%'}">
             <p-header>
                 {{'listOfTrips' | translate}} ({{numberOfResultTrips}}) {{'tableTitleFrom' | translate}} {{tripFrom}} {{'tableTitleTo' | translate}} {{tripTo}}
                 <span style="float: right">
@@ -91,7 +91,7 @@
                 </div>
             </template>
         </p-dataList>
-        <div *ngIf="sortedTrips.length === 0 || numberOfResultTrips === 0" style="margin-top: 300px; font-size: 40px; font-weight: bold">
+        <div *ngIf="!sortedTrips|| !numberOfResultTrips" style="margin-top: 300px; font-size: 40px; font-weight: bold">
             <i class="fa fa-meh-o" aria-hidden="true"></i> {{'emptySearchResult' | translate}}
             <div class="lead">{{'emptySearchResultLead' | translate}}</div>
         </div>

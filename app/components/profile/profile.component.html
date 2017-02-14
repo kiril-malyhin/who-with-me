@@ -1,43 +1,5 @@
 <p-dialog header="Edit profile" modal="modal" width="auto" responsive="true" [(visible)]="display">
     <div class="form-group row">
-        <label class="col-xs-4 col-form-label pointer">{{ 'gender' | translate }}</label>
-        <div class="col-sm-8">
-            <div class="ui-g" style="width:250px;margin-bottom:10px">
-                <div style="padding-right: 20px"><p-radioButton name="gender" value="man" label="{{'genderMan' | translate}}" [(ngModel)]="gender"></p-radioButton></div>
-                <div ><p-radioButton name="gender" value="women" label="{{'genderWomen' | translate}}"[(ngModel)]="gender"></p-radioButton></div>
-            </div>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="login" class="col-xs-4 col-form-label pointer">{{ 'username' | translate }}</label>
-        <div class="col-sm-8">
-            <input [(ngModel)]="name" name="name" type="text" id="login" class="form-control"
-                   placeholder="{{ 'usernamePlaceholder' | translate }}" required>
-            <span *ngIf="!name && showErrorName" class="alert-invalid">{{ 'emptyUsername' | translate }}</span>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label for="password" class="col-xs-4 col-form-label pointer">{{ 'password' | translate }}</label>
-        <div class="col-sm-8">
-            <input [(ngModel)]="password" name="password" type="password" id="password"
-                   class="form-control"
-                   placeholder="{{ 'passwordPlaceholder' | translate }}" required>
-            <span *ngIf="!password && showErrorPassword" class="alert-invalid">{{ 'emptyPassword' | translate }}</span>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label for="repeatPassword" class="col-xs-4 col-form-label pointer">{{ 'repeatPassword' | translate }}</label>
-        <div class="col-sm-8">
-            <input [(ngModel)]="repeatPassword" name="repeatPassword" type="password" id="repeatPassword"
-                   class="form-control"
-                   placeholder="{{ 'repeatPasswordPlaceholder' | translate }}" required>
-            <span *ngIf="showErrorRepeatPassword " class="alert-invalid">{{ 'emptyRepeatPassword' | translate }}</span>
-        </div>
-    </div>
-
-    <div class="form-group row">
         <label for="age" class="col-xs-4 col-form-label pointer">{{ 'age' | translate }}</label>
         <div class="col-sm-8">
             <input [(ngModel)]="age" name="age" type="number" id="age"
@@ -69,17 +31,19 @@
 
     <span *ngIf="showErrorRegistration" class="alert-invalid" style="text-align: center">{{showErrorRegistration}}</span>
 
-    <button (click)="signUp()" type="button"
-            class="btn-block btn-lg login-btn main-light-background-color">{{ 'registration' | translate }}
+    <button (click)="updateProfile()" type="button"
+            class="btn-block btn-lg update-btn main-light-background-color">{{ 'editProfileButton' | translate }}
     </button>
 </p-dialog>
-
+<p-confirmDialog width="425"></p-confirmDialog>
 <div class="background-image">
     <div class="container">
-        <p class="profile-title">{{ 'profile' | translate }}</p>
+            <p class="profile-title">{{ 'profile' | translate }}
+                <i class="fa fa-trash-o icon-delete" aria-hidden="true" (click)="deleteProfile()"></i>
+            </p>
         <div class="col-md-6">
             <div class="profile">
-                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="float: right;padding-right: 15px;padding-top: 15px;" (click)="editProfile()"></i>
+                <i class="fa fa-pencil-square-o fa-2x icon-edit" aria-hidden="true" (click)="openEditProfile()"></i>
                 <div class="profile-photo">
                     <img src="../../../images/users/{{photo}}.png" alt="Generic placeholder image">
                 </div>
@@ -87,16 +51,17 @@
                 <label class="profile-info"><span class="profile-info-title">{{ 'username' | translate }}:</span><span> {{userData.name}}</span></label>
                 <label class="profile-info"><span class="profile-info-title">{{ 'mail' | translate }}:</span><span> {{userData.email}}</span></label>
                 <label class="profile-info"><span class="profile-info-title">{{ 'phone' | translate }}:</span><span> {{userData.phone}}</span></label>
+                <label class="profile-info"><span class="profile-info-title">{{ 'age' | translate }}:</span><span> {{userData.age}}</span></label>
                 </div>
         </div>
         <div class="col-md-6">
             <p-accordion>
-                <p-accordionTab header="{{ 'addTrip' | translate }}" [selected]="false">
+                <p-accordionTab header="{{ 'addTrip' | translate }}" [selected]="true">
                     <div class="form-group row">
                         <label class="col-xs-4 col-form-label pointer">{{ 'destinationFrom' | translate }}</label>
                         <div>
-                            <p-autoComplete [(ngModel)]="countryFrom" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
-                                            placeholder="From" [minLength]="1">
+                            <p-autoComplete [(ngModel)]="countryFrom" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" styleClass="wid100"
+                                            placeholder="{{ 'destinationFrom' | translate }}" [minLength]="1">
                             </p-autoComplete>
                             <span *ngIf="!countryFrom && showErrorCountryFrom" class="alert-invalid">{{ 'emptyDestinationFrom' | translate }}</span>
                         </div>
@@ -104,9 +69,9 @@
 
                     <div class="form-group row">
                         <label class="col-xs-4 col-form-label pointer">{{ 'destinationTo' | translate }}</label>
-                        <div>
-                            <p-autoComplete [(ngModel)]="countryTo" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
-                                            placeholder="To" [minLength]="1">
+                            <div>
+                            <p-autoComplete [(ngModel)]="countryTo" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" styleClass="wid100"
+                                            placeholder="{{ 'destinationTo' | translate }}" [minLength]="1">
                             </p-autoComplete>
                             <span *ngIf="!countryTo && showErrorCountryTo" class="alert-invalid">{{ 'emptyDestinationTo' | translate }}</span>
                         </div>
@@ -138,7 +103,7 @@
 
                     <div class="form-group row">
                         <label for="carType" class="col-xs-4 col-form-label pointer">{{'carType' | translate}}</label>
-                        <div class="col-sm-8">
+                        <div>
                             <select [(ngModel)]="carType" class="form-control" id="carType" name="carType" required autofocus>
                                 <option *ngFor="let car of cars">{{car.type}}</option>
                             </select>
@@ -147,7 +112,7 @@
 
                     <div class="form-group row">
                         <label for="experience" class="col-xs-4 col-form-label pointer">{{ 'experience' | translate }}</label>
-                        <div class="col-sm-8">
+                        <div>
                             <select [(ngModel)]="experience" class="form-control" id="experience" name="experience" required autofocus>
                                 <option *ngFor="let level of levels">{{level.type}}</option>
                             </select>
@@ -160,13 +125,103 @@
                 </p-accordionTab>
             </p-accordion>
         </div>
-        <div class="col-md-12" style="padding-top: 100px; padding-bottom: 100px">
-            <p-dataTable [value]="cars" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" scrollable="true" scrollHeight="500px">
-                <p-header> {{'listOfTrips' | translate}}</p-header>
-                <p-column field="bookedTrips" header="Booked trips"></p-column>
-                <p-column field="addedTrips" header="Added trips"></p-column>
-            </p-dataTable>
+        <div class="col-md-12">
+            <div class="col-md-6" style="padding-top: 50px; padding-bottom: 100px">
+                <p-dataList  [value]="addedTrips" [paginator]="true" [rows]="3">
+                    <p-header>
+                        {{'listOfAddedTrips' | translate}} ({{addedTrips.length}})
+                    </p-header>
+                    <template let-trip pTemplate="item">
+                        <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px;border-bottom:1px solid #D5D5D5;text-align: left">
+                            <i class="fa fa-times icon-delete-trip" aria-hidden="true" (click)="deleteTrip(trip)"></i>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-12">
+                                    <div class="ui-grid ui-grid-responsive ui-fluid">
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6">{{'destinationFrom' | translate}}: </div>
+                                            <div class="ui-grid-col-5">{{trip.from}}</div>
+                                        </div>
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6">{{'destinationTo' | translate}}: </div>
+                                            <div class="ui-grid-col-6">{{trip.to}}</div>
+                                        </div>
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6">{{'destinationDate' | translate}}: </div>
+                                            <div class="ui-grid-col-6">{{trip.date}}</div>
+                                        </div>
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6">{{'destinationPrice' | translate}}: </div>
+                                            <div class="ui-grid-col-6">{{trip.price}}</div>
+                                        </div>
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6">{{'carType' | translate}}: </div>
+                                            <div class="ui-grid-col-6">{{trip.car_type}}</div>
+                                        </div>
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6">{{'destinationSeatNumber' | translate}}: </div>
+                                            <div class="ui-grid-col-6">{{trip.number_of_seats}}</div>
+                                        </div>
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6">{{'experience' | translate}}: </div>
+                                            <div class="ui-grid-col-6">{{trip.drive_level}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </p-dataList>
+            </div>
+            <div class="col-md-6" style="padding-top: 50px; padding-bottom: 100px">
+                <p-dataList  [value]="bookedTrips" [paginator]="true" [rows]="3">
+                    <p-header>
+                        {{'listOfBookedTrips' | translate}} ({{bookedTrips.length}})
+                    </p-header>
+                    <template let-trip pTemplate="item">
+                        <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px;border-bottom:1px solid #D5D5D5;text-align: left">
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-12">
+                                    <div class="ui-grid ui-grid-responsive ui-fluid">
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-12" *ngIf="!bookedTrips">No booked trips.</div>
+                                        </div>
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6">{{'destinationFrom' | translate}}: </div>
+                                            <div class="ui-grid-col-6">{{trip.from}}</div>
+                                        </div>
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6">{{'destinationTo' | translate}}: </div>
+                                            <div class="ui-grid-col-6">{{trip.to}}</div>
+                                        </div>
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6">{{'destinationDate' | translate}}: </div>
+                                            <div class="ui-grid-col-6">{{trip.date.toLocaleString()}}</div>
+                                        </div>
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6">{{'destinationPrice' | translate}}: </div>
+                                            <div class="ui-grid-col-6">{{trip.price}}</div>
+                                        </div>
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6">{{'carType' | translate}}: </div>
+                                            <div class="ui-grid-col-6">{{trip.car_type}}</div>
+                                        </div>
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6">{{'destinationSeatNumber' | translate}}: </div>
+                                            <div class="ui-grid-col-6">{{trip.number_of_seats}}</div>
+                                        </div>
+                                        <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6">{{'experience' | translate}}: </div>
+                                            <div class="ui-grid-col-6">{{trip.drive_level}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </p-dataList>
+            </div>
         </div>
+
     </div>
 </div>
 

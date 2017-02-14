@@ -1,6 +1,4 @@
 import {Component, OnInit} from "@angular/core";
-import dataUsers from "../../services/data/dataUsers";
-import dataTrips from "../../services/data/dataTrips";
 import {SearchService} from "../../services/utils/search.service";
 
 export interface User {
@@ -35,6 +33,7 @@ export class HomeComponent implements OnInit{
     tripFrom: string;
     tripTo: string;
 
+    // TODO set min and price
     minPrice: number = 1;
     maxPrice: number = 50;
 
@@ -62,12 +61,10 @@ export class HomeComponent implements OnInit{
         this.tripTo = SearchService.getParameters().destinationTo;
         this.date = SearchService.getParameters().destinationDate;
 
-        this.trip = dataTrips;
         this.find();
 
-        this.users = dataUsers;
 
-        this.numberOfResultTrips = this.users.length;
+        // this.numberOfResultTrips = this.users.length;
 
         let today = new Date();
         let month = today.getMonth();
@@ -96,28 +93,28 @@ export class HomeComponent implements OnInit{
 
     find() {
         let self = this;
-        this.trip.forEach(function(item: any) {
-            if (self.tripFrom === item.from && self.tripTo === item.to && self.date === item.date) {
-                self.sortedTrips.push(item);
-            }
-        });
+        // this.trip.forEach(function(item: any) {
+        //     if (self.tripFrom === item.from && self.tripTo === item.to && self.date === item.date) {
+        //         self.sortedTrips.push(item);
+        //     }
+        // });
         return this.sortedTrips;
     }
 
     sort() {
-        let filters = {};
-        if(this.carType !== 'NoMatterCarType')
-            filters['carType'] = this.carType;
-        if(this.experience !== 'NoMatterExperience')
-            filters['experience'] = this.experience;
-        let result = dataUsers.filter(user => {
-            for (let key in filters) {
-                if (!(filters[key] === user[key])) return false;
-            }
-            return true;
-        });
-
-        this.users = result;
-        this.numberOfResultTrips = result.length;
+        // let filters = {};
+        // if(this.carType !== 'NoMatterCarType')
+        //     filters['carType'] = this.carType;
+        // if(this.experience !== 'NoMatterExperience')
+        //     filters['experience'] = this.experience;
+        // let result = dataUsers.filter(user => {
+        //     for (let key in filters) {
+        //         if (!(filters[key] === user[key])) return false;
+        //     }
+        //     return true;
+        // });
+        //
+        // this.users = result;
+        // this.numberOfResultTrips = result.length;
     }
 }
