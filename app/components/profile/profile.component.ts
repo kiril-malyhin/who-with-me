@@ -53,6 +53,7 @@ export class ProfileComponent implements OnInit{
     showErrorPhone: boolean = false;
     showErrorRegistration: string;
 
+    // TODO set datepicker min date
     minDate: Date;
     maxDate: Date;
     date: Date;
@@ -115,7 +116,7 @@ export class ProfileComponent implements OnInit{
                 console.log(res.json());
             })
             .catch(res => {
-                alert(res.statusText);
+                console.log(res.statusText);
             });
     }
 
@@ -152,7 +153,7 @@ export class ProfileComponent implements OnInit{
                 this.addedTrips.push(res.json());
             })
             .catch(res => {
-                alert(res.statusText);
+                console.log(res.statusText);
             });
     }
 
@@ -234,7 +235,7 @@ export class ProfileComponent implements OnInit{
                         AuthenticationService.logout();
                     })
                     .catch(res => {
-                        alert(res.status);
+                        console.log(res.status);
                     });
             }
         });
@@ -253,7 +254,7 @@ export class ProfileComponent implements OnInit{
                         self.getUserTrips();
                     })
                     .catch(res => {
-                        alert(res.status);
+                        console.log(res.status);
                     });
             }
         });

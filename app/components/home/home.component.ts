@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit{
     tripFrom: string;
     tripTo: string;
 
-    // TODO set min and price
+    // TODO set min and max price
     minPrice: number = 1;
     maxPrice: number = 50;
 

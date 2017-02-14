@@ -91,9 +91,10 @@
 }
 
 .icon-delete {
+    font-size: 45px;
     float: right;
     padding-right: 15px;
-    padding-top: 15px;
+    padding-top: 30px;
     cursor: pointer;
 }
 

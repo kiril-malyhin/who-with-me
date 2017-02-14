@@ -16,6 +16,8 @@ export class SearchComponent implements OnInit{
 
     }
 
+    // TODO set datepicker min date
+
     minDate: Date;
     maxDate: Date;
     dateTo: Date;
