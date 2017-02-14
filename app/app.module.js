@@ -40,6 +40,8 @@ var radiobutton_1 = require('primeng/components/radiobutton/radiobutton');
 var progressbar_1 = require('primeng/components/progressbar/progressbar');
 var confirmdialog_1 = require('primeng/components/confirmdialog/confirmdialog');
 var primeng_1 = require('primeng/primeng');
+var primeng_2 = require('primeng/primeng');
+var datatable_1 = require('primeng/components/datatable/datatable');
 var request_service_1 = require("./services/utils/request.service");
 var AppModule = (function () {
     function AppModule() {
@@ -67,7 +69,9 @@ var AppModule = (function () {
                 slider_1.SliderModule,
                 radiobutton_1.RadioButtonModule,
                 progressbar_1.ProgressBarModule,
-                confirmdialog_1.ConfirmDialogModule
+                confirmdialog_1.ConfirmDialogModule,
+                primeng_2.SharedModule,
+                datatable_1.DataTableModule
             ],
             declarations: [
                 login_component_1.LoginComponent,

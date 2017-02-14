@@ -1,92 +1,3 @@
-<div class="background-image">
-    <div class="container">
-        <p class="profile-title">{{ 'profile' | translate }}</p>
-        <div class="col-md-6">
-            <div class="profile">
-                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="float: right;padding-right: 15px;padding-top: 15px;" (click)="editProfile()"></i>
-                <div class="profile-photo">
-                    <img src="../../../images/users/{{photo}}.png" alt="Generic placeholder image">
-                </div>
-
-                <label class="profile-info"><span class="profile-info-title">{{ 'username' | translate }}:</span><span> {{userData.name}}</span></label>
-                <label class="profile-info"><span class="profile-info-title">{{ 'mail' | translate }}:</span><span> {{userData.email}}</span></label>
-                <label class="profile-info"><span class="profile-info-title">{{ 'phone' | translate }}:</span><span> {{userData.phone}}</span></label>
-                </div>
-        </div>
-        <div class="col-md-6">
-            <p-accordion>
-                <p-accordionTab header="{{ 'addTrip' | translate }}" [selected]="true">
-                    <div class="form-group row">
-                        <label class="col-xs-4 col-form-label pointer">{{ 'destinationFrom' | translate }}</label>
-                        <div>
-                            <p-autoComplete [(ngModel)]="countryFrom" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
-                                            placeholder="From" [minLength]="1">
-                            </p-autoComplete>
-                            <span *ngIf="!countryFrom && showErrorCountryFrom" class="alert-invalid">{{ 'emptyDestinationFrom' | translate }}</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-xs-4 col-form-label pointer">{{ 'destinationTo' | translate }}</label>
-                        <div>
-                            <p-autoComplete [(ngModel)]="countryTo" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
-                                            placeholder="To" [minLength]="1">
-                            </p-autoComplete>
-                            <span *ngIf="!countryTo && showErrorCountryTo" class="alert-invalid">{{ 'emptyDestinationTo' | translate }}</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-xs-4 col-form-label pointer">{{ 'destinationDate' | translate }}</label>
-                        <div>
-                            <p-calendar [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
-                            <span *ngIf="!date && showErrorDate" class="alert-invalid">{{ 'emptyDestinationDate' | translate }}</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="price" class="col-xs-4 col-form-label pointer">{{ 'destinationPrice' | translate }}</label>
-                        <div>
-                            <input [(ngModel)]="price" name="price" type="number" id="price" class="form-control" placeholder="{{ 'price' | translate }}" required>
-                            <span *ngIf="!price && showErrorPrice" class="alert-invalid">{{ 'emptyPrice' | translate }}</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="seatNumber" class="col-xs-4 col-form-label pointer">{{ 'destinationSeatNumber' | translate }}</label>
-                        <div>
-                            <input [(ngModel)]="seatNumber" name="seatNumber" type="number" id="seatNumber" class="form-control" placeholder="{{ 'seatNumber' | translate }}" required>
-                            <span *ngIf="!seatNumber && showErrorSeatNumber" class="alert-invalid">{{ 'emptySeatNumber' | translate }}</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="carType" class="col-xs-4 col-form-label pointer">{{'carType' | translate}}</label>
-                        <div class="col-sm-8">
-                            <select [(ngModel)]="carType" class="form-control" id="carType" name="carType" required autofocus>
-                                <option *ngFor="let car of cars">{{car.type}}</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="experience" class="col-xs-4 col-form-label pointer">{{ 'experience' | translate }}</label>
-                        <div class="col-sm-8">
-                            <select [(ngModel)]="experience" class="form-control" id="experience" name="experience" required autofocus>
-                                <option *ngFor="let level of levels">{{level.type}}</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <button (click)="addTrip()" type="button"
-                            class="btn-block btn-lg add-trip main-light-background-color">{{ 'addTrip' | translate }}
-                    </button>
-                </p-accordionTab>
-            </p-accordion>
-        </div>
-    </div>
-</div>
-
 <p-dialog header="Edit profile" modal="modal" width="auto" responsive="true" [(visible)]="display">
     <div class="form-group row">
         <label class="col-xs-4 col-form-label pointer">{{ 'gender' | translate }}</label>
@@ -162,4 +73,100 @@
             class="btn-block btn-lg login-btn main-light-background-color">{{ 'registration' | translate }}
     </button>
 </p-dialog>
+
+<div class="background-image">
+    <div class="container">
+        <p class="profile-title">{{ 'profile' | translate }}</p>
+        <div class="col-md-6">
+            <div class="profile">
+                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="float: right;padding-right: 15px;padding-top: 15px;" (click)="editProfile()"></i>
+                <div class="profile-photo">
+                    <img src="../../../images/users/{{photo}}.png" alt="Generic placeholder image">
+                </div>
+
+                <label class="profile-info"><span class="profile-info-title">{{ 'username' | translate }}:</span><span> {{userData.name}}</span></label>
+                <label class="profile-info"><span class="profile-info-title">{{ 'mail' | translate }}:</span><span> {{userData.email}}</span></label>
+                <label class="profile-info"><span class="profile-info-title">{{ 'phone' | translate }}:</span><span> {{userData.phone}}</span></label>
+                </div>
+        </div>
+        <div class="col-md-6">
+            <p-accordion>
+                <p-accordionTab header="{{ 'addTrip' | translate }}" [selected]="false">
+                    <div class="form-group row">
+                        <label class="col-xs-4 col-form-label pointer">{{ 'destinationFrom' | translate }}</label>
+                        <div>
+                            <p-autoComplete [(ngModel)]="countryFrom" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
+                                            placeholder="From" [minLength]="1">
+                            </p-autoComplete>
+                            <span *ngIf="!countryFrom && showErrorCountryFrom" class="alert-invalid">{{ 'emptyDestinationFrom' | translate }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-xs-4 col-form-label pointer">{{ 'destinationTo' | translate }}</label>
+                        <div>
+                            <p-autoComplete [(ngModel)]="countryTo" [suggestions]="filteredCountriesSingle" (completeMethod)="filterCountrySingle($event)" field="name" [size]="30"
+                                            placeholder="To" [minLength]="1">
+                            </p-autoComplete>
+                            <span *ngIf="!countryTo && showErrorCountryTo" class="alert-invalid">{{ 'emptyDestinationTo' | translate }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-xs-4 col-form-label pointer">{{ 'destinationDate' | translate }}</label>
+                        <div>
+                            <p-calendar [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
+                            <span *ngIf="!date && showErrorDate" class="alert-invalid">{{ 'emptyDestinationDate' | translate }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="price" class="col-xs-4 col-form-label pointer">{{ 'destinationPrice' | translate }}</label>
+                        <div>
+                            <input [(ngModel)]="price" name="price" type="number" id="price" class="form-control" placeholder="{{ 'price' | translate }}" required>
+                            <span *ngIf="!price && showErrorPrice" class="alert-invalid">{{ 'emptyPrice' | translate }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="seatNumber" class="col-xs-4 col-form-label pointer">{{ 'destinationSeatNumber' | translate }}</label>
+                        <div>
+                            <input [(ngModel)]="seatNumber" name="seatNumber" type="number" id="seatNumber" class="form-control" placeholder="{{ 'seatNumber' | translate }}" required>
+                            <span *ngIf="!seatNumber && showErrorSeatNumber" class="alert-invalid">{{ 'emptySeatNumber' | translate }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="carType" class="col-xs-4 col-form-label pointer">{{'carType' | translate}}</label>
+                        <div class="col-sm-8">
+                            <select [(ngModel)]="carType" class="form-control" id="carType" name="carType" required autofocus>
+                                <option *ngFor="let car of cars">{{car.type}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="experience" class="col-xs-4 col-form-label pointer">{{ 'experience' | translate }}</label>
+                        <div class="col-sm-8">
+                            <select [(ngModel)]="experience" class="form-control" id="experience" name="experience" required autofocus>
+                                <option *ngFor="let level of levels">{{level.type}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button (click)="addTrip()" type="button"
+                            class="btn-block btn-lg add-trip main-light-background-color">{{ 'addTrip' | translate }}
+                    </button>
+                </p-accordionTab>
+            </p-accordion>
+        </div>
+        <div class="col-md-12" style="padding-top: 100px; padding-bottom: 100px">
+            <p-dataTable [value]="cars" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" scrollable="true" scrollHeight="500px">
+                <p-header> {{'listOfTrips' | translate}}</p-header>
+                <p-column field="bookedTrips" header="Booked trips"></p-column>
+                <p-column field="addedTrips" header="Added trips"></p-column>
+            </p-dataTable>
+        </div>
+    </div>
+</div>
 

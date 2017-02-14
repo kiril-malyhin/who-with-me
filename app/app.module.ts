@@ -34,6 +34,8 @@ import {RadioButtonModule} from 'primeng/components/radiobutton/radiobutton';
 import {ProgressBarModule} from 'primeng/components/progressbar/progressbar';
 import {ConfirmDialogModule} from 'primeng/components/confirmdialog/confirmdialog';
 import {ConfirmationService} from 'primeng/primeng';
+import {SharedModule} from 'primeng/primeng';
+import {DataTableModule} from 'primeng/components/datatable/datatable';
 
 import {RequestService} from "./services/utils/request.service";
 
@@ -59,7 +61,9 @@ import {RequestService} from "./services/utils/request.service";
         SliderModule,
         RadioButtonModule,
         ProgressBarModule,
-        ConfirmDialogModule
+        ConfirmDialogModule,
+        SharedModule,
+        DataTableModule
     ],
     declarations: [
         LoginComponent,
