@@ -12,13 +12,13 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var authentication_service_1 = require("../../services/utils/authentication.service");
 var Rx_1 = require("rxjs/Rx");
-var http_1 = require("@angular/http");
+var request_service_1 = require("../../services/utils/request.service");
 var LoginComponent = (function () {
-    function LoginComponent(router, ref, http) {
+    function LoginComponent(router, ref, requestService) {
         var _this = this;
         this.router = router;
         this.ref = ref;
-        this.http = http;
+        this.requestService = requestService;
         this.showErrorName = false;
         this.showErrorPassword = false;
         this.isRememberMe = false;
@@ -37,7 +37,7 @@ var LoginComponent = (function () {
         if (!this.name || !this.password) {
             return;
         }
-        this.http.get("http://localhost:4000/users")
+        this.requestService.getUser()
             .toPromise()
             .then(function (res) {
             var self = _this;
@@ -55,7 +55,7 @@ var LoginComponent = (function () {
                     'password': _this.password,
                 }
             };
-            _this.http.post("http://localhost:4000/user_auth", data)
+            _this.requestService.userAuth(data)
                 .toPromise()
                 .then(function (res) {
                 authentication_service_1.AuthenticationService.login(res.json().name, res.json().id);
@@ -76,7 +76,7 @@ var LoginComponent = (function () {
             templateUrl: 'login.component.html',
             styleUrls: ['login.component.css']
         }), 
-        __metadata('design:paramtypes', [router_1.Router, core_1.ElementRef, http_1.Http])
+        __metadata('design:paramtypes', [router_1.Router, core_1.ElementRef, request_service_1.RequestService])
     ], LoginComponent);
     return LoginComponent;
 }());

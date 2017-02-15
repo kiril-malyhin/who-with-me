@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {Http} from "@angular/http";
 import {AuthenticationService} from "../../services/utils/authentication.service";
+import {RequestService} from "../../services/utils/request.service";
 
 @Component({
     moduleId: module.id,
@@ -12,7 +13,8 @@ import {AuthenticationService} from "../../services/utils/authentication.service
 
 export class RegistrationComponent{
 
-    constructor(public http: Http, private router: Router) {}
+    constructor(private router: Router,
+                private requestService: RequestService) {}
 
     id: number;
     name: string;
@@ -59,7 +61,7 @@ export class RegistrationComponent{
             }
         };
 
-        this.http.post("http://localhost:4000/users/", data)
+        this.requestService.createUser(data)
             .toPromise()
             .then(res => {
                 AuthenticationService.login(res.json().name, res.json().id);

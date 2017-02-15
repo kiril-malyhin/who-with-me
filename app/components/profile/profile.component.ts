@@ -1,9 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import dataCountries from "../../services/data/dataCountries";
-import {Http} from "@angular/http";
 import {AuthenticationService} from "../../services/utils/authentication.service";
 import {ConfirmationService} from "primeng/components/common/api";
 import {TranslateService} from "ng2-translate";
+import {RequestService} from "../../services/utils/request.service";
 
 export interface Trip {
     id: any;
@@ -25,7 +25,9 @@ export interface Trip {
 
 export class ProfileComponent implements OnInit{
 
-    constructor(private http: Http, private confirmationService: ConfirmationService, private translateService: TranslateService) {}
+    constructor(private confirmationService: ConfirmationService,
+                private translateService: TranslateService,
+                private requestService: RequestService) {}
 
     price: number;
     seatNumber: number;
@@ -97,7 +99,7 @@ export class ProfileComponent implements OnInit{
 
     getUserData() {
         let self = this;
-        this.http.get("http://localhost:4000/users/" + AuthenticationService.getUserCredentials().id)
+        this.requestService.getCurrentUser()
             .toPromise()
             .then(res => {
                 self.userData = res.json();
@@ -109,7 +111,7 @@ export class ProfileComponent implements OnInit{
     }
 
     getUserTrips() {
-        this.http.get("http://localhost:4000/trips/" + + AuthenticationService.getUserCredentials().id)
+        this.requestService.getAddedTrips()
             .toPromise()
             .then(res => {
                 this.addedTrips = res.json();
@@ -147,7 +149,7 @@ export class ProfileComponent implements OnInit{
         };
 
 
-        this.http.post("http://localhost:4000/trips/", data)
+        this.requestService.createTrip(data)
             .toPromise()
             .then(res => {
                 this.addedTrips.push(res.json());
@@ -209,7 +211,7 @@ export class ProfileComponent implements OnInit{
             }
         };
 
-        this.http.put("http://localhost:4000/users/" + AuthenticationService.getUserCredentials().id, data)
+        this.requestService.updateUser(data)
             .toPromise()
             .then(res => {
                 this.userData = res.json();
@@ -229,7 +231,7 @@ export class ProfileComponent implements OnInit{
             header: this.translateService.instant('deleteProfileConfirmation'),
             icon: 'fa fa-trash',
             accept: () => {
-                this.http.delete("http://localhost:4000/users/" + AuthenticationService.getUserCredentials().id)
+                this.requestService.deleteUser()
                     .toPromise()
                     .then(() => {
                         AuthenticationService.logout();
@@ -248,10 +250,10 @@ export class ProfileComponent implements OnInit{
             header: this.translateService.instant('deleteTripConfirmation'),
             icon: 'fa fa-trash',
             accept: () => {
-                self.http.delete("http://localhost:4000/trips/" + trip.id)
+                this.requestService.deleteTrip(trip.id)
                     .toPromise()
                     .then(() => {
-                        self.getUserTrips();
+                        this.getUserTrips();
                     })
                     .catch(res => {
                         console.log(res.status);

@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {AuthenticationService} from "../../services/utils/authentication.service";
 import {Observable} from "rxjs/Rx";
 import {Response, Headers, Http} from "@angular/http";
+import {RequestService} from "../../services/utils/request.service";
 
 @Component({
     moduleId: module.id,
@@ -24,7 +25,7 @@ export class LoginComponent {
 
     constructor(private router: Router,
                 private ref: ElementRef,
-                public http: Http) {
+                private requestService: RequestService) {
         Observable.fromEvent(this.ref.nativeElement, 'keyup').subscribe((e: KeyboardEvent) => {
             if (e.keyCode === 13) {
                 this.login();
@@ -41,7 +42,7 @@ export class LoginComponent {
             return;
         }
 
-        this.http.get("http://localhost:4000/users")
+        this.requestService.getUser()
             .toPromise()
             .then(res => {
                 let self = this;
@@ -59,7 +60,7 @@ export class LoginComponent {
                         'password': this.password,
                     }
                 };
-                this.http.post("http://localhost:4000/user_auth", data)
+                this.requestService.userAuth(data)
                 .toPromise()
                 .then(res => {
                     AuthenticationService.login(res.json().name, res.json().id);
