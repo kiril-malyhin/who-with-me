@@ -1,14 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {SearchService} from "../../services/utils/search.service";
-
-export interface User {
-    name: any;
-    photo: any;
-    mail: any;
-    phone: any;
-    carType: any;
-    experience: any;
-}
+import {RequestService} from "../../services/utils/request.service";
 
 @Component({
     moduleId: module.id,
@@ -18,35 +10,31 @@ export interface User {
 })
 
 export class HomeComponent implements OnInit{
-    trip: any;
-    sortedTrips: Array<any> = [];
-    users: User[];
-    selectedUser: User;
-
-    displayDialog: boolean;
-    numberOfResultTrips: number = 0;
+    // sortedTrips: Array<any> = [];
+    resultTrips: Array<any> = [];
 
     minDate: Date;
     maxDate: Date;
     date: Date;
 
-    tripFrom: string;
-    tripTo: string;
+    countryFrom: string;
+    countryTo: string;
+
+    value: number = 0;
 
     // TODO set min and max price
     minPrice: number = 1;
     maxPrice: number = 50;
-
-    minTime: number = 1;
-    maxTime: number = 24;
-
-    rangeTime: number[] = [this.minTime, this.maxTime];
     rangePrice: number[] = [this.minPrice, this.maxPrice];
 
     experience: string = 'NoMatterExperience';
     carType: string = 'NoMatterCarType';
 
-    value: number = 0;
+    isPaginator: boolean = true;
+
+    photo: string = 'man';
+
+    constructor(private requestService: RequestService) {}
 
     ngOnInit(): void {
         let interval = setInterval(() => {
@@ -57,48 +45,39 @@ export class HomeComponent implements OnInit{
             }
         }, 1000);
 
-        this.tripFrom = SearchService.getParameters().destinationFrom;
-        this.tripTo = SearchService.getParameters().destinationTo;
+        this.countryFrom = SearchService.getParameters().destinationFrom;
+        this.countryTo = SearchService.getParameters().destinationTo;
         this.date = SearchService.getParameters().destinationDate;
 
-        this.find();
-
-
-        // this.numberOfResultTrips = this.users.length;
-
-        let today = new Date();
-        let month = today.getMonth();
-        let prevMonth = (month === 0) ? 11 : month -1;
-        let nextMonth = (month === 11) ? 0 : month + 1;
-        this.minDate = new Date();
-        this.minDate.setMonth(prevMonth);
-        this.maxDate = new Date();
-        this.maxDate.setMonth(nextMonth);
+        this.getTrips();
     }
 
-    selectUser(user: User) {
-        this.selectedUser = user;
-        this.displayDialog = true;
-    }
-
-    onDialogHide() {
-        this.selectedUser = null;
-    }
-
-    reverseDestination() {
-        let key = this.tripFrom;
-        this.tripFrom = this.tripTo;
-        this.tripTo = key;
-    }
-
-    find() {
+    getTrips() {
         let self = this;
+
+        let data = {
+            trip: {
+                'from': this.countryFrom,
+                'to': this.countryTo,
+                'date': this.date,
+            }
+        };
+        this.requestService.findTrip(data)
+            .toPromise()
+            .then(res => {
+                self.resultTrips = res.json();
+                console.log(self.resultTrips);
+                if(self.resultTrips.length === 0) this.isPaginator = false;
+            })
+            .catch(res => {
+                console.log(res.statusText);
+            });
+
         // this.trip.forEach(function(item: any) {
         //     if (self.tripFrom === item.from && self.tripTo === item.to && self.date === item.date) {
         //         self.sortedTrips.push(item);
         //     }
         // });
-        return this.sortedTrips;
     }
 
     sort() {
@@ -116,5 +95,11 @@ export class HomeComponent implements OnInit{
         //
         // this.users = result;
         // this.numberOfResultTrips = result.length;
+    }
+
+    reverseDestination() {
+        let key = this.countryFrom;
+        this.countryFrom = this.countryTo;
+        this.countryTo = key;
     }
 }

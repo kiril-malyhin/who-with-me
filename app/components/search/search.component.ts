@@ -22,13 +22,16 @@ export class SearchComponent implements OnInit{
     maxDate: Date;
     dateTo: Date;
 
-    countryTo: string = '';
-    countryFrom: string = '';
+    countryTo: string = SearchService.getParameters().destinationTo || '';
+    countryFrom: string = SearchService.getParameters().destinationFrom || '';
     filteredCountriesSingle: string[];
     filteredCountriesMultiple: string[];
 
     ngOnInit(): void {
+        this.setDate();
+    }
 
+    setDate() {
         let today = new Date();
         let month = today.getMonth();
         let prevMonth = (month === 0) ? 11 : month - 1;
@@ -62,8 +65,13 @@ export class SearchComponent implements OnInit{
 
     findTrip() {
         if (!this.countryFrom['name'] || !this.countryTo['name'] || !this.dateTo) {
-            alert('Error! Check input!');
-            return;
+            if (!this.countryFrom || !this.countryTo) {
+                alert('Error! Check input!');
+                return;
+            } else {
+                SearchService.setParameters(this.countryFrom, this.countryTo, this.dateTo);
+                this.router.navigate(['/home']);
+            }
         } else {
             SearchService.setParameters(this.countryFrom['name'], this.countryTo['name'], this.dateTo);
             this.router.navigate(['/home']);

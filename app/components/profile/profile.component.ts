@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit{
     // TODO set datepicker min date
     minDate: Date;
     maxDate: Date;
-    date: Date;
+    dateTo: Date;
 
     countryTo: string;
     countryFrom: string;
@@ -77,6 +77,15 @@ export class ProfileComponent implements OnInit{
 
     ngOnInit(): void {
 
+        let today = new Date();
+        let month = today.getMonth();
+        let prevMonth = (month === 0) ? 11 : month - 1;
+        let nextMonth = (month === 11) ? 0 : month + 1;
+        this.minDate = new Date();
+        this.minDate.setMonth(prevMonth);
+        this.maxDate = new Date();
+        this.maxDate.setMonth(nextMonth);
+
         this.cars = [
             {type: this.translateService.instant('standard')},
             {type: this.translateService.instant('premium')},
@@ -94,7 +103,6 @@ export class ProfileComponent implements OnInit{
 
         this.getUserData();
         this.getUserTrips();
-        this.setDate();
     }
 
     getUserData() {
@@ -125,13 +133,13 @@ export class ProfileComponent implements OnInit{
     addTrip() {
         this.showErrorCountryFrom = !this.countryFrom;
         this.showErrorCountryTo = !this.countryTo;
-        this.showErrorDate = !this.date;
+        this.showErrorDate = !this.dateTo;
         this.showErrorPrice = !this.price;
         this.showErrorSeatNumber = !this.seatNumber;
         this.showErrorCarType = !this.carType;
         this.showErrorExperience = !this.experience;
 
-        if (!this.price || !this.seatNumber || !this.countryFrom || !this.countryTo || !this.date || !this.carType || !this.experience) {
+        if (!this.price || !this.seatNumber || !this.countryFrom || !this.countryTo || !this.dateTo || !this.carType || !this.experience) {
             return;
         }
 
@@ -140,14 +148,13 @@ export class ProfileComponent implements OnInit{
                 'user_id': AuthenticationService.getUserCredentials().id,
                 'from': this.countryFrom['name'],
                 'to': this.countryTo['name'],
-                'date': this.date,
+                'date': this.dateTo.toString(),
                 'price': this.price,
                 'number_of_seats': this.seatNumber,
                 'car_type': this.carType,
                 'drive_level': this.experience
             }
         };
-
 
         this.requestService.createTrip(data)
             .toPromise()
@@ -173,17 +180,6 @@ export class ProfileComponent implements OnInit{
             }
         }
         return filtered;
-    }
-
-    setDate() {
-        let today = new Date();
-        let month = today.getMonth();
-        let prevMonth = (month === 0) ? 11 : month -1;
-        let nextMonth = (month === 11) ? 0 : month + 1;
-        this.minDate = new Date();
-        this.minDate.setMonth(prevMonth);
-        this.maxDate = new Date();
-        this.maxDate.setMonth(nextMonth);
     }
 
     openEditProfile() {
@@ -244,7 +240,6 @@ export class ProfileComponent implements OnInit{
     }
 
     deleteTrip(trip: Trip) {
-        let self = this;
         this.confirmationService.confirm({
             message: this.translateService.instant('deleteTripMessage'),
             header: this.translateService.instant('deleteTripConfirmation'),

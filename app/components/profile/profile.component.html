@@ -80,8 +80,8 @@
                     <div class="form-group row">
                         <label class="col-xs-4 col-form-label pointer">{{ 'destinationDate' | translate }}</label>
                         <div>
-                            <p-calendar [(ngModel)]="date" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
-                            <span *ngIf="!date && showErrorDate" class="alert-invalid">{{ 'emptyDestinationDate' | translate }}</span>
+                            <p-calendar [(ngModel)]="dateTo" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
+                            <span *ngIf="!dateTo && showErrorDate" class="alert-invalid">{{ 'emptyDestinationDate' | translate }}</span>
                         </div>
                     </div>
 

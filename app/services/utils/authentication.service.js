@@ -31,6 +31,9 @@ var AuthenticationService = (function () {
     AuthenticationService.logout = function () {
         localStorage.removeItem('name');
         localStorage.removeItem('id');
+        localStorage.removeItem('destinationFrom');
+        localStorage.removeItem('destinationTo');
+        localStorage.removeItem('destinationDate');
         this.logged.next(false);
     };
     AuthenticationService.logged = new BehaviorSubject_1.BehaviorSubject(!!localStorage.getItem('name'));

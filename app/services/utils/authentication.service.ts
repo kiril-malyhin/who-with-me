@@ -28,6 +28,9 @@ export class AuthenticationService {
     static logout(): void {
         localStorage.removeItem('name');
         localStorage.removeItem('id');
+        localStorage.removeItem('destinationFrom');
+        localStorage.removeItem('destinationTo');
+        localStorage.removeItem('destinationDate');
         this.logged.next(false);
     }
 

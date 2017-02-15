@@ -44,46 +44,48 @@
         </div>
     </div>
     <div class="col-md-10" *ngIf="value === 100">
-        <p-dataList *ngIf="sortedTrips !== null" [value]="users" [paginator]="true" [rows]="5" [style]="{'height': '100%'}">
+        <p-dataList [value]="resultTrips" [paginator]="isPaginator" [rows]="3">
             <p-header>
-                {{'listOfTrips' | translate}} ({{numberOfResultTrips}}) {{'tableTitleFrom' | translate}} {{tripFrom}} {{'tableTitleTo' | translate}} {{tripTo}}
-                <span style="float: right">
-                    <input class="form-control" placeholder="{{'destinationFrom' | translate}}" value="{{tripFrom}}">
-                    <button class="btn btn-sm btn-info" (click)="reverseDestination()"><i class="fa fa-exchange" aria-hidden="true"></i></button>
-                    <input class="form-control" placeholder="{{'destinationTo' | translate}}" value="{{tripTo}}">
-                </span>
+                {{'listOfTrips' | translate}} ({{resultTrips.length}}) {{'tableTitleFrom' | translate}} {{countryFrom}} {{'tableTitleTo' | translate}} {{countryTo}}
+                <!--<span style="float: right">-->
+                    <!--<input class="form-control" placeholder="{{'destinationFrom' | translate}}" value="{{countryFrom}}">-->
+                    <!--<button class="btn btn-sm btn-info" (click)="reverseDestination()"><i class="fa fa-exchange" aria-hidden="true"></i></button>-->
+                    <!--<input class="form-control" placeholder="{{'destinationTo' | translate}}" value="{{countryTo}}">-->
+                <!--</span>-->
             </p-header>
-            <template let-user pTemplate="item">
+            <template let-trip pTemplate="item">
                 <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px;border-bottom:1px solid #D5D5D5;text-align: left">
                     <div class="ui-grid-row">
-                        <div class="ui-grid-col-3" style="text-align:center">
-                            <img src="{{user.photo}}" (click)="selectUser(user)" style="cursor:pointer;">
-                        </div>
-                        <div class="ui-grid-col-9">
+                        <div class="ui-grid-col-5"></div>
+                        <div class="ui-grid-col-7">
                             <div class="ui-grid ui-grid-responsive ui-fluid">
                                 <div class="ui-grid-row">
-                                    <div class="ui-grid-col-2">{{'destinationFrom' | translate}}: </div>
-                                    <div class="ui-grid-col-2">{{sortedTrips[0].from}}</div>
+                                    <div class="ui-grid-col-4">{{'destinationFrom' | translate}}: </div>
+                                    <div class="ui-grid-col-8">{{trip.from}}</div>
                                 </div>
                                 <div class="ui-grid-row">
-                                    <div class="ui-grid-col-2">{{'destinationTo' | translate}}: </div>
-                                    <div class="ui-grid-col-2">{{sortedTrips[0].to}}</div>
+                                    <div class="ui-grid-col-4">{{'destinationTo' | translate}}: </div>
+                                    <div class="ui-grid-col-8">{{trip.to}}</div>
                                 </div>
                                 <div class="ui-grid-row">
-                                    <div class="ui-grid-col-2">{{'destinationDate' | translate}}: </div>
-                                    <div class="ui-grid-col-2">{{sortedTrips[0].date.toLocaleString()}}</div>
+                                    <div class="ui-grid-col-4">{{'destinationDate' | translate}}: </div>
+                                    <div class="ui-grid-col-8">{{trip.date}}</div>
                                 </div>
                                 <div class="ui-grid-row">
-                                    <div class="ui-grid-col-2">{{'carType' | translate}}: </div>
-                                    <div class="ui-grid-col-2">{{user.carType}}</div>
+                                    <div class="ui-grid-col-4">{{'destinationPrice' | translate}}: </div>
+                                    <div class="ui-grid-col-8">{{trip.price}}</div>
                                 </div>
                                 <div class="ui-grid-row">
-                                    <div class="ui-grid-col-2">{{'destinationPrice' | translate}}: </div>
-                                    <div class="ui-grid-col-2">{{sortedTrips[0].price}}</div>
+                                    <div class="ui-grid-col-4">{{'carType' | translate}}: </div>
+                                    <div class="ui-grid-col-8">{{trip.car_type}}</div>
                                 </div>
                                 <div class="ui-grid-row">
-                                    <div class="ui-grid-col-2">{{'destinationSeatNumber' | translate}}: </div>
-                                    <div class="ui-grid-col-2">{{sortedTrips[0].seatsNumber}}</div>
+                                    <div class="ui-grid-col-4">{{'destinationSeatNumber' | translate}}: </div>
+                                    <div class="ui-grid-col-8">{{trip.number_of_seats}}</div>
+                                </div>
+                                <div class="ui-grid-row">
+                                    <div class="ui-grid-col-4">{{'experience' | translate}}: </div>
+                                    <div class="ui-grid-col-8">{{trip.drive_level}}</div>
                                 </div>
                             </div>
                         </div>
@@ -91,39 +93,9 @@
                 </div>
             </template>
         </p-dataList>
-        <div *ngIf="!sortedTrips|| !numberOfResultTrips" style="margin-top: 300px; font-size: 40px; font-weight: bold">
+        <div *ngIf="resultTrips.length === 0" style="margin-top: 200px; font-size: 40px; font-weight: bold">
             <i class="fa fa-meh-o" aria-hidden="true"></i> {{'emptySearchResult' | translate}}
             <div class="lead">{{'emptySearchResultLead' | translate}}</div>
         </div>
-
-        <p-dialog header="{{'driverDetails' | translate}}" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="400" (onAfterHide)="onDialogHide()">
-            <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="selectedUser" style="font-size:16px;text-align:right;padding-left:20px; padding-right: 20px">
-                <div class="ui-grid-row">
-                    <div class="ui-grid-col-12" style="text-align:center; padding-bottom: 10px">
-                        <img src="{{selectedUser.photo}}">
-                    </div>
-                </div>
-                <div class="ui-grid-row">
-                    <div class="driver-info-left">{{'username' | translate}}: </div>
-                    <div>{{selectedUser.name}}</div>
-                </div>
-                <div class="ui-grid-row">
-                    <div class="driver-info-left">{{'mail' | translate}}: </div>
-                    <div>{{selectedUser.mail}}</div>
-                </div>
-                <div class="ui-grid-row">
-                    <div class="driver-info-left">{{'phone' | translate}}: </div>
-                    <div>{{selectedUser.phone}}</div>
-                </div>
-                <div class="ui-grid-row">
-                    <div class="driver-info-left">{{'carType' | translate}}: </div>
-                    <div>{{selectedUser.carType}}</div>
-                </div>
-                <div class="ui-grid-row">
-                    <div class="driver-info-left">{{'experience' | translate}}: </div>
-                    <div>{{selectedUser.experience}}</div>
-                </div>
-            </div>
-        </p-dialog>
     </div>
 </div>

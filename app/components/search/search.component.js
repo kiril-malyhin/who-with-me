@@ -15,10 +15,13 @@ var search_service_1 = require("../../services/utils/search.service");
 var SearchComponent = (function () {
     function SearchComponent(router) {
         this.router = router;
-        this.countryTo = '';
-        this.countryFrom = '';
+        this.countryTo = search_service_1.SearchService.getParameters().destinationTo || '';
+        this.countryFrom = search_service_1.SearchService.getParameters().destinationFrom || '';
     }
     SearchComponent.prototype.ngOnInit = function () {
+        this.setDate();
+    };
+    SearchComponent.prototype.setDate = function () {
         var today = new Date();
         var month = today.getMonth();
         var prevMonth = (month === 0) ? 11 : month - 1;
@@ -48,8 +51,14 @@ var SearchComponent = (function () {
     };
     SearchComponent.prototype.findTrip = function () {
         if (!this.countryFrom['name'] || !this.countryTo['name'] || !this.dateTo) {
-            alert('Error! Check input!');
-            return;
+            if (!this.countryFrom || !this.countryTo) {
+                alert('Error! Check input!');
+                return;
+            }
+            else {
+                search_service_1.SearchService.setParameters(this.countryFrom, this.countryTo, this.dateTo);
+                this.router.navigate(['/home']);
+            }
         }
         else {
             search_service_1.SearchService.setParameters(this.countryFrom['name'], this.countryTo['name'], this.dateTo);
