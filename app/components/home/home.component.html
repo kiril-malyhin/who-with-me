@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="col-md-10" *ngIf="value === 100">
-        <p-dataList [value]="resultTrips" [paginator]="isPaginator" [rows]="3">
+        <p-dataList [value]="resultTrips" [paginator]="isPaginator" [rows]="5">
             <p-header>
                 {{'listOfTrips' | translate}} ({{resultTrips.length}}) {{'tableTitleFrom' | translate}} {{countryFrom}} {{'tableTitleTo' | translate}} {{countryTo}}
                 <!--<span style="float: right">-->
@@ -56,8 +56,29 @@
             <template let-trip pTemplate="item">
                 <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px;border-bottom:1px solid #D5D5D5;text-align: left">
                     <div class="ui-grid-row">
-                        <div class="ui-grid-col-5"></div>
-                        <div class="ui-grid-col-7">
+                        <div class="driver-photo">
+                            <img src="../../../images/users/{{photo}}.png" alt="Generic placeholder image">
+                        </div>
+                        <div class="ui-grid-col-4" style="padding-top: 40px">
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">{{'username' | translate}}: </div>
+                                <div class="ui-grid-col-8">{{trip.name}}</div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">{{'mail' | translate}}: </div>
+                                <div class="ui-grid-col-8">{{trip.email}}</div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">{{'phone' | translate}}: </div>
+                                <div class="ui-grid-col-8">{{trip.phone}}</div>
+                            </div>
+                            <div class="ui-grid-row">
+                                <div class="ui-grid-col-4">{{'age' | translate}}: </div>
+                                <div class="ui-grid-col-8">{{trip.age}}</div>
+                            </div>
+                        </div>
+                        <div class="ui-grid-col-8">
+                            <button class="btn btn-sm btn-info" style="float: right" (click)="openReserve()">Reserve</button>
                             <div class="ui-grid ui-grid-responsive ui-fluid">
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-4">{{'destinationFrom' | translate}}: </div>
@@ -99,3 +120,17 @@
         </div>
     </div>
 </div>
+
+<p-dialog header="{{'reserveTripTitle' | translate}}" modal="modal" width="400" responsive="true" [(visible)]="display">
+    <div class="form-group row">
+        <label for="seatNumber" class="col-xs-5 col-form-label pointer" style="padding-top: 0; padding-bottom: 0;">{{ 'seatNumber' | translate }}</label>
+        <div class="col-sm-7">
+            <input [(ngModel)]="seatNumber" name="seatNumber" type="number" id="seatNumber" class="form-control" style="max-width: 60px;" required>
+        </div>
+        <div class="col-sm-12" >
+            <span *ngIf="!seatNumber && showErrorSeatNumber" class="alert-invalid" style="text-align: center;">{{ 'emptySeatNumber' | translate }}</span>
+        </div>
+    </div>
+
+    <button (click)="reserve()" type="button" class="btn-block btn-lg reserve-btn main-light-background-color">{{ 'reserveTripButton' | translate}}</button>
+</p-dialog>

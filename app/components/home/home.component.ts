@@ -13,8 +13,20 @@ export class HomeComponent implements OnInit{
     // sortedTrips: Array<any> = [];
     resultTrips: Array<any> = [];
 
+    // selectedNumberOfSeats: string;
+    // numberOfSeats: Array<any> = [
+    //     { label: 'Reserve', value: null},
+    //     { label: 1, value: {id: 1}},
+    //     { label: 2, value: {id: 2}},
+    //     { label: 3, value: {id: 3}},
+    //     { label: 4, value: {id: 4}},
+    // ];
+
+    seatNumber: number;
+    showErrorSeatNumber: boolean = false;
+    display: boolean = false;
+
     minDate: Date;
-    maxDate: Date;
     date: Date;
 
     countryFrom: string;
@@ -78,6 +90,16 @@ export class HomeComponent implements OnInit{
         //         self.sortedTrips.push(item);
         //     }
         // });
+    }
+
+    reserve() {
+        this.showErrorSeatNumber = !this.seatNumber;
+
+        if (! this.seatNumber) return;
+    }
+
+    openReserve() {
+        this.display = true;
     }
 
     sort() {

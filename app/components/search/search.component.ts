@@ -25,31 +25,22 @@ export class SearchComponent implements OnInit{
     countryTo: string = SearchService.getParameters().destinationTo || '';
     countryFrom: string = SearchService.getParameters().destinationFrom || '';
     filteredCountriesSingle: string[];
-    filteredCountriesMultiple: string[];
 
     ngOnInit(): void {
         this.setDate();
     }
 
     setDate() {
-        let today = new Date();
-        let month = today.getMonth();
-        let prevMonth = (month === 0) ? 11 : month - 1;
-        let nextMonth = (month === 11) ? 0 : month + 1;
+        const today = new Date();
+        const month = today.getMonth();
+        const prevMonth = (month === 0) ? 11 : month - 1;
         this.minDate = new Date();
         this.minDate.setMonth(prevMonth);
-        this.maxDate = new Date();
-        this.maxDate.setMonth(nextMonth);
     }
 
     filterCountrySingle(event: any) {
         let query = event.query;
         this.filteredCountriesSingle = this.filterCountry(query, dataCountries);
-    }
-
-    filterCountryMultiple(event: any) {
-        let query = event.query;
-        this.filteredCountriesMultiple = this.filterCountry(query, dataCountries);
     }
 
     filterCountry(query: string, countries: any[]):any[] {

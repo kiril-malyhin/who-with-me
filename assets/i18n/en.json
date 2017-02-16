@@ -108,6 +108,9 @@
   "editProfileTitle": "Edit profile",
   "editProfileButton": "Update profile",
 
+  "reserveTripTitle": "Reserve trip",
+  "reserveTripButton": "Reserve",
+
   "deleteProfileConfirmation": "Delete profile",
   "deleteProfileMessage": "Do you really want to delete this profile? This action is not reversible!",
   "deleteTripConfirmation": "Delete trip",

@@ -83,3 +83,27 @@
 .btn-sm:hover {
     background-color: #745959;
 }
+
+.driver-photo {
+    padding: 25px 20px 20px 20px;
+    display: table;
+}
+
+.reserve-btn {
+    background-color: #3c2a2a;
+    margin-top: 20px;
+    border: none;
+    color: white;
+}
+
+.reserve-btn:hover {
+    background-color: #745959;
+}
+
+.alert-invalid {
+    margin-top: 10px;
+    display: block;
+    text-align: left;
+    font-size: small;
+    color: #e11e19;
+}

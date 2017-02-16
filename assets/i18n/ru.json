@@ -109,6 +109,9 @@
   "editProfileTitle": "Редактирование профиля",
   "editProfileButton": "Обновить профиль",
 
+  "reserveTripTitle": "Бронирование",
+  "reserveTripButton": "Забронировать",
+
   "deleteProfileConfirmation": "Удаление профиля",
   "deleteProfileMessage": "Вы действительно хотите удалить этот профиль? Это действие будет необратимо!",
   "deleteTripConfirmation": "Удаление поездки",

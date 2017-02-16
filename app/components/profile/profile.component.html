@@ -1,4 +1,4 @@
-<p-dialog header="Edit profile" modal="modal" width="auto" responsive="true" [(visible)]="display">
+<p-dialog header="{{'editProfileTitle' | translate}}" modal="modal" width="auto" responsive="true" [(visible)]="display">
     <div class="form-group row">
         <label for="age" class="col-xs-4 col-form-label pointer">{{ 'age' | translate }}</label>
         <div class="col-sm-8">
@@ -80,7 +80,7 @@
                     <div class="form-group row">
                         <label class="col-xs-4 col-form-label pointer">{{ 'destinationDate' | translate }}</label>
                         <div>
-                            <p-calendar [(ngModel)]="dateTo" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
+                            <p-calendar [(ngModel)]="dateTo" [minDate]="minDate" [readonlyInput]="true" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
                             <span *ngIf="!dateTo && showErrorDate" class="alert-invalid">{{ 'emptyDestinationDate' | translate }}</span>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                                     <div class="ui-grid ui-grid-responsive ui-fluid">
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'destinationFrom' | translate}}: </div>
-                                            <div class="ui-grid-col-5">{{trip.from}}</div>
+                                            <div class="ui-grid-col-6">{{trip.from}}</div>
                                         </div>
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'destinationTo' | translate}}: </div>
@@ -147,7 +147,7 @@
                                         </div>
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'destinationDate' | translate}}: </div>
-                                            <div class="ui-grid-col-6">{{trip.date}}</div>
+                                            <div class="ui-grid-col-6">{{trip.date | date}}</div>
                                         </div>
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'destinationPrice' | translate}}: </div>
