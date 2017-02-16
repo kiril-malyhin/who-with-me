@@ -33,7 +33,6 @@
 }
 
 .btn-find {
-    background-color: #3c2a2a;
     color: white;
     max-width: 200px;
     padding-bottom: 20px;
@@ -42,7 +41,8 @@
     outline: medium;
     border-radius: 5px;
     font-weight: normal;
-    border: 1px solid rgba(248, 249, 248, 0.55);
+    border-color: rgb(150, 30, 40);
+    background-color: rgb(150, 30, 40);
 }
 
 .ui-g-12 {
@@ -50,7 +50,7 @@
 }
 
 .btn-find:hover {
-    background-color: #745959;
+    background-color: rgb(99, 23, 25);
 }
 
 .btn-find:focus {
@@ -74,30 +74,20 @@
     vertical-align: top;
 }
 
-.btn-sm {
-    padding: 3px 5px 3px 5px;
-    border-color: #3c2a2a;
-    background-color: #3c2a2a;
-}
-
-.btn-sm:hover {
-    background-color: #745959;
-}
-
 .driver-photo {
     padding: 25px 20px 20px 20px;
     display: table;
 }
 
 .reserve-btn {
-    background-color: #3c2a2a;
+    background-color: rgb(150, 30, 40);
     margin-top: 20px;
     border: none;
     color: white;
 }
 
 .reserve-btn:hover {
-    background-color: #745959;
+    background-color: rgb(99, 23, 25);
 }
 
 .alert-invalid {

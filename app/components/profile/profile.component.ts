@@ -55,9 +55,7 @@ export class ProfileComponent implements OnInit{
     showErrorPhone: boolean = false;
     showErrorRegistration: string;
 
-    // TODO set datepicker min date
     minDate: Date;
-    maxDate: Date;
     dateTo: Date;
 
     countryTo: string;

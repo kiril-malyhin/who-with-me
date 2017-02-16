@@ -78,7 +78,7 @@
                             </div>
                         </div>
                         <div class="ui-grid-col-8">
-                            <button class="btn btn-sm btn-info" style="float: right" (click)="openReserve()">Reserve</button>
+                            <button class="btn btn-sm btn-info reserve-btn" style="float: right" (click)="openReserve(trip.number_of_seats)">{{'reserveTripButton' | translate}}</button>
                             <div class="ui-grid ui-grid-responsive ui-fluid">
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-4">{{'destinationFrom' | translate}}: </div>
@@ -129,6 +129,8 @@
         </div>
         <div class="col-sm-12" >
             <span *ngIf="!seatNumber && showErrorSeatNumber" class="alert-invalid" style="text-align: center;">{{ 'emptySeatNumber' | translate }}</span>
+            <span *ngIf="showErrorMinSeatNumber" class="alert-invalid" style="text-align: center;">{{ 'errorMinSeatNumber' | translate }}</span>
+            <span *ngIf="showErrorMaxSeatNumber" class="alert-invalid" style="text-align: center;">{{ 'errorMaxSeatNumber' | translate }} {{maxNumberOfSeats}}</span>
         </div>
     </div>
 

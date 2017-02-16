@@ -2,6 +2,7 @@
   "title": "Кто со мной?",
   "username": "Имя",
   "password": "Пароль",
+  "photo": "Фото",
   "gender": "Пол",
   "genderMan": "Мужской",
   "genderWomen": "Женский",
@@ -115,6 +116,9 @@
   "deleteProfileConfirmation": "Удаление профиля",
   "deleteProfileMessage": "Вы действительно хотите удалить этот профиль? Это действие будет необратимо!",
   "deleteTripConfirmation": "Удаление поездки",
-  "deleteTripMessage": "Вы действительно хотите удалить эту поездку?"
+  "deleteTripMessage": "Вы действительно хотите удалить эту поездку?",
+
+  "errorMinSeatNumber": "Количество мест не может быть меньше 1",
+  "errorMaxSeatNumber": "Максимальное число мест "
 
 }

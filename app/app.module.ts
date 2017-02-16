@@ -37,6 +37,7 @@ import {ConfirmationService} from 'primeng/primeng';
 import {SharedModule} from 'primeng/primeng';
 import {DataTableModule} from 'primeng/components/datatable/datatable';
 import {DropdownModule} from 'primeng/components/dropdown/dropdown';
+import {FileUploadModule} from 'primeng/components/fileupload/fileupload';
 
 import {RequestService} from "./services/utils/request.service";
 
@@ -65,7 +66,8 @@ import {RequestService} from "./services/utils/request.service";
         ConfirmDialogModule,
         SharedModule,
         DataTableModule,
-        DropdownModule
+        DropdownModule,
+        FileUploadModule
     ],
     declarations: [
         LoginComponent,

@@ -13,17 +13,12 @@ export class HomeComponent implements OnInit{
     // sortedTrips: Array<any> = [];
     resultTrips: Array<any> = [];
 
-    // selectedNumberOfSeats: string;
-    // numberOfSeats: Array<any> = [
-    //     { label: 'Reserve', value: null},
-    //     { label: 1, value: {id: 1}},
-    //     { label: 2, value: {id: 2}},
-    //     { label: 3, value: {id: 3}},
-    //     { label: 4, value: {id: 4}},
-    // ];
+    maxNumberOfSeats: number;
 
     seatNumber: number;
     showErrorSeatNumber: boolean = false;
+    showErrorMinSeatNumber: boolean = false;
+    showErrorMaxSeatNumber: boolean = false;
     display: boolean = false;
 
     minDate: Date;
@@ -99,12 +94,23 @@ export class HomeComponent implements OnInit{
     }
 
     reserve() {
+        this.showErrorMinSeatNumber = false;
+        this.showErrorMaxSeatNumber = false;
         this.showErrorSeatNumber = !this.seatNumber;
 
-        if (! this.seatNumber) return;
+        if (!this.seatNumber) return;
+
+        if (this.seatNumber > this.maxNumberOfSeats) {
+            this.showErrorMaxSeatNumber = true;
+            return;
+        } else if (this.seatNumber < 1) {
+            this.showErrorMinSeatNumber = true;
+            return;
+        }
     }
 
-    openReserve() {
+    openReserve(maxNumber: number) {
+        this.maxNumberOfSeats = maxNumber;
         this.display = true;
     }
 

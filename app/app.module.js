@@ -43,6 +43,7 @@ var primeng_1 = require('primeng/primeng');
 var primeng_2 = require('primeng/primeng');
 var datatable_1 = require('primeng/components/datatable/datatable');
 var dropdown_1 = require('primeng/components/dropdown/dropdown');
+var fileupload_1 = require('primeng/components/fileupload/fileupload');
 var request_service_1 = require("./services/utils/request.service");
 var AppModule = (function () {
     function AppModule() {
@@ -73,7 +74,8 @@ var AppModule = (function () {
                 confirmdialog_1.ConfirmDialogModule,
                 primeng_2.SharedModule,
                 datatable_1.DataTableModule,
-                dropdown_1.DropdownModule
+                dropdown_1.DropdownModule,
+                fileupload_1.FileUploadModule
             ],
             declarations: [
                 login_component_1.LoginComponent,
