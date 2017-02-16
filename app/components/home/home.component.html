@@ -16,27 +16,27 @@
             <!--<p-slider [(ngModel)]="rangeTime" [style]="" [range]="true" [min]=minTime [max]="maxTime" style="padding-top:15px;"></p-slider>-->
             <!--{{'sliderFrom' | translate}} {{rangeTime[0]}} {{'sliderTo' | translate}} {{rangeTime[1]}}-->
         <!--</div>-->
-        <div class="form-group">
-            <label class="col-form-label pointer filter-label">{{ 'destinationPrice' | translate }}</label>
-            <p-slider [(ngModel)]="rangePrice" [style]="" [range]="true" [min]=minPrice [max]="maxPrice"  style="padding-top:15px;"></p-slider>
-            {{'sliderFrom' | translate}} {{rangePrice[0]}} {{'sliderTo' | translate}} {{rangePrice[1]}}
-        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="col-form-label pointer filter-label">{{ 'destinationPrice' | translate }}</label>-->
+            <!--<p-slider [(ngModel)]="rangePrice" [style]="" [range]="true" [min]="minPrice" [max]="maxPrice"  style="padding-top:15px;"></p-slider>-->
+            <!--{{'sliderFrom' | translate}} {{rangePrice[0]}} {{'sliderTo' | translate}} {{rangePrice[1]}}-->
+        <!--</div>-->
         <div class="form-group">
             <label class="col-form-label pointer filter-label">{{ 'carType' | translate }}</label>
             <div class="ui-g" style=" text-align: left">
-                <div class="ui-g-12"><p-radioButton name="groupCarType" value="Standard" label="{{ 'standard' | translate }}" [(ngModel)]="carType"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupCarType" value="Premium" label="{{ 'premium' | translate }}" [(ngModel)]="carType"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupCarType" value="Luxury" label="{{ 'luxury' | translate }}" [(ngModel)]="carType"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupCarType" value="NoMatterCarType" label="{{ 'allChoose' | translate }}" [(ngModel)]="carType"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupCarType" value="Standard" label="{{ 'standard' | translate }}" [(ngModel)]="car_type"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupCarType" value="Premium" label="{{ 'premium' | translate }}" [(ngModel)]="car_type"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupCarType" value="Luxury" label="{{ 'luxury' | translate }}" [(ngModel)]="car_type"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupCarType" value="NoMatterCarType" label="{{ 'allChoose' | translate }}" [(ngModel)]="car_type"></p-radioButton></div>
             </div>
         </div>
         <div class="form-group">
             <label class="col-form-label pointer filter-label">{{ 'experience' | translate }}</label>
             <div class="ui-g" style=" text-align: left">
-                <div class="ui-g-12"><p-radioButton name="groupExperience" value="Junior" label="{{ 'junior' | translate }}" [(ngModel)]="experience"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupExperience" value="Middle" label="{{ 'senior' | translate }}" [(ngModel)]="experience"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupExperience" value="Expert" label="{{ 'expert' | translate }}" [(ngModel)]="experience"></p-radioButton></div>
-                <div class="ui-g-12"><p-radioButton name="groupExperience" value="NoMatterExperience" label="{{ 'allChoose' | translate }}" [(ngModel)]="experience"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupExperience" value="Junior" label="{{ 'junior' | translate }}" [(ngModel)]="drive_level"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupExperience" value="Middle" label="{{ 'senior' | translate }}" [(ngModel)]="drive_level"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupExperience" value="Expert" label="{{ 'expert' | translate }}" [(ngModel)]="drive_level"></p-radioButton></div>
+                <div class="ui-g-12"><p-radioButton name="groupExperience" value="NoMatterExperience" label="{{ 'allChoose' | translate }}" [(ngModel)]="drive_level"></p-radioButton></div>
             </div>
         </div>
         <div class="form-group">

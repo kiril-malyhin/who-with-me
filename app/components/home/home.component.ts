@@ -34,13 +34,15 @@ export class HomeComponent implements OnInit{
 
     value: number = 0;
 
+    allTrips: Array<any> = [];
+
     // TODO set min and max price
     minPrice: number = 1;
-    maxPrice: number = 50;
+    maxPrice: number = 100;
     rangePrice: number[] = [this.minPrice, this.maxPrice];
 
-    experience: string = 'NoMatterExperience';
-    carType: string = 'NoMatterCarType';
+    drive_level: string = 'NoMatterExperience';
+    car_type: string = 'NoMatterCarType';
 
     isPaginator: boolean = true;
 
@@ -78,8 +80,12 @@ export class HomeComponent implements OnInit{
             .toPromise()
             .then(res => {
                 self.resultTrips = res.json();
-                console.log(self.resultTrips);
+                self.allTrips = res.json();
                 if(self.resultTrips.length === 0) this.isPaginator = false;
+                console.log(self.resultTrips);
+
+                // self.minPrice = Math.min.apply(Math, self.resultTrips.map(function(trip){return trip.price;}));
+                // self.maxPrice = Math.max.apply(Math, self.resultTrips.map(function(trip){return trip.price;}));
             })
             .catch(res => {
                 console.log(res.statusText);
@@ -103,20 +109,18 @@ export class HomeComponent implements OnInit{
     }
 
     sort() {
-        // let filters = {};
-        // if(this.carType !== 'NoMatterCarType')
-        //     filters['carType'] = this.carType;
-        // if(this.experience !== 'NoMatterExperience')
-        //     filters['experience'] = this.experience;
-        // let result = dataUsers.filter(user => {
-        //     for (let key in filters) {
-        //         if (!(filters[key] === user[key])) return false;
-        //     }
-        //     return true;
-        // });
-        //
-        // this.users = result;
-        // this.numberOfResultTrips = result.length;
+        let filters = {};
+        if(this.car_type !== 'NoMatterCarType')
+            filters['car_type'] = this.car_type;
+        if(this.drive_level !== 'NoMatterExperience')
+            filters['drive_level'] = this.drive_level;
+        this.resultTrips = this.allTrips.filter(user => {
+            for (let key in filters) {
+                if (!(filters[key] === user[key])) return false;
+            }
+            return true;
+        });
+        if(this.resultTrips.length === 0) this.isPaginator = false;
     }
 
     reverseDestination() {
