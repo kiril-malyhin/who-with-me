@@ -54,27 +54,27 @@
                 <!--</span>-->
             </p-header>
             <template let-trip pTemplate="item">
-                <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px;border-bottom:1px solid #D5D5D5;text-align: left">
+                <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:0 20px 20px 20px;border-bottom:1px solid #D5D5D5;text-align: left">
                     <div class="ui-grid-row">
                         <div class="driver-photo">
-                            <img src="../../../images/users/{{photo}}.png" alt="Generic placeholder image">
+                            <img src="../../../images/users/{{trip.user.gender}}.png" alt="Generic placeholder image">
                         </div>
-                        <div class="ui-grid-col-4" style="padding-top: 40px">
+                        <div class="ui-grid-col-4" style="padding-top: 50px">
                             <div class="ui-grid-row">
                                 <div class="ui-grid-col-4">{{'username' | translate}}: </div>
-                                <div class="ui-grid-col-8">{{trip.name}}</div>
+                                <div class="ui-grid-col-8">{{trip.user.name}}</div>
                             </div>
                             <div class="ui-grid-row">
                                 <div class="ui-grid-col-4">{{'mail' | translate}}: </div>
-                                <div class="ui-grid-col-8">{{trip.email}}</div>
+                                <div class="ui-grid-col-8">{{trip.user.email}}</div>
                             </div>
                             <div class="ui-grid-row">
                                 <div class="ui-grid-col-4">{{'phone' | translate}}: </div>
-                                <div class="ui-grid-col-8">{{trip.phone}}</div>
+                                <div class="ui-grid-col-8">{{trip.user.phone}}</div>
                             </div>
                             <div class="ui-grid-row">
                                 <div class="ui-grid-col-4">{{'age' | translate}}: </div>
-                                <div class="ui-grid-col-8">{{trip.age}}</div>
+                                <div class="ui-grid-col-8">{{trip.user.age}}</div>
                             </div>
                         </div>
                         <div class="ui-grid-col-8">

@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit{
 
     isPaginator: boolean = true;
 
-    photo: string = 'man';
+    photo: string;
 
     constructor(private requestService: RequestService) {}
 

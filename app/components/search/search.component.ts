@@ -56,7 +56,7 @@ export class SearchComponent implements OnInit{
 
     findTrip() {
         if (!this.countryFrom['name'] || !this.countryTo['name'] || !this.dateTo) {
-            if (!this.countryFrom || !this.countryTo) {
+            if (!this.countryFrom || !this.countryTo || !this.dateTo) {
                 alert('Error! Check input!');
                 return;
             } else {

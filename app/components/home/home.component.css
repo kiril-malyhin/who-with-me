@@ -33,6 +33,7 @@
 }
 
 .btn-find {
+    background-color: #3c2a2a;
     color: white;
     max-width: 200px;
     padding-bottom: 20px;
@@ -41,8 +42,7 @@
     outline: medium;
     border-radius: 5px;
     font-weight: normal;
-    border-color: rgb(150, 30, 40);
-    background-color: rgb(150, 30, 40);
+    border: 1px solid rgba(248, 249, 248, 0.55);
 }
 
 .ui-g-12 {
@@ -50,7 +50,7 @@
 }
 
 .btn-find:hover {
-    background-color: rgb(99, 23, 25);
+    background-color: #745959;
 }
 
 .btn-find:focus {
@@ -75,7 +75,7 @@
 }
 
 .driver-photo {
-    padding: 25px 20px 20px 20px;
+    padding: 35px 30px 20px 20px;
     display: table;
 }
 
