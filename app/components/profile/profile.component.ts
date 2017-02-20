@@ -4,6 +4,7 @@ import {AuthenticationService} from "../../services/utils/authentication.service
 import {ConfirmationService} from "primeng/components/common/api";
 import {TranslateService} from "ng2-translate";
 import {RequestService} from "../../services/utils/request.service";
+import {Http} from "@angular/http";
 
 export interface Trip {
     id: any;
@@ -27,7 +28,7 @@ export class ProfileComponent implements OnInit{
 
     constructor(private confirmationService: ConfirmationService,
                 private translateService: TranslateService,
-                private requestService: RequestService) {}
+                private requestService: RequestService, public http: Http) {}
 
     price: number;
     seatNumber: number;
@@ -72,6 +73,11 @@ export class ProfileComponent implements OnInit{
 
     addedTrips: Trip[] = [];
     bookedTrips: Array<any> = [];
+
+    uploadPhoto: File;
+    upload: string;
+
+    uploadedFiles: any[] = [];
 
     ngOnInit(): void {
         this.minDate = new Date();
@@ -193,7 +199,8 @@ export class ProfileComponent implements OnInit{
             user: {
                 'age': this.age,
                 'email': this.mail,
-                'phone': this.phone
+                'phone': this.phone,
+                'image': this.upload
             }
         };
 
@@ -245,5 +252,20 @@ export class ProfileComponent implements OnInit{
                     });
             }
         });
+    }
+
+    onUpload(event: any) {
+        // this.uploadPhoto = event.srcElement.files[0];
+        // // if (this.files && this.files[0]) {
+        //     let reader = new FileReader();
+        //     // reader.onload = imageIsLoaded;
+        //     reader.readAsBinaryString(this.uploadPhoto);
+        // this.upload = reader.result;
+        //     // }
+        // console.log(this.uploadPhoto);
+
+        for(let file of event.files) {
+            this.uploadedFiles.push(file);
+        }
     }
 }
