@@ -31,6 +31,7 @@
 
   "search": "Найти",
   "logout": "Выйти",
+  "close": "Закрыть",
 
   "incorrectCredentials": "Неверный логин или пароль",
   "emptyUsername": "Имя пользователя не может быть пустым",
@@ -127,6 +128,7 @@
   "errorMinSeatNumber": "Количество мест не может быть меньше 1",
   "errorMaxSeatNumber": "Максимальное число мест ",
 
-  "bookedNumber": "Забронированно"
+  "bookedNumber": "Забронированно",
+  "fellowTraveller": "Попутчики"
 
 }

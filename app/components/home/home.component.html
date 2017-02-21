@@ -78,14 +78,14 @@
                             </div>
                         </div>
                         <div class="ui-grid-col-8">
-                            <span *ngIf="trip.books_info.length === 0">
-                                <button class="btn btn-sm btn-success" style="float: right;margin-top: 7px;margin-right: 5px;" (click)="openReserve(trip)">{{'reserveTripButton' | translate}}</button>
-                            </span>
-                            <span *ngIf="trip.books_info.length > 0">
+                            <span *ngIf="(trip.books_info.length > 0) || (trip.user_id === currentUserId)">
                                 <button class="btn btn-sm btn-danger" style="float: right;margin-top: 7px;margin-right: 5px;" (click)="delete(trip)">{{'deleteTripButton' | translate}}</button>
                             </span>
-                            <span *ngIf="trip.books_info.length > 0">
+                            <span *ngIf="trip.books_info.length > 0 || trip.user_id === currentUserId">
                                 <button class="btn btn-sm btn-warning" style="float: right;margin-top: 7px;margin-right: 5px;" (click)="openUpdate(trip)">{{'updateTripButton' | translate}}</button>
+                            </span>
+                            <span *ngIf="trip.books_info.length === 0 || trip.user_id !== currentUserId">
+                                <button class="btn btn-sm btn-success" style="float: right;margin-top: 7px;margin-right: 5px;" (click)="openReserve(trip)">{{'reserveTripButton' | translate}}</button>
                             </span>
                             <div class="ui-grid ui-grid-responsive ui-fluid">
                                 <div class="ui-grid-row">

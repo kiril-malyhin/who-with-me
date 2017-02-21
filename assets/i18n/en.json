@@ -30,6 +30,8 @@
 
   "search": "Find",
   "logout": "Logout",
+  "close": "Close",
+
 
   "incorrectCredentials": "Incorrect credentials",
   "emptyUsername": "Username must not be empty",
@@ -126,5 +128,6 @@
   "errorMinSeatNumber": "Min number can not be less than 1",
   "errorMaxSeatNumber": "Max number is ",
 
-  "bookedNumber": "Booked seats"
+  "bookedNumber": "Booked seats",
+  "fellowTraveller": "Fellow travellers"
 }

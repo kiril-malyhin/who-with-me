@@ -71,11 +71,14 @@ export class ProfileComponent implements OnInit{
     cars: Array<Object>;
     levels: Array<Object>;
 
-    addedTrips: Trip[] = [];
+    addedTrips: Array<any> = [];
     bookedTrips: Array<any> = [];
+    bookedUsers: Array<any> = [];
 
     uploadPhoto: File;
     upload: string;
+
+    openBookedUsers: boolean = false;
 
     uploadedFiles: any[] = [];
 
@@ -111,7 +114,7 @@ export class ProfileComponent implements OnInit{
                 self.photo = res.json().gender;
             })
             .catch(res => {
-                alert(res.statusText);
+                console.log(res.statusText);
             });
     }
 
@@ -198,6 +201,12 @@ export class ProfileComponent implements OnInit{
         this.phone = this.userData['phone'];
     }
 
+    showBookedUsers(trip: any) {
+        this.bookedUsers = trip.books_info;
+        this.openBookedUsers = true;
+        console.log(this.bookedUsers);
+    }
+
     updateProfile() {
 
         this.showErrorAge = !this.age;
@@ -249,7 +258,7 @@ export class ProfileComponent implements OnInit{
         });
     }
 
-    deleteTrip(trip: Trip) {
+    deleteTrip(trip: any) {
         this.confirmationService.confirm({
             message: this.translateService.instant('deleteTripMessage'),
             header: this.translateService.instant('deleteTripConfirmation'),
@@ -267,20 +276,22 @@ export class ProfileComponent implements OnInit{
         });
     }
 
-    unReserveTrip(trip: Trip) {
+    unReserveTrip(trip: any) {
+        const bookId = trip.trip.books_info[0].id;
         this.confirmationService.confirm({
             message: this.translateService.instant('unReserveTripMessage'),
             header: this.translateService.instant('unReserveTripConfirmation'),
             icon: 'fa fa-trash',
             accept: () => {
-                // this.requestService.deleteTrip(trip.id)
-                //     .toPromise()
-                //     .then(() => {
-                //         this.getUserTrips();
-                //     })
-                //     .catch(res => {
-                //         console.log(res.status);
-                //     });
+                this.requestService.bookSeatDelete(bookId)
+                    .toPromise()
+                    .then(res => {
+                        console.log(res);
+                        this.getBookedTrips();
+                    })
+                    .catch(res => {
+                        console.log(res);
+                    })
             }
         });
     }

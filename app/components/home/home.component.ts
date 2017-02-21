@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit{
     photo: string;
     tripId: number;
     bookId: number;
+    currentUserId: string = AuthenticationService.getUserCredentials().id;
     constructor(private requestService: RequestService) {}
 
     ngOnInit(): void {

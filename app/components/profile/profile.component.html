@@ -143,13 +143,12 @@
                     </p-header>
                     <template let-trip pTemplate="item">
                         <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px;border-bottom:1px solid #D5D5D5;text-align: left">
-                            <i class="fa fa-times icon-delete-trip" aria-hidden="true" (click)="deleteTrip(trip)"></i>
                             <div class="ui-grid-row">
                                 <div class="ui-grid-col-12">
                                     <div class="ui-grid ui-grid-responsive ui-fluid">
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'destinationFrom' | translate}}: </div>
-                                            <div class="ui-grid-col-6">{{trip.from}}</div>
+                                            <div class="ui-grid-col-6">{{trip.from}}  <i class="fa fa-times icon-delete-trip" aria-hidden="true" (click)="deleteTrip(trip)" style="float: right"></i></div>
                                         </div>
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'destinationTo' | translate}}: </div>
@@ -177,7 +176,7 @@
                                         </div>
                                         <div class="ui-grid-row" *ngIf="trip.reserved_seats">
                                             <div class="ui-grid-col-6">{{'bookedNumber' | translate}}: </div>
-                                            <div class="ui-grid-col-6">{{trip.reserved_seats}}</div>
+                                            <div class="ui-grid-col-6">{{trip.reserved_seats}} <i class="fa fa-1x fa-eye" aria-hidden="true" style="float: right; padding-top: 4px;cursor: pointer" (click)="showBookedUsers(trip)"></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -193,16 +192,12 @@
                     </p-header>
                     <template let-trip pTemplate="item">
                         <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px;border-bottom:1px solid #D5D5D5;text-align: left">
-                            <i class="fa fa-times icon-delete-trip" aria-hidden="true" (click)="unReserveTrip(trip)"></i>
                             <div class="ui-grid-row">
                                 <div class="ui-grid-col-12">
                                     <div class="ui-grid ui-grid-responsive ui-fluid">
                                         <div class="ui-grid-row">
-                                            <div class="ui-grid-col-12" *ngIf="!bookedTrips">No booked trips.</div>
-                                        </div>
-                                        <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'destinationFrom' | translate}}: </div>
-                                            <div class="ui-grid-col-6">{{trip.trip.from}}</div>
+                                            <div class="ui-grid-col-6">{{trip.trip.from}} <i class="fa fa-times icon-delete-trip" aria-hidden="true" (click)="unReserveTrip(trip)" style="float: right"></i></div>
                                         </div>
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'destinationTo' | translate}}: </div>
@@ -236,7 +231,43 @@
                 </p-dataList>
             </div>
         </div>
-
     </div>
 </div>
+
+<p-dialog header="{{'fellowTraveller' | translate}}" [(visible)]="openBookedUsers" modal="modal" width="500" responsive="true">
+    <p-dataList [value]="bookedUsers" [paginator]="isPaginator" [rows]="5">
+        <template let-trip pTemplate="item">
+            <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px;border-bottom:1px solid #D5D5D5;text-align: left">
+                <div class="ui-grid-row">
+                    <div style="padding-right: 20px">
+                        <img src="../../../images/users/{{trip.user.gender}}.png" alt="Generic placeholder image">
+                    </div>
+                    <div class="ui-grid-col-6" style="padding-top: 15px">
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-6">{{'username' | translate}}: </div>
+                            <div class="ui-grid-col-6">{{trip.user.name}}</div>
+                        </div>
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-6">{{'mail' | translate}}: </div>
+                            <div class="ui-grid-col-6">{{trip.user.email}}</div>
+                        </div>
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-6">{{'phone' | translate}}: </div>
+                            <div class="ui-grid-col-6">{{trip.user.phone}}</div>
+                        </div>
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-6">{{'age' | translate}}: </div>
+                            <div class="ui-grid-col-6">{{trip.user.age}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </p-dataList>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="openBookedUsers=false" label="{{'close' | translate}}"></button>
+        </div>
+    </p-footer>
+</p-dialog>
 
