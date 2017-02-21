@@ -99,6 +99,7 @@ export class ProfileComponent implements OnInit{
 
         this.getUserData();
         this.getUserTrips();
+        this.getBookedTrips();
     }
 
     getUserData() {
@@ -119,6 +120,18 @@ export class ProfileComponent implements OnInit{
             .toPromise()
             .then(res => {
                 this.addedTrips = res.json();
+                console.log(res.json());
+            })
+            .catch(res => {
+                console.log(res.statusText);
+            });
+    }
+
+    getBookedTrips() {
+        this.requestService.getBookedTrips()
+            .toPromise()
+            .then(res => {
+                this.bookedTrips = res.json();
                 console.log(res.json());
             })
             .catch(res => {
@@ -250,6 +263,24 @@ export class ProfileComponent implements OnInit{
                     .catch(res => {
                         console.log(res.status);
                     });
+            }
+        });
+    }
+
+    unReserveTrip(trip: Trip) {
+        this.confirmationService.confirm({
+            message: this.translateService.instant('unReserveTripMessage'),
+            header: this.translateService.instant('unReserveTripConfirmation'),
+            icon: 'fa fa-trash',
+            accept: () => {
+                // this.requestService.deleteTrip(trip.id)
+                //     .toPromise()
+                //     .then(() => {
+                //         this.getUserTrips();
+                //     })
+                //     .catch(res => {
+                //         console.log(res.status);
+                //     });
             }
         });
     }

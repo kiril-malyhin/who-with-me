@@ -78,7 +78,9 @@
                             </div>
                         </div>
                         <div class="ui-grid-col-8">
-                            <button class="btn btn-sm btn-info reserve-btn" style="float: right" (click)="openReserve(trip.number_of_seats)">{{'reserveTripButton' | translate}}</button>
+                            <span *ngIf="(maxNumberOfSeats - reserved_seats_count) > 0">
+                                <button class="btn btn-sm btn-info reserve-btn" style="float: right" (click)="openReserve(trip)">{{'reserveTripButton' | translate}}</button>
+                            </span>
                             <div class="ui-grid ui-grid-responsive ui-fluid">
                                 <div class="ui-grid-row">
                                     <div class="ui-grid-col-4">{{'destinationFrom' | translate}}: </div>
@@ -101,12 +103,16 @@
                                     <div class="ui-grid-col-8">{{trip.car_type}}</div>
                                 </div>
                                 <div class="ui-grid-row">
+                                    <div class="ui-grid-col-4">{{'experience' | translate}}: </div>
+                                    <div class="ui-grid-col-8">{{trip.drive_level}}</div>
+                                </div>
+                                <div class="ui-grid-row">
                                     <div class="ui-grid-col-4">{{'destinationSeatNumber' | translate}}: </div>
                                     <div class="ui-grid-col-8">{{trip.number_of_seats}}</div>
                                 </div>
                                 <div class="ui-grid-row">
-                                    <div class="ui-grid-col-4">{{'experience' | translate}}: </div>
-                                    <div class="ui-grid-col-8">{{trip.drive_level}}</div>
+                                    <div class="ui-grid-col-4">{{'bookedNumber' | translate}}: </div>
+                                    <div class="ui-grid-col-8">{{trip.reserved_seats}}</div>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +136,7 @@
         <div class="col-sm-12" >
             <span *ngIf="!seatNumber && showErrorSeatNumber" class="alert-invalid" style="text-align: center;">{{ 'emptySeatNumber' | translate }}</span>
             <span *ngIf="showErrorMinSeatNumber" class="alert-invalid" style="text-align: center;">{{ 'errorMinSeatNumber' | translate }}</span>
-            <span *ngIf="showErrorMaxSeatNumber" class="alert-invalid" style="text-align: center;">{{ 'errorMaxSeatNumber' | translate }} {{maxNumberOfSeats}}</span>
+            <span *ngIf="showErrorMaxSeatNumber" class="alert-invalid" style="text-align: center;">{{ 'errorMaxSeatNumber' | translate }} {{maxNumberOfSeats - reserved_seats_count}}</span>
         </div>
     </div>
 

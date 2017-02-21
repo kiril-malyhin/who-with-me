@@ -11,8 +11,8 @@
                 <label class="pointer text-color">Русский</label>
             </span>
         </a>
-
         <a class="navbar-brand text-color" *ngIf="isUserLogged" style="float: right" (click)="logout()">{{ 'logout' | translate }}</a>
         <a class="navbar-brand text-color" *ngIf="isUserLogged" style="float: right" (click)="openProfile()">{{ 'profile' | translate }}</a>
+        <a class="navbar-brand text-color" *ngIf="isUserLogged" style="float: right">{{ 'username' | translate }}: {{username}}</a>
     </div>
 </nav>

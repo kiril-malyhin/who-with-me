@@ -168,12 +168,16 @@
                                             <div class="ui-grid-col-6">{{trip.car_type}}</div>
                                         </div>
                                         <div class="ui-grid-row">
+                                            <div class="ui-grid-col-6">{{'experience' | translate}}: </div>
+                                            <div class="ui-grid-col-6">{{trip.drive_level}}</div>
+                                        </div>
+                                        <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'destinationSeatNumber' | translate}}: </div>
                                             <div class="ui-grid-col-6">{{trip.number_of_seats}}</div>
                                         </div>
                                         <div class="ui-grid-row">
-                                            <div class="ui-grid-col-6">{{'experience' | translate}}: </div>
-                                            <div class="ui-grid-col-6">{{trip.drive_level}}</div>
+                                            <div class="ui-grid-col-4">{{'bookedNumber' | translate}}: </div>
+                                            <div class="ui-grid-col-8">{{trip.reserved_seats}}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -189,6 +193,7 @@
                     </p-header>
                     <template let-trip pTemplate="item">
                         <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px;border-bottom:1px solid #D5D5D5;text-align: left">
+                            <i class="fa fa-times icon-delete-trip" aria-hidden="true" (click)="unReserveTrip(trip)"></i>
                             <div class="ui-grid-row">
                                 <div class="ui-grid-col-12">
                                     <div class="ui-grid ui-grid-responsive ui-fluid">

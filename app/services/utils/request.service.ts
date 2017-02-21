@@ -49,7 +49,13 @@ export class RequestService {
         return this.http.get(serverUrl + "trips/" + AuthenticationService.getUserCredentials().id);
     };
 
+    public getBookedTrips = () => {
+        return this.http.get(serverUrl + "books/" + AuthenticationService.getUserCredentials().id);
+    };
 
+    public bookSeat = (data: Object) => {
+        return this.http.post(serverUrl + "books/", data);
+    };
 
 }
 

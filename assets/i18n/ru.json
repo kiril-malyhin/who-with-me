@@ -117,8 +117,12 @@
   "deleteProfileMessage": "Вы действительно хотите удалить этот профиль? Это действие будет необратимо!",
   "deleteTripConfirmation": "Удаление поездки",
   "deleteTripMessage": "Вы действительно хотите удалить эту поездку?",
+  "unReserveTripConfirmation": "Удаление брони",
+  "unReserveTripMessage": "Вы действительно хотите удалить бронь этой поездки?",
 
   "errorMinSeatNumber": "Количество мест не может быть меньше 1",
-  "errorMaxSeatNumber": "Максимальное число мест "
+  "errorMaxSeatNumber": "Максимальное число мест ",
+
+  "bookedNumber": "Забронированно"
 
 }

@@ -86,10 +86,6 @@
     cursor: pointer;
 }
 
-.icon-edit:hover {
-    color: darkblue;
-}
-
 .icon-delete {
     font-size: 45px;
     float: right;

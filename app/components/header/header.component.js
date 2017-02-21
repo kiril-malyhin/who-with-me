@@ -19,12 +19,16 @@ var NavBarComponent = (function () {
         this.router = router;
         this.translateService = translateService;
         authentication_service_1.AuthenticationService.logged.subscribe(function (value) {
+            _this.username = authentication_service_1.AuthenticationService.getUserCredentials().name;
             _this.isUserLogged = !!value;
             if (!value) {
                 _this.goToHome();
             }
         });
     }
+    NavBarComponent.prototype.ngOnInit = function () {
+        this.username = authentication_service_1.AuthenticationService.getUserCredentials().name;
+    };
     NavBarComponent.prototype.goToHome = function () {
         this.router.navigate(['/start']);
     };

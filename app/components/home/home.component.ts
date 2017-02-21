@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {SearchService} from "../../services/utils/search.service";
 import {RequestService} from "../../services/utils/request.service";
+import {AuthenticationService} from "../../services/utils/authentication.service";
 
 @Component({
     moduleId: module.id,
@@ -10,9 +11,7 @@ import {RequestService} from "../../services/utils/request.service";
 })
 
 export class HomeComponent implements OnInit{
-    // sortedTrips: Array<any> = [];
     resultTrips: Array<any> = [];
-
     maxNumberOfSeats: number;
 
     seatNumber: number;
@@ -28,20 +27,20 @@ export class HomeComponent implements OnInit{
     countryTo: string;
 
     value: number = 0;
-
     allTrips: Array<any> = [];
 
     // TODO set min and max price
     minPrice: number = 1;
     maxPrice: number = 100;
-    rangePrice: number[] = [this.minPrice, this.maxPrice];
 
     drive_level: string = 'NoMatterExperience';
     car_type: string = 'NoMatterCarType';
 
     isPaginator: boolean = true;
-
     photo: string;
+    tripId: number;
+
+    reserved_seats_count: number;
 
     constructor(private requestService: RequestService) {}
 
@@ -78,19 +77,10 @@ export class HomeComponent implements OnInit{
                 self.allTrips = res.json();
                 if(self.resultTrips.length === 0) this.isPaginator = false;
                 console.log(self.resultTrips);
-
-                // self.minPrice = Math.min.apply(Math, self.resultTrips.map(function(trip){return trip.price;}));
-                // self.maxPrice = Math.max.apply(Math, self.resultTrips.map(function(trip){return trip.price;}));
             })
             .catch(res => {
                 console.log(res.statusText);
             });
-
-        // this.trip.forEach(function(item: any) {
-        //     if (self.tripFrom === item.from && self.tripTo === item.to && self.date === item.date) {
-        //         self.sortedTrips.push(item);
-        //     }
-        // });
     }
 
     reserve() {
@@ -100,17 +90,39 @@ export class HomeComponent implements OnInit{
 
         if (!this.seatNumber) return;
 
-        if (this.seatNumber > this.maxNumberOfSeats) {
+        console.log(this.reserved_seats_count);
+        console.log(this.maxNumberOfSeats);
+        if (this.seatNumber > (this.maxNumberOfSeats - this.reserved_seats_count)) {
             this.showErrorMaxSeatNumber = true;
             return;
         } else if (this.seatNumber < 1) {
             this.showErrorMinSeatNumber = true;
             return;
         }
+        let data = {
+            book: {
+                'user_id': AuthenticationService.getUserCredentials().id,
+                'trip_id': this.tripId,
+                'seats_count': this.seatNumber,
+            }
+        };
+
+        this.requestService.bookSeat(data)
+            .toPromise()
+            .then(res => {
+                console.log(res);
+                this.display = false;
+                this.getTrips();
+            })
+            .catch(res => {
+                console.log(res);
+            })
     }
 
-    openReserve(maxNumber: number) {
-        this.maxNumberOfSeats = maxNumber;
+    openReserve(trip: any) {
+        this.tripId = trip.id;
+        this.maxNumberOfSeats = trip.number_of_seats;
+        this.reserved_seats_count = trip.reserved_seats;
         this.display = true;
     }
 
