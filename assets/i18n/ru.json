@@ -111,7 +111,11 @@
   "editProfileButton": "Обновить профиль",
 
   "reserveTripTitle": "Бронирование",
+  "updateTripTitle": "Изменение",
+  "deleteTripTitle": "Удаление",
   "reserveTripButton": "Забронировать",
+  "updateTripButton": "Изменить",
+  "deleteTripButton": "Удалить",
 
   "deleteProfileConfirmation": "Удаление профиля",
   "deleteProfileMessage": "Вы действительно хотите удалить этот профиль? Это действие будет необратимо!",

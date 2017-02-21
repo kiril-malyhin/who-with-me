@@ -53,8 +53,16 @@ export class RequestService {
         return this.http.get(serverUrl + "books/" + AuthenticationService.getUserCredentials().id);
     };
 
-    public bookSeat = (data: Object) => {
+    public bookSeatAdd = (data: Object) => {
         return this.http.post(serverUrl + "books/", data);
+    };
+
+    public bookSeatUpdate = (data: Object) => {
+        return this.http.put(serverUrl + "books/", data);
+    };
+
+    public bookSeatDelete = (data: Object) => {
+        return this.http.delete(serverUrl + "books/", data);
     };
 
 }

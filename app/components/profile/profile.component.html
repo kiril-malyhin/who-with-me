@@ -1,13 +1,13 @@
 <p-dialog header="{{'editProfileTitle' | translate}}" modal="modal" width="590" responsive="true" [(visible)]="display">
-    <div class="form-group row">
-        <label for="age" class="col-xs-4 col-form-label pointer">{{ 'photo' | translate }}</label>
-        <div class="col-sm-8">
-            <form action="http://localhost:4000/users/12" method="POST">
-                <input id="uploadPhoto" type="file">
-                <input type="submit" value="Submit">
-            </form>
-        </div>
-    </div>
+    <!--<div class="form-group row">-->
+        <!--<label for="age" class="col-xs-4 col-form-label pointer">{{ 'photo' | translate }}</label>-->
+        <!--<div class="col-sm-8">-->
+            <!--<form action="http://localhost:4000/users/12" method="POST">-->
+                <!--<input id="uploadPhoto" type="file">-->
+                <!--<input type="submit" value="Submit">-->
+            <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
 
     <div class="form-group row">
         <label for="age" class="col-xs-4 col-form-label pointer">{{ 'age' | translate }}</label>
@@ -175,7 +175,7 @@
                                             <div class="ui-grid-col-6">{{'destinationSeatNumber' | translate}}: </div>
                                             <div class="ui-grid-col-6">{{trip.number_of_seats}}</div>
                                         </div>
-                                        <div class="ui-grid-row">
+                                        <div class="ui-grid-row" *ngIf="trip.reserved_seats">
                                             <div class="ui-grid-col-4">{{'bookedNumber' | translate}}: </div>
                                             <div class="ui-grid-col-8">{{trip.reserved_seats}}</div>
                                         </div>
@@ -202,31 +202,31 @@
                                         </div>
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'destinationFrom' | translate}}: </div>
-                                            <div class="ui-grid-col-6">{{trip.from}}</div>
+                                            <div class="ui-grid-col-6">{{trip.trip.from}}</div>
                                         </div>
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'destinationTo' | translate}}: </div>
-                                            <div class="ui-grid-col-6">{{trip.to}}</div>
+                                            <div class="ui-grid-col-6">{{trip.trip.to}}</div>
                                         </div>
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'destinationDate' | translate}}: </div>
-                                            <div class="ui-grid-col-6">{{trip.date.toLocaleString()}}</div>
+                                            <div class="ui-grid-col-6">{{trip.trip.date | date}}</div>
                                         </div>
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'destinationPrice' | translate}}: </div>
-                                            <div class="ui-grid-col-6">{{trip.price}}</div>
+                                            <div class="ui-grid-col-6">{{trip.trip.price}}</div>
                                         </div>
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'carType' | translate}}: </div>
-                                            <div class="ui-grid-col-6">{{trip.car_type}}</div>
+                                            <div class="ui-grid-col-6">{{trip.trip.car_type}}</div>
                                         </div>
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'destinationSeatNumber' | translate}}: </div>
-                                            <div class="ui-grid-col-6">{{trip.number_of_seats}}</div>
+                                            <div class="ui-grid-col-6">{{trip.trip.number_of_seats}}</div>
                                         </div>
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'experience' | translate}}: </div>
-                                            <div class="ui-grid-col-6">{{trip.drive_level}}</div>
+                                            <div class="ui-grid-col-6">{{trip.trip.drive_level}}</div>
                                         </div>
                                     </div>
                                 </div>

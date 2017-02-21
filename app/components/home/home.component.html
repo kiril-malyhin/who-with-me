@@ -78,8 +78,14 @@
                             </div>
                         </div>
                         <div class="ui-grid-col-8">
-                            <span *ngIf="(maxNumberOfSeats - reserved_seats_count) > 0">
-                                <button class="btn btn-sm btn-info reserve-btn" style="float: right" (click)="openReserve(trip)">{{'reserveTripButton' | translate}}</button>
+                            <span>
+                                <button class="btn btn-sm btn-info reserve-btn" style="float: right;" (click)="openReserve(trip)">{{'reserveTripButton' | translate}}</button>
+                            </span>
+                            <span>
+                                <button class="btn btn-sm btn-info reserve-btn" style="float: right;" (click)="openUpdate(trip)">{{'updateTripButton' | translate}}</button>
+                            </span>
+                            <span>
+                                <button class="btn btn-sm btn-info reserve-btn" style="float: right" (click)="openDelete(trip)">{{'deleteTripButton' | translate}}</button>
                             </span>
                             <div class="ui-grid ui-grid-responsive ui-fluid">
                                 <div class="ui-grid-row">
@@ -127,7 +133,7 @@
     </div>
 </div>
 
-<p-dialog header="{{'reserveTripTitle' | translate}}" modal="modal" width="400" responsive="true" [(visible)]="display">
+<p-dialog header="{{'reserveTripTitle' | translate}}" modal="modal" width="400" responsive="true" [(visible)]="displayReserve">
     <div class="form-group row">
         <label for="seatNumber" class="col-xs-5 col-form-label pointer" style="padding-top: 0; padding-bottom: 0;">{{ 'seatNumber' | translate }}</label>
         <div class="col-sm-7">
@@ -141,4 +147,36 @@
     </div>
 
     <button (click)="reserve()" type="button" class="btn-block btn-lg reserve-btn main-light-background-color">{{ 'reserveTripButton' | translate}}</button>
+</p-dialog>
+
+<p-dialog header="{{'updateTripTitle' | translate}}" modal="modal" width="400" responsive="true" [(visible)]="displayUpdate">
+    <div class="form-group row">
+        <label for="seatNumberUpdate" class="col-xs-5 col-form-label pointer" style="padding-top: 0; padding-bottom: 0;">{{ 'seatNumber' | translate }}</label>
+        <div class="col-sm-7">
+            <input [(ngModel)]="seatNumber" name="seatNumber" type="number" id="seatNumberUpdate" class="form-control" style="max-width: 60px;" required>
+        </div>
+        <div class="col-sm-12" >
+            <span *ngIf="!seatNumber && showErrorSeatNumber" class="alert-invalid" style="text-align: center;">{{ 'emptySeatNumber' | translate }}</span>
+            <span *ngIf="showErrorMinSeatNumber" class="alert-invalid" style="text-align: center;">{{ 'errorMinSeatNumber' | translate }}</span>
+            <span *ngIf="showErrorMaxSeatNumber" class="alert-invalid" style="text-align: center;">{{ 'errorMaxSeatNumber' | translate }} {{maxNumberOfSeats - reserved_seats_count}}</span>
+        </div>
+    </div>
+
+    <button (click)="update()" type="button" class="btn-block btn-lg reserve-btn main-light-background-color">{{ 'reserveTripButton' | translate}}</button>
+</p-dialog>
+
+<p-dialog header="{{'deleteTripTitle' | translate}}" modal="modal" width="400" responsive="true" [(visible)]="displayDelete">
+    <div class="form-group row">
+        <label for="seatNumberDelete" class="col-xs-5 col-form-label pointer" style="padding-top: 0; padding-bottom: 0;">{{ 'seatNumber' | translate }}</label>
+        <div class="col-sm-7">
+            <input [(ngModel)]="seatNumber" name="seatNumber" type="number" id="seatNumberDelete" class="form-control" style="max-width: 60px;" required>
+        </div>
+        <div class="col-sm-12" >
+            <span *ngIf="!seatNumber && showErrorSeatNumber" class="alert-invalid" style="text-align: center;">{{ 'emptySeatNumber' | translate }}</span>
+            <span *ngIf="showErrorMinSeatNumber" class="alert-invalid" style="text-align: center;">{{ 'errorMinSeatNumber' | translate }}</span>
+            <span *ngIf="showErrorMaxSeatNumber" class="alert-invalid" style="text-align: center;">{{ 'errorMaxSeatNumber' | translate }} {{maxNumberOfSeats - reserved_seats_count}}</span>
+        </div>
+    </div>
+
+    <button (click)="delete()" type="button" class="btn-block btn-lg reserve-btn main-light-background-color">{{ 'reserveTripButton' | translate}}</button>
 </p-dialog>

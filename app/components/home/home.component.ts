@@ -18,7 +18,9 @@ export class HomeComponent implements OnInit{
     showErrorSeatNumber: boolean = false;
     showErrorMinSeatNumber: boolean = false;
     showErrorMaxSeatNumber: boolean = false;
-    display: boolean = false;
+    displayReserve: boolean = false;
+    displayUpdate: boolean = false;
+    displayDelete: boolean = false;
 
     minDate: Date;
     date: Date;
@@ -107,11 +109,83 @@ export class HomeComponent implements OnInit{
             }
         };
 
-        this.requestService.bookSeat(data)
+        this.requestService.bookSeatAdd(data)
             .toPromise()
             .then(res => {
                 console.log(res);
-                this.display = false;
+                this.displayReserve = false;
+                this.getTrips();
+            })
+            .catch(res => {
+                console.log(res);
+            })
+    }
+
+    update() {
+        this.showErrorMinSeatNumber = false;
+        this.showErrorMaxSeatNumber = false;
+        this.showErrorSeatNumber = !this.seatNumber;
+
+        if (!this.seatNumber) return;
+
+        console.log(this.reserved_seats_count);
+        console.log(this.maxNumberOfSeats);
+        if (this.seatNumber > (this.maxNumberOfSeats - this.reserved_seats_count)) {
+            this.showErrorMaxSeatNumber = true;
+            return;
+        } else if (this.seatNumber < 1) {
+            this.showErrorMinSeatNumber = true;
+            return;
+        }
+        let data = {
+            book: {
+                'user_id': AuthenticationService.getUserCredentials().id,
+                'trip_id': this.tripId,
+                'seats_count': this.seatNumber,
+            }
+        };
+
+        this.requestService.bookSeatUpdate(data)
+            .toPromise()
+            .then(res => {
+                console.log(res);
+                this.displayUpdate = false;
+                this.getTrips();
+            })
+            .catch(res => {
+                console.log(res);
+            })
+    }
+
+    delete() {
+        this.showErrorMinSeatNumber = false;
+        this.showErrorMaxSeatNumber = false;
+        this.showErrorSeatNumber = !this.seatNumber;
+
+        if (!this.seatNumber) return;
+
+        console.log(this.reserved_seats_count);
+        console.log(this.maxNumberOfSeats);
+        if (this.seatNumber > (this.maxNumberOfSeats - this.reserved_seats_count)) {
+            this.showErrorMaxSeatNumber = true;
+            return;
+        } else if (this.seatNumber < 1) {
+            this.showErrorMinSeatNumber = true;
+            return;
+        }
+        let data = {
+            book: {
+                'user_id': AuthenticationService.getUserCredentials().id,
+                'trip_id': this.tripId,
+                'seats_count': this.seatNumber,
+            }
+        };
+
+        this.requestService.bookSeatDelete(data)
+            .toPromise()
+            .then(res => {
+                console.log(res);
+                this.displayDelete = false;
                 this.getTrips();
             })
             .catch(res => {
@@ -123,7 +197,21 @@ export class HomeComponent implements OnInit{
         this.tripId = trip.id;
         this.maxNumberOfSeats = trip.number_of_seats;
         this.reserved_seats_count = trip.reserved_seats;
-        this.display = true;
+        this.displayReserve = true;
+    }
+
+    openUpdate(trip: any) {
+        this.tripId = trip.id;
+        this.maxNumberOfSeats = trip.number_of_seats;
+        this.reserved_seats_count = trip.reserved_seats;
+        this.displayUpdate = true;
+    }
+
+    openDelete(trip: any) {
+        this.tripId = trip.id;
+        this.maxNumberOfSeats = trip.number_of_seats;
+        this.reserved_seats_count = trip.reserved_seats;
+        this.displayDelete = true;
     }
 
     sort() {
