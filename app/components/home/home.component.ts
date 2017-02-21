@@ -12,12 +12,8 @@ import {AuthenticationService} from "../../services/utils/authentication.service
 
 export class HomeComponent implements OnInit{
     resultTrips: Array<any> = [];
-    maxNumberOfSeats: number;
 
     seatNumber: number;
-    showErrorSeatNumber: boolean = false;
-    showErrorMinSeatNumber: boolean = false;
-    showErrorMaxSeatNumber: boolean = false;
     displayReserve: boolean = false;
     displayUpdate: boolean = false;
     displayDelete: boolean = false;
@@ -41,9 +37,7 @@ export class HomeComponent implements OnInit{
     isPaginator: boolean = true;
     photo: string;
     tripId: number;
-
-    reserved_seats_count: number;
-
+    bookId: number;
     constructor(private requestService: RequestService) {}
 
     ngOnInit(): void {
@@ -86,21 +80,8 @@ export class HomeComponent implements OnInit{
     }
 
     reserve() {
-        this.showErrorMinSeatNumber = false;
-        this.showErrorMaxSeatNumber = false;
-        this.showErrorSeatNumber = !this.seatNumber;
-
         if (!this.seatNumber) return;
 
-        console.log(this.reserved_seats_count);
-        console.log(this.maxNumberOfSeats);
-        if (this.seatNumber > (this.maxNumberOfSeats - this.reserved_seats_count)) {
-            this.showErrorMaxSeatNumber = true;
-            return;
-        } else if (this.seatNumber < 1) {
-            this.showErrorMinSeatNumber = true;
-            return;
-        }
         let data = {
             book: {
                 'user_id': AuthenticationService.getUserCredentials().id,
@@ -122,21 +103,8 @@ export class HomeComponent implements OnInit{
     }
 
     update() {
-        this.showErrorMinSeatNumber = false;
-        this.showErrorMaxSeatNumber = false;
-        this.showErrorSeatNumber = !this.seatNumber;
-
         if (!this.seatNumber) return;
 
-        console.log(this.reserved_seats_count);
-        console.log(this.maxNumberOfSeats);
-        if (this.seatNumber > (this.maxNumberOfSeats - this.reserved_seats_count)) {
-            this.showErrorMaxSeatNumber = true;
-            return;
-        } else if (this.seatNumber < 1) {
-            this.showErrorMinSeatNumber = true;
-            return;
-        }
         let data = {
             book: {
                 'user_id': AuthenticationService.getUserCredentials().id,
@@ -145,7 +113,7 @@ export class HomeComponent implements OnInit{
             }
         };
 
-        this.requestService.bookSeatUpdate(data)
+        this.requestService.bookSeatUpdate(data, this.bookId)
             .toPromise()
             .then(res => {
                 console.log(res);
@@ -157,31 +125,10 @@ export class HomeComponent implements OnInit{
             })
     }
 
-    delete() {
-        this.showErrorMinSeatNumber = false;
-        this.showErrorMaxSeatNumber = false;
-        this.showErrorSeatNumber = !this.seatNumber;
-
-        if (!this.seatNumber) return;
-
-        console.log(this.reserved_seats_count);
-        console.log(this.maxNumberOfSeats);
-        if (this.seatNumber > (this.maxNumberOfSeats - this.reserved_seats_count)) {
-            this.showErrorMaxSeatNumber = true;
-            return;
-        } else if (this.seatNumber < 1) {
-            this.showErrorMinSeatNumber = true;
-            return;
-        }
-        let data = {
-            book: {
-                'user_id': AuthenticationService.getUserCredentials().id,
-                'trip_id': this.tripId,
-                'seats_count': this.seatNumber,
-            }
-        };
-
-        this.requestService.bookSeatDelete(data)
+    delete(trip: any) {
+        this.tripId = trip.id;
+        this.bookId = trip.books_info[0].id;
+        this.requestService.bookSeatDelete(this.bookId)
             .toPromise()
             .then(res => {
                 console.log(res);
@@ -195,23 +142,14 @@ export class HomeComponent implements OnInit{
 
     openReserve(trip: any) {
         this.tripId = trip.id;
-        this.maxNumberOfSeats = trip.number_of_seats;
-        this.reserved_seats_count = trip.reserved_seats;
         this.displayReserve = true;
     }
 
     openUpdate(trip: any) {
         this.tripId = trip.id;
-        this.maxNumberOfSeats = trip.number_of_seats;
-        this.reserved_seats_count = trip.reserved_seats;
+        this.bookId = trip.books_info[0].id;
         this.displayUpdate = true;
-    }
 
-    openDelete(trip: any) {
-        this.tripId = trip.id;
-        this.maxNumberOfSeats = trip.number_of_seats;
-        this.reserved_seats_count = trip.reserved_seats;
-        this.displayDelete = true;
     }
 
     sort() {

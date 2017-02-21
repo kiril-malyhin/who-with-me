@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import {AuthenticationService} from "./authentication.service";
 
-const serverUrl = "http://localhost:4000/";
+const serverUrl = "https://who-with-me-backend.herokuapp.com/";
 
 @Injectable()
 export class RequestService {
@@ -57,12 +57,12 @@ export class RequestService {
         return this.http.post(serverUrl + "books/", data);
     };
 
-    public bookSeatUpdate = (data: Object) => {
-        return this.http.put(serverUrl + "books/", data);
+    public bookSeatUpdate = (data: Object, bookId: number) => {
+        return this.http.put(serverUrl + "books/" + bookId, data);
     };
 
-    public bookSeatDelete = (data: Object) => {
-        return this.http.delete(serverUrl + "books/", data);
+    public bookSeatDelete = (bookId: number) => {
+        return this.http.delete(serverUrl + "books/" + bookId);
     };
 
 }

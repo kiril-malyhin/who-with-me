@@ -176,8 +176,8 @@
                                             <div class="ui-grid-col-6">{{trip.number_of_seats}}</div>
                                         </div>
                                         <div class="ui-grid-row" *ngIf="trip.reserved_seats">
-                                            <div class="ui-grid-col-4">{{'bookedNumber' | translate}}: </div>
-                                            <div class="ui-grid-col-8">{{trip.reserved_seats}}</div>
+                                            <div class="ui-grid-col-6">{{'bookedNumber' | translate}}: </div>
+                                            <div class="ui-grid-col-6">{{trip.reserved_seats}}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -222,7 +222,7 @@
                                         </div>
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'destinationSeatNumber' | translate}}: </div>
-                                            <div class="ui-grid-col-6">{{trip.trip.number_of_seats}}</div>
+                                            <div class="ui-grid-col-6">{{trip.seats_count}}</div>
                                         </div>
                                         <div class="ui-grid-row">
                                             <div class="ui-grid-col-6">{{'experience' | translate}}: </div>
