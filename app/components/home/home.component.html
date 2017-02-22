@@ -11,16 +11,6 @@
         <div class="form-group">
             <label class="col-form-label pointer filter-label" style="display: block;">{{ 'destinationDate' | translate }}</label>{{date | date}}
         </div>
-        <!--<div class="form-group">-->
-            <!--<label class="col-form-label pointer filter-label">{{ 'destinationTime' | translate }}</label>-->
-            <!--<p-slider [(ngModel)]="rangeTime" [style]="" [range]="true" [min]=minTime [max]="maxTime" style="padding-top:15px;"></p-slider>-->
-            <!--{{'sliderFrom' | translate}} {{rangeTime[0]}} {{'sliderTo' | translate}} {{rangeTime[1]}}-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<label class="col-form-label pointer filter-label">{{ 'destinationPrice' | translate }}</label>-->
-            <!--<p-slider [(ngModel)]="rangePrice" [style]="" [range]="true" [min]="minPrice" [max]="maxPrice"  style="padding-top:15px;"></p-slider>-->
-            <!--{{'sliderFrom' | translate}} {{rangePrice[0]}} {{'sliderTo' | translate}} {{rangePrice[1]}}-->
-        <!--</div>-->
         <div class="form-group">
             <label class="col-form-label pointer filter-label">{{ 'carType' | translate }}</label>
             <div class="ui-g" style=" text-align: left">
@@ -39,7 +29,7 @@
                 <div class="ui-g-12"><p-radioButton name="groupExperience" value="NoMatterExperience" label="{{ 'allChoose' | translate }}" [(ngModel)]="drive_level"></p-radioButton></div>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group btn-mobile-view">
             <button class="btn-find" (click)="sort()">{{ 'searchResult' | translate }}</button>
         </div>
     </div>
@@ -47,11 +37,6 @@
         <p-dataList [value]="resultTrips" [paginator]="isPaginator" [rows]="5">
             <p-header>
                 {{'listOfTrips' | translate}} ({{resultTrips.length}}) {{'tableTitleFrom' | translate}} {{countryFrom}} {{'tableTitleTo' | translate}} {{countryTo}}
-                <!--<span style="float: right">-->
-                    <!--<input class="form-control" placeholder="{{'destinationFrom' | translate}}" value="{{countryFrom}}">-->
-                    <!--<button class="btn btn-sm btn-info" (click)="reverseDestination()"><i class="fa fa-exchange" aria-hidden="true"></i></button>-->
-                    <!--<input class="form-control" placeholder="{{'destinationTo' | translate}}" value="{{countryTo}}">-->
-                <!--</span>-->
             </p-header>
             <template let-trip pTemplate="item">
                 <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:0 20px 20px 20px;border-bottom:1px solid #D5D5D5;text-align: left">
@@ -79,13 +64,13 @@
                         </div>
                         <div class="ui-grid-col-8">
                             <span *ngIf="(trip.books_info.length > 0) || (trip.user_id === currentUserId)">
-                                <button class="btn btn-sm btn-danger" style="float: right;margin-top: 7px;margin-right: 5px;" (click)="delete(trip)">{{'deleteTripButton' | translate}}</button>
+                                <button class="btn btn-sm btn-danger" style="margin-top: 7px;margin-right: 5px;" (click)="delete(trip)">{{'deleteTripButton' | translate}}</button>
                             </span>
                             <span *ngIf="trip.books_info.length > 0 || trip.user_id === currentUserId">
-                                <button class="btn btn-sm btn-warning" style="float: right;margin-top: 7px;margin-right: 5px;" (click)="openUpdate(trip)">{{'updateTripButton' | translate}}</button>
+                                <button class="btn btn-sm btn-warning" style="margin-top: 7px;margin-right: 5px;" (click)="openUpdate(trip)">{{'updateTripButton' | translate}}</button>
                             </span>
                             <span *ngIf="trip.books_info.length === 0 || trip.user_id !== currentUserId">
-                                <button class="btn btn-sm btn-success" style="float: right;margin-top: 7px;margin-right: 5px;" (click)="openReserve(trip)">{{'reserveTripButton' | translate}}</button>
+                                <button class="btn btn-sm btn-success" style="margin-top: 7px;margin-right: 5px;" (click)="openReserve(trip)">{{'reserveTripButton' | translate}}</button>
                             </span>
                             <div class="ui-grid ui-grid-responsive ui-fluid">
                                 <div class="ui-grid-row">
@@ -126,7 +111,7 @@
                 </div>
             </template>
         </p-dataList>
-        <div *ngIf="resultTrips.length === 0" style="margin-top: 200px; font-size: 40px; font-weight: bold">
+        <div *ngIf="resultTrips.length === 0" class="no-documents-found">
             <i class="fa fa-meh-o" aria-hidden="true"></i> {{'emptySearchResult' | translate}}
             <div class="lead">{{'emptySearchResultLead' | translate}}</div>
         </div>

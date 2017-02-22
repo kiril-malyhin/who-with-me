@@ -74,6 +74,12 @@
     vertical-align: top;
 }
 
+.no-documents-found {
+    margin-top: 200px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
 .driver-photo {
     padding: 35px 30px 20px 20px;
     display: table;
@@ -96,4 +102,32 @@
     text-align: left;
     font-size: small;
     color: #e11e19;
+}
+
+.btn-sm {
+    float: right;
+}
+
+@media (max-width: 768px) {
+    .col-md-2 {
+        width: 100%;
+    }
+
+    .col-md-10 {
+        width: 100%;
+    }
+
+    .no-documents-found {
+        margin-top: 0;
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    .btn-mobile-view {
+        padding-bottom: 20px;
+    }
+
+    .btn-sm {
+        float: left;
+    }
 }
