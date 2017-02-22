@@ -79,6 +79,10 @@
     letter-spacing: -.05rem;
 }
 
+.login-col-md {
+    float: right;
+}
+
 @media (min-width: 40em) {
 
     .featurette-heading {
@@ -96,6 +100,25 @@
 @media (min-width: 62em) {
     .featurette-heading {
         margin-top: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .col-md-4-mobile {
+        display: none;
+    }
+
+    .login-col-md {
+        float: none;
+    }
+
+    .main-row {
+        margin: 0;
+    }
+
+    .containerLogin {
+        padding-top: 50px;
+        margin-top: 0;
     }
 }
 

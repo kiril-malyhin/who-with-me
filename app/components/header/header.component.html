@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark bg-inverse" style="cursor: pointer">
-    <div class="">
+    <div class="mobile-header">
         <a class="navbar-brand text-color" (click)="goToHome()">{{ 'title' | translate }}</a>
         <a class="navbar-brand lang-icon-padding" *ngIf="!isUserLogged" style="float: right">
             <span (click)="setLanguage('en')" class="pointer">
