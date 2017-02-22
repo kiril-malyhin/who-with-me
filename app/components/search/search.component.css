@@ -48,3 +48,20 @@ input {
     background:transparent;
     margin-right: 30px;
 }
+
+
+@media (max-width: 768px) {
+    .find-trip {
+        font-size: 30px;
+        padding-top: 0;
+    }
+
+    span {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .btn-find {
+        margin-left: 0;
+    }
+}

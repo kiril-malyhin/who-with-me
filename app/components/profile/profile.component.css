@@ -106,3 +106,9 @@
 .icon-delete-trip:hover {
     color: rgb(150, 30, 40);
 }
+
+@media (max-width: 768px) {
+    .mobile-input-view {
+        max-width: 192px;
+    }
+}

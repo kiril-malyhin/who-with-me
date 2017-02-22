@@ -90,7 +90,7 @@
                     <div class="form-group row">
                         <label class="col-xs-4 col-form-label pointer">{{ 'destinationDate' | translate }}</label>
                         <div>
-                            <p-calendar [(ngModel)]="dateTo" [minDate]="minDate" [readonlyInput]="true" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
+                            <p-calendar [(ngModel)]="dateTo" [minDate]="minDate" [readonlyInput]="true" dateFormat="dd.mm.yy"></p-calendar>
                             <span *ngIf="!dateTo && showErrorDate" class="alert-invalid">{{ 'emptyDestinationDate' | translate }}</span>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                     <div class="form-group row">
                         <label for="price" class="col-xs-4 col-form-label pointer">{{ 'destinationPrice' | translate }}</label>
                         <div>
-                            <input [(ngModel)]="price" name="price" type="number" id="price" class="form-control" placeholder="{{ 'price' | translate }}" required>
+                            <input [(ngModel)]="price" name="price" type="number" id="price" class="form-control mobile-input-view" placeholder="{{ 'price' | translate }}" required>
                             <span *ngIf="!price && showErrorPrice" class="alert-invalid">{{ 'emptyPrice' | translate }}</span>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
                     <div class="form-group row">
                         <label for="seatNumber" class="col-xs-4 col-form-label pointer">{{ 'destinationSeatNumber' | translate }}</label>
                         <div>
-                            <input [(ngModel)]="seatNumber" name="seatNumber" type="number" id="seatNumber" class="form-control" placeholder="{{ 'seatNumber' | translate }}" required>
+                            <input [(ngModel)]="seatNumber" name="seatNumber" type="number" id="seatNumber" class="form-control mobile-input-view" placeholder="{{ 'seatNumber' | translate }}" required>
                             <span *ngIf="!seatNumber && showErrorSeatNumber" class="alert-invalid">{{ 'emptySeatNumber' | translate }}</span>
                         </div>
                     </div>
