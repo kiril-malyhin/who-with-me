@@ -115,6 +115,7 @@
 
     .col-md-10 {
         width: 100%;
+        padding-bottom: 50px;
     }
 
     .no-documents-found {
