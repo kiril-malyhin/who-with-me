@@ -58,9 +58,9 @@
 
   "howToStart": "How to start?",
   "firstStep": "First step",
-  "firstStepDescription": "Just specify the cities of departure and arrival, and also date to see the list of drivers who offers trips along your route, and to choose suitable.",
+  "firstStepDescription": "Just enter your departure and arrival points and your travel date, then choose a driver going your way. If you have a question, you can ask the driver before booking.",
   "secondStep": "Second step",
-  "secondStepDescription": "Ask the driver the questions interesting you and find out trip details. If this option suits you, reserve the place.",
+  "secondStepDescription": "Book and pay for your seat online. You’ll get the driver's phone number to arrange the final details, as well as a booking code.",
   "lastStep": "Last step",
   "lastStepDescription": "Arrive on time on the planned meeting place! Don't forget to take with yourself cash to pay the driver the coordinated sum during a trip.",
 
@@ -106,7 +106,7 @@
 
   "searchWaitMessage": "Please wait, we are searching trips...",
   "emptySearchResult": "No result found.",
-  "emptySearchResultLead": "Try to change the search parameters",
+  "emptySearchResultLead": "Try to change the search options",
 
   "editProfileTitle": "Edit profile",
   "editProfileButton": "Update profile",

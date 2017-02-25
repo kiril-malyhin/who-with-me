@@ -11,7 +11,7 @@
                                 placeholder="{{ 'destinationTo' | translate }}" [minLength]="1"></p-autoComplete>
             </span>
             <span>
-                <p-calendar [(ngModel)]="dateTo" [minDate]="minDate" [readonlyInput]="true" dateFormat="dd.mm.yy"></p-calendar>
+                <p-calendar [(ngModel)]="dateTo" [minDate]="minDate" [monthNavigator]="true" dateFormat="dd.mm.yy"></p-calendar>
             </span>
             <button class="btn-find" (click)="findTrip()">{{ 'searchResult' | translate }}</button>
         </div>

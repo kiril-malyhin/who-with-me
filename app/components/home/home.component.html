@@ -118,7 +118,7 @@
     </div>
 </div>
 
-<p-dialog header="{{'reserveTripTitle' | translate}}" modal="modal" width="400" responsive="true" [(visible)]="displayReserve">
+<p-dialog header="{{'reserveTripTitle' | translate}}" modal="modal" width="315" responsive="true" [(visible)]="displayReserve">
     <div class="form-group row">
         <label for="seatNumber" class="col-xs-5 col-form-label pointer" style="padding-top: 0; padding-bottom: 0;">{{ 'seatNumber' | translate }}</label>
         <div class="col-sm-7">
@@ -129,7 +129,7 @@
     <button (click)="reserve()" type="button" class="btn-block btn-lg reserve-btn main-light-background-color">{{ 'reserveTripButton' | translate}}</button>
 </p-dialog>
 
-<p-dialog header="{{'updateTripTitle' | translate}}" modal="modal" width="400" responsive="true" [(visible)]="displayUpdate">
+<p-dialog header="{{'updateTripTitle' | translate}}" modal="modal" width="315" responsive="true" [(visible)]="displayUpdate">
     <div class="form-group row">
         <label for="seatNumberUpdate" class="col-xs-5 col-form-label pointer" style="padding-top: 0; padding-bottom: 0;">{{ 'seatNumber' | translate }}</label>
         <div class="col-sm-7">

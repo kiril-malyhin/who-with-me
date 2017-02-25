@@ -45,7 +45,7 @@
             class="btn-block btn-lg update-btn main-light-background-color">{{ 'editProfileButton' | translate }}
     </button>
 </p-dialog>
-<p-confirmDialog width="425"></p-confirmDialog>
+<p-confirmDialog width="315"></p-confirmDialog>
 <div class="background-image">
     <div class="container">
             <p class="profile-title">{{ 'profile' | translate }}
@@ -90,7 +90,7 @@
                     <div class="form-group row">
                         <label class="col-xs-4 col-form-label pointer">{{ 'destinationDate' | translate }}</label>
                         <div>
-                            <p-calendar [(ngModel)]="dateTo" [minDate]="minDate" [readonlyInput]="true" dateFormat="dd.mm.yy"></p-calendar>
+                            <p-calendar [(ngModel)]="dateTo" [minDate]="minDate" [monthNavigator]="true" dateFormat="dd.mm.yy"></p-calendar>
                             <span *ngIf="!dateTo && showErrorDate" class="alert-invalid">{{ 'emptyDestinationDate' | translate }}</span>
                         </div>
                     </div>
