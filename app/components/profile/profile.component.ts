@@ -5,6 +5,7 @@ import {ConfirmationService} from "primeng/components/common/api";
 import {TranslateService} from "ng2-translate";
 import {RequestService} from "../../services/utils/request.service";
 import {Http} from "@angular/http";
+import {LanguageService} from "../../services/utils/language.service";
 
 export interface Trip {
     id: any;
@@ -85,17 +86,34 @@ export class ProfileComponent implements OnInit{
     ngOnInit(): void {
         this.minDate = new Date();
 
-        this.cars = [
-            {type: this.translateService.instant('standard')},
-            {type: this.translateService.instant('premium')},
-            {type: this.translateService.instant('luxury')}
-        ];
+        const language = LanguageService.getLanguage();
 
-        this.levels = [
-            {type: this.translateService.instant('junior')},
-            {type: this.translateService.instant('senior')},
-            {type: this.translateService.instant('expert')}
-        ];
+        if (language === 'en') {
+            this.cars = [
+                {type: ('Standard')},
+                {type: ('Premium')},
+                {type: ('Luxury')}
+            ];
+
+            this.levels = [
+                {type: ('Junior')},
+                {type: ('Middle')},
+                {type: ('Expert')}
+            ];
+        } else if ('ru') {
+            this.cars = [
+                {type: ('Начальный')},
+                {type: ('Премиум')},
+                {type: ('Бизнес-класс')}
+            ];
+
+            this.levels = [
+                {type: ('Начальный')},
+                {type: ('Опытный')},
+                {type: ('Эксперт')}
+            ];
+        }
+
 
         this.carType = this.cars[0]['type'];
         this.experience = this.levels[0]['type'];
