@@ -1,6 +1,6 @@
 <div class="home">
     <div class="progress-bar-align" *ngIf="value !== 100">
-        <label>{{'searchWaitMessage' | translate}}</label>
+        <label style="color: black">{{'searchWaitMessage' | translate}}</label>
         <p-progressBar [value]="value"></p-progressBar>
     </div>
 
@@ -64,13 +64,13 @@
                         </div>
                         <div class="ui-grid-col-8">
                             <span *ngIf="(trip.books_info.length > 0) || (trip.user_id === currentUserId)">
-                                <button class="btn btn-sm btn-danger" style="margin-top: 7px;margin-right: 5px;" (click)="delete(trip)">{{'deleteTripButton' | translate}}</button>
+                                <i class="fa fa-trash-o fa-2x action-icon" aria-hidden="true" style="margin-top: 5px;margin-right: 8px;" (click)="delete(trip)"></i>
                             </span>
                             <span *ngIf="trip.books_info.length > 0 || trip.user_id === currentUserId">
-                                <button class="btn btn-sm btn-warning" style="margin-top: 7px;margin-right: 5px;" (click)="openUpdate(trip)">{{'updateTripButton' | translate}}</button>
+                                <i class="fa fa-pencil-square-o fa-2x action-icon" aria-hidden="true" style="margin-top: 7px;margin-right: 8px;" (click)="openUpdate(trip)"></i>
                             </span>
                             <span *ngIf="trip.books_info.length === 0 || trip.user_id !== currentUserId">
-                                <button class="btn btn-sm btn-success" style="margin-top: 7px;margin-right: 5px;" (click)="openReserve(trip)">{{'reserveTripButton' | translate}}</button>
+                                <i class="fa fa-plus-square-o fa-2x action-icon" aria-hidden="true" style="margin-top: 7px;margin-right: 8px;" (click)="openReserve(trip)"></i>
                             </span>
                             <div class="ui-grid ui-grid-responsive ui-fluid">
                                 <div class="ui-grid-row">

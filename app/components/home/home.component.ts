@@ -27,10 +27,6 @@ export class HomeComponent implements OnInit{
     value: number = 0;
     allTrips: Array<any> = [];
 
-    // TODO set min and max price
-    minPrice: number = 1;
-    maxPrice: number = 100;
-
     drive_level: string = 'NoMatterExperience';
     car_type: string = 'NoMatterCarType';
 

@@ -94,15 +94,7 @@
 
   "sortingTitle": "Фильтр",
 
-  "junior": "Начальный",
-  "senior": "Опытный",
-  "expert": "Эксперт",
-
-  "standard": "Стандарт",
-  "premium": "Премиум",
-  "luxury": "Бизнес-класс",
-
-  "allChoose": "Любой",
+  "allChoose": "любой",
 
   "searchWaitMessage": "Пожалуйста, подождите, мы ищем...",
   "emptySearchResult": "Результат не найден.",

@@ -15,3 +15,15 @@ textarea:focus, input:focus, button:focus{
 .ui-fileupload-row>div {
     padding: .3em .9em !important;
 }
+
+.ui-widget-header {
+    background-color: #5d5d5d !important;
+    color: black !important;
+    border: 0 !important;
+    box-shadow: inset 0 1px 0 rgba(84, 84, 84, 0.51), 0 1px 5px rgba(8, 8, 8, 0.38) !important;
+}
+
+.ui-paginator .ui-paginator-page.ui-state-active {
+    background-color: rgb(150, 30, 40) !important;
+    border-color: rgb(150, 30, 40) !important;
+}

@@ -94,15 +94,7 @@
 
   "sortingTitle": "Sorting",
 
-  "junior": "Junior",
-  "senior": "Middle",
-  "expert": "Expert",
-
-  "standard": "Standard",
-  "premium": "Premium",
-  "luxury": "Luxury",
-
-  "allChoose": "No matter",
+  "allChoose": "no matter",
 
   "searchWaitMessage": "Please wait, we are searching trips...",
   "emptySearchResult": "No result found.",
