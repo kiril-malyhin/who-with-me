@@ -111,4 +111,9 @@
     .mobile-input-view {
         max-width: 192px;
     }
+
+    .form-control {
+        width: 90%;
+        padding: .5rem;
+    }
 }

@@ -4,7 +4,7 @@
         <p-progressBar [value]="value"></p-progressBar>
     </div>
 
-    <div class="col-md-2" style="text-align: center;" *ngIf="value === 100">
+    <div class="col-md-2 sort-bar" style="text-align: center;" *ngIf="value === 100">
         <div class="form-group" style="margin-bottom: -10px">
             <label class="col-form-label filter-label" style="font-size: 20px;">{{'sortingTitle' | translate}}</label>
         </div>
@@ -39,30 +39,66 @@
                 {{'listOfTrips' | translate}} ({{resultTrips.length}}) {{'tableTitleFrom' | translate}} {{countryFrom}} {{'tableTitleTo' | translate}} {{countryTo}}
             </p-header>
             <template let-trip pTemplate="item">
-                <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:0 20px 20px 20px;border-bottom:1px solid #D5D5D5;text-align: left">
-                    <div class="ui-grid-row">
+                <div class="container-fluid" style="font-size:16px;border-bottom:1px solid #D5D5D5;text-align: left">
+                    <div class="table-view">
                         <div class="driver-photo">
                             <img src="../../../images/users/{{trip.user.gender}}.png" alt="Generic placeholder image">
                         </div>
-                        <div class="ui-grid-col-4" style="padding-top: 50px">
+                        <div class="col-md-4 padding-user-info">
                             <div class="ui-grid-row">
-                                <div class="ui-grid-col-4">{{'username' | translate}}: </div>
-                                <div class="ui-grid-col-8">{{trip.user.name}}</div>
+                                <span>{{'username' | translate}}: </span>
+                                <span>{{trip.user.name}}</span>
                             </div>
                             <div class="ui-grid-row">
-                                <div class="ui-grid-col-4">{{'mail' | translate}}: </div>
-                                <div class="ui-grid-col-8">{{trip.user.email}}</div>
+                                <span>{{'mail' | translate}}: </span>
+                                <span>{{trip.user.email}}</span>
                             </div>
                             <div class="ui-grid-row">
-                                <div class="ui-grid-col-4">{{'phone' | translate}}: </div>
-                                <div class="ui-grid-col-8">{{trip.user.phone}}</div>
+                                <span>{{'phone' | translate}}: </span>
+                                <span>{{trip.user.phone}}</span>
                             </div>
                             <div class="ui-grid-row">
-                                <div class="ui-grid-col-4">{{'age' | translate}}: </div>
-                                <div class="ui-grid-col-8">{{trip.user.age}}</div>
+                                <span>{{'age' | translate}}: </span>
+                                <span>{{trip.user.age}}</span>
                             </div>
                         </div>
-                        <div class="ui-grid-col-8">
+
+                        <div class="col-md-6">
+                            <div class="ui-grid-row">
+                                <span>{{'destinationFrom' | translate}}: </span>
+                                <span>{{trip.from}}</span>
+                            </div>
+                            <div class="ui-grid-row">
+                                <span>{{'destinationTo' | translate}}: </span>
+                                <span>{{trip.to}}</span>
+                            </div>
+                            <div class="ui-grid-row">
+                                <span>{{'destinationDate' | translate}}: </span>
+                                <span>{{trip.date | date}}</span>
+                            </div>
+                            <div class="ui-grid-row">
+                                <span>{{'destinationPrice' | translate}}: </span>
+                                <span>{{trip.price}}</span>
+                            </div>
+                            <div class="ui-grid-row">
+                                <span>{{'carType' | translate}}: </span>
+                                <span>{{trip.car_type}}</span>
+                            </div>
+                            <div class="ui-grid-row">
+                                <span>{{'experience' | translate}}: </span>
+                                <span>{{trip.drive_level}}</span>
+                            </div>
+                            <div class="ui-grid-row">
+                                <span>{{'destinationSeatNumber' | translate}}: </span>
+                                <span>{{trip.number_of_seats}}</span>
+                            </div>
+                            <div class="ui-grid-row">
+                                <span>{{'bookedNumber' | translate}}: </span>
+                                <span>{{trip.reserved_seats}}</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 reserve-icons">
                             <span *ngIf="(trip.books_info.length > 0) || (trip.user_id === currentUserId)">
                                 <i class="fa fa-trash-o fa-2x action-icon" aria-hidden="true" style="margin-top: 5px;margin-right: 8px;" (click)="delete(trip)"></i>
                             </span>
@@ -72,40 +108,6 @@
                             <span *ngIf="trip.books_info.length === 0 || trip.user_id !== currentUserId">
                                 <i class="fa fa-plus-square-o fa-2x action-icon" aria-hidden="true" style="margin-top: 7px;margin-right: 8px;" (click)="openReserve(trip)"></i>
                             </span>
-                            <div class="ui-grid ui-grid-responsive ui-fluid">
-                                <div class="ui-grid-row">
-                                    <div class="ui-grid-col-4">{{'destinationFrom' | translate}}: </div>
-                                    <div class="ui-grid-col-8">{{trip.from}}</div>
-                                </div>
-                                <div class="ui-grid-row">
-                                    <div class="ui-grid-col-4">{{'destinationTo' | translate}}: </div>
-                                    <div class="ui-grid-col-8">{{trip.to}}</div>
-                                </div>
-                                <div class="ui-grid-row">
-                                    <div class="ui-grid-col-4">{{'destinationDate' | translate}}: </div>
-                                    <div class="ui-grid-col-8">{{trip.date | date}}</div>
-                                </div>
-                                <div class="ui-grid-row">
-                                    <div class="ui-grid-col-4">{{'destinationPrice' | translate}}: </div>
-                                    <div class="ui-grid-col-8">{{trip.price}}</div>
-                                </div>
-                                <div class="ui-grid-row">
-                                    <div class="ui-grid-col-4">{{'carType' | translate}}: </div>
-                                    <div class="ui-grid-col-8">{{trip.car_type}}</div>
-                                </div>
-                                <div class="ui-grid-row">
-                                    <div class="ui-grid-col-4">{{'experience' | translate}}: </div>
-                                    <div class="ui-grid-col-8">{{trip.drive_level}}</div>
-                                </div>
-                                <div class="ui-grid-row">
-                                    <div class="ui-grid-col-4">{{'destinationSeatNumber' | translate}}: </div>
-                                    <div class="ui-grid-col-8">{{trip.number_of_seats}}</div>
-                                </div>
-                                <div class="ui-grid-row">
-                                    <div class="ui-grid-col-4">{{'bookedNumber' | translate}}: </div>
-                                    <div class="ui-grid-col-8">{{trip.reserved_seats}}</div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

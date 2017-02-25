@@ -22,6 +22,9 @@
 
 .col-md-2 {
     width: 18%;
+}
+
+.sort-bar {
     background-color: rgb(107, 107, 107);
     box-shadow: inset 0 1px 0 rgba(84, 84, 84, 0.51), 0 1px 5px rgba(8, 8, 8, 0.38);
 }
@@ -75,13 +78,14 @@
 }
 
 .no-documents-found {
+    color: black;
     margin-top: 200px;
     font-size: 40px;
     font-weight: bold;
 }
 
 .driver-photo {
-    padding: 35px 30px 20px 20px;
+    padding: 35px 30px 20px 10px;
     display: table;
 }
 
@@ -104,6 +108,11 @@
     color: #e11e19;
 }
 
+.padding-user-info {
+    padding-top: 40px;
+    padding-right: 40px;
+}
+
 .action-icon {
     float: right;
     cursor: pointer;
@@ -111,6 +120,10 @@
 
 .action-icon:hover {
     font-size: 35px;
+}
+
+.table-view {
+    display: flex;
 }
 
 @media (max-width: 768px) {
@@ -139,5 +152,21 @@
 
     .ui-grid-row {
         display: inline-block !important;
+    }
+
+    .table-view {
+        display: table-caption;
+    }
+
+    .reserve-icons {
+        margin-bottom: 10px;
+        padding-bottom: 40px !important;
+    }
+
+    .progress-bar-align {
+        text-align: center;
+        margin-top: 50%;
+        margin-left: 10%;
+        margin-right: 10%;
     }
 }

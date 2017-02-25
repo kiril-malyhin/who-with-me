@@ -1,4 +1,4 @@
-<p-dialog header="{{'editProfileTitle' | translate}}" modal="modal" width="590" responsive="true" [(visible)]="display">
+<p-dialog header="{{'editProfileTitle' | translate}}" modal="modal" width="315" responsive="true" [(visible)]="display">
     <!--<div class="form-group row">-->
         <!--<label for="age" class="col-xs-4 col-form-label pointer">{{ 'photo' | translate }}</label>-->
         <!--<div class="col-sm-8">-->
@@ -234,31 +234,27 @@
     </div>
 </div>
 
-<p-dialog header="{{'fellowTraveller' | translate}}" [(visible)]="openBookedUsers" modal="modal" width="500" responsive="true">
+<p-dialog header="{{'fellowTraveller' | translate}}" [(visible)]="openBookedUsers" modal="modal" width="315" responsive="true">
     <p-dataList [value]="bookedUsers" [paginator]="isPaginator" [rows]="5">
         <template let-trip pTemplate="item">
             <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:20px;border-bottom:1px solid #D5D5D5;text-align: left">
-                <div class="ui-grid-row">
-                    <div style="padding-right: 20px">
-                        <img src="../../../images/users/{{trip.user.gender}}.png" alt="Generic placeholder image">
+                <img src="../../../images/users/{{trip.user.gender}}.png" alt="Generic placeholder image">
+                <div style="padding-top: 15px">
+                    <div class="ui-grid-row">
+                        <span>{{'username' | translate}}: </span>
+                        <span>{{trip.user.name}}</span>
                     </div>
-                    <div class="ui-grid-col-6" style="padding-top: 15px">
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-6">{{'username' | translate}}: </div>
-                            <div class="ui-grid-col-6">{{trip.user.name}}</div>
-                        </div>
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-6">{{'mail' | translate}}: </div>
-                            <div class="ui-grid-col-6">{{trip.user.email}}</div>
-                        </div>
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-6">{{'phone' | translate}}: </div>
-                            <div class="ui-grid-col-6">{{trip.user.phone}}</div>
-                        </div>
-                        <div class="ui-grid-row">
-                            <div class="ui-grid-col-6">{{'age' | translate}}: </div>
-                            <div class="ui-grid-col-6">{{trip.user.age}}</div>
-                        </div>
+                    <div class="ui-grid-row">
+                        <span>{{'mail' | translate}}: </span>
+                        <span>{{trip.user.email}}</span>
+                    </div>
+                    <div class="ui-grid-row">
+                        <span>{{'phone' | translate}}: </span>
+                        <span>{{trip.user.phone}}</span>
+                    </div>
+                    <div class="ui-grid-row">
+                        <span>{{'age' | translate}}: </span>
+                        <span>{{trip.user.age}}</span>
                     </div>
                 </div>
             </div>
