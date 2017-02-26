@@ -173,12 +173,15 @@ export class ProfileComponent implements OnInit{
             return;
         }
 
+        let date = this.dateTo.toString();
+        date = date.substring(0, date.indexOf(" GMT"));
+
         let data = {
             trip: {
                 'user_id': AuthenticationService.getUserCredentials().id,
                 'from': this.countryFrom['name'],
                 'to': this.countryTo['name'],
-                'date': this.dateTo.toString(),
+                'date': date,
                 'price': this.price,
                 'number_of_seats': this.seatNumber,
                 'car_type': this.carType,
