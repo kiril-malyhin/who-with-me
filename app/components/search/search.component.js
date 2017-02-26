@@ -43,18 +43,20 @@ var SearchComponent = (function () {
         return filtered;
     };
     SearchComponent.prototype.findTrip = function () {
-        if (!this.countryFrom['name'] || !this.countryTo['name'] || !this.dateTo) {
-            if (!this.countryFrom || !this.countryTo || !this.dateTo) {
+        var date = this.dateTo.toString();
+        date = date.substring(0, date.indexOf(" GMT"));
+        if (!this.countryFrom['name'] || !this.countryTo['name'] || !date) {
+            if (!this.countryFrom || !this.countryTo || !date) {
                 alert('Error! Check input!');
                 return;
             }
             else {
-                search_service_1.SearchService.setParameters(this.countryFrom, this.countryTo, this.dateTo);
+                search_service_1.SearchService.setParameters(this.countryFrom, this.countryTo, date);
                 this.router.navigate(['/home']);
             }
         }
         else {
-            search_service_1.SearchService.setParameters(this.countryFrom['name'], this.countryTo['name'], this.dateTo);
+            search_service_1.SearchService.setParameters(this.countryFrom['name'], this.countryTo['name'], date);
             this.router.navigate(['/home']);
         }
     };

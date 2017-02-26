@@ -55,16 +55,18 @@ export class SearchComponent implements OnInit{
     }
 
     findTrip() {
-        if (!this.countryFrom['name'] || !this.countryTo['name'] || !this.dateTo) {
-            if (!this.countryFrom || !this.countryTo || !this.dateTo) {
+        let date = this.dateTo.toString();
+        date = date.substring(0, date.indexOf(" GMT"));
+        if (!this.countryFrom['name'] || !this.countryTo['name'] || !date) {
+            if (!this.countryFrom || !this.countryTo || !date) {
                 alert('Error! Check input!');
                 return;
             } else {
-                SearchService.setParameters(this.countryFrom, this.countryTo, this.dateTo);
+                SearchService.setParameters(this.countryFrom, this.countryTo, date);
                 this.router.navigate(['/home']);
             }
         } else {
-            SearchService.setParameters(this.countryFrom['name'], this.countryTo['name'], this.dateTo);
+            SearchService.setParameters(this.countryFrom['name'], this.countryTo['name'], date);
             this.router.navigate(['/home']);
         }
     }
